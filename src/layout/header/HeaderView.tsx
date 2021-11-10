@@ -2,8 +2,12 @@ import React from 'react'
 import LinkTag from '../../common/link/LinkTag'
 // style
 import { HeaderSC } from './Header.styles'
+// interface
+import { IHeaderView } from './interface'
 
-const HeaderView: React.FC = () => {
+const HeaderView: React.FC<IHeaderView> = (props) => {
+  const { onChangeSearchRext } = props
+
   return (
     <HeaderSC.Header>
       <HeaderSC.Contents>

@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeaderView from './HeaderView'
 
 const Header: React.FC = () => {
-  return <HeaderView />
+  const [searchText, setSearchText] = useState('')
+
+  const onChangeSearchRext = (text: string) => {
+    setSearchText(text)
+  }
+
+  const viewProps = {
+    onChangeSearchRext,
+  }
+
+  return <HeaderView {...viewProps} />
 }
 
 export default Header
