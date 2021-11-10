@@ -11,6 +11,8 @@ export type TFontWeight =
   | 'bold'
   | 'black'
 
+export type TFontSize = 'small' | 'medium' | 'large' | string
+
 const setFontSize = (fontSize: string) => css`
   font-size: ${(fontSize === 'small' && '1em') ||
   (fontSize === 'medium' && '1.7em') ||
