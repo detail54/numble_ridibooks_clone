@@ -1,7 +1,8 @@
 import React from 'react'
+import HomeView from './HomeView'
 
 const Home: React.FC = () => {
-  return <div>Home</div>
+  return <HomeView />
 }
 
 export default Home

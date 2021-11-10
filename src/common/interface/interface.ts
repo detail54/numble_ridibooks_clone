@@ -1,10 +1,5 @@
-export interface ILink {
-  text: string
-  linkStyles?: ILinkStyles
-}
-
-export interface ILinkStyles {
-  disabled?: boolean
-  fontSize: string
+export interface ILinkProps {
+  text?: string
+  fontSize?: string
   fontWeight?: string
 }

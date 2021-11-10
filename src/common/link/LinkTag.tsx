@@ -1,19 +1,14 @@
 import React from 'react'
 // interface
-import { ILink } from '../interface/interface'
+import { ILinkProps } from '../interface/interface'
 // style
 import { LinkStyles } from './LinkTag.styles'
 
-const LinkTag: React.FC<ILink> = (props) => {
-  const {
-    text,
-    linkStyles = {
-      fontSize: '2em',
-    },
-  } = props
+const LinkTag: React.FC<ILinkProps> = (props) => {
+  const { text } = props
 
   return (
-    <LinkStyles.LinkTag to='/' fontSize={linkStyles.fontSize}>
+    <LinkStyles.LinkTag to='/' {...props}>
       {text}
     </LinkStyles.LinkTag>
   )

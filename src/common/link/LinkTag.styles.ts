@@ -1,25 +1,19 @@
 // lib
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 // interface
-import { ILinkStyles } from '../interface/interface'
+import { ILinkProps } from '../interface/interface'
+// global style
+import { setStyles } from '../../GlobalStyle'
 
 export const LinkTag = styled(Link)`
   background-color: transparent;
   text-decoration: none;
   color: white;
-  font-family: 'Pretendard-SemiBold';
-  font-size: ${(props: ILinkStyles) => props.fontSize};
-  ${(props: ILinkStyles) =>
-    props.fontWeight &&
-    css`
-      font-weight: props.fontWeight;
-    `}
-  ${(props: ILinkStyles) =>
-    props.disabled &&
-    css`
-      opacity: 0.6;
-    `}
+  ${(props: ILinkProps) =>
+    props.fontSize && setStyles.setFontSize(props.fontSize)}
+  ${(props: ILinkProps) =>
+    props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 `
 
 export const LinkStyles = {
