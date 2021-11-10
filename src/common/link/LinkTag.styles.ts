@@ -2,7 +2,7 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 // interface
-import { ILinkProps } from '../interface/interface'
+import { ILinkStyles } from '../interface/interface'
 // global style
 import { setStyles } from '../../GlobalStyle'
 
@@ -10,17 +10,17 @@ const LinkTag = styled(Link)`
   background-color: transparent;
   text-decoration: none;
   color: white;
-  ${(props: ILinkProps) =>
+  ${(props: ILinkStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)}
-  ${(props: ILinkProps) =>
+  ${(props: ILinkStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 
-  ${(props: ILinkProps) =>
+  ${(props: ILinkStyles) =>
     props.opacity &&
     css`
       opacity: 0.6;
     `}
-  ${(props: ILinkProps) =>
+  ${(props: ILinkStyles) =>
     (props.hoverColor || props.hoverBgColor || props.hoverOpacity) &&
     setStyles.setHoverEffect(
       props.hoverColor,
