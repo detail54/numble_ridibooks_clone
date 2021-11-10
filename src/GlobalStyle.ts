@@ -2,6 +2,15 @@
 
 import { createGlobalStyle, css } from 'styled-components'
 
+export type TFontWeight =
+  | 'thin'
+  | 'light'
+  | 'regular'
+  | 'medium'
+  | 'semibold'
+  | 'bold'
+  | 'black'
+
 const setFontSize = (fontSize: string) => css`
   font-size: ${(fontSize === 'small' && '1em') ||
   (fontSize === 'medium' && '1.7em') ||
@@ -9,7 +18,7 @@ const setFontSize = (fontSize: string) => css`
   fontSize};
 `
 
-const setFontWeight = (fontWeight: string) => css`
+const setFontWeight = (fontWeight: TFontWeight) => css`
   font-family: ${(fontWeight === 'thin' && 'Pretendard-Thin') ||
   (fontWeight === 'light' && 'Pretendard-Light') ||
   (fontWeight === 'regular' && 'Pretendard-Regular') ||
