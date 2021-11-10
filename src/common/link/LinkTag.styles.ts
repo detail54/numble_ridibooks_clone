@@ -10,12 +10,17 @@ const LinkTag = styled(Link)`
   background-color: transparent;
   text-decoration: none;
   color: white;
+
   ${(props: ILinkStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)};
+
   ${(props: ILinkStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)};
+
   ${(props: ILinkStyles) => props.alignX && setStyles.setAlignX(props.alignX)};
+
   ${(props: ILinkStyles) => props.alignY && setStyles.setAlignY(props.alignY)};
+
   ${(props: ILinkStyles) =>
     (props.width || props.height) &&
     setStyles.setWidthAndHeight(props.width, props.height)};
@@ -25,6 +30,7 @@ const LinkTag = styled(Link)`
     css`
       opacity: 0.6;
     `};
+
   ${(props: ILinkStyles) =>
     (props.hoverColor || props.hoverBgColor || props.hoverOpacity) &&
     setStyles.setHoverEffect(
