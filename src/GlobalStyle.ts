@@ -19,9 +19,22 @@ const setFontWeight = (fontWeight: string) => css`
   (fontWeight === 'black' && 'Pretendard-Black')};
 `
 
+const setHoverEffect = (
+  color: string | undefined,
+  background: string | undefined,
+  opacity: string | undefined,
+) => css`
+  &:hover {
+    color: ${color || ''};
+    background: ${background || ''};
+    opacity: ${opacity || ''};
+  }
+`
+
 export const setStyles = {
   setFontSize,
   setFontWeight,
+  setHoverEffect,
 }
 
 const GlobalStyle = createGlobalStyle`

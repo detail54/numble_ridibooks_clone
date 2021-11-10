@@ -1,12 +1,12 @@
 // lib
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 // interface
 import { ILinkProps } from '../interface/interface'
 // global style
 import { setStyles } from '../../GlobalStyle'
 
-export const LinkTag = styled(Link)`
+const LinkTag = styled(Link)`
   background-color: transparent;
   text-decoration: none;
   color: white;
@@ -14,8 +14,21 @@ export const LinkTag = styled(Link)`
     props.fontSize && setStyles.setFontSize(props.fontSize)}
   ${(props: ILinkProps) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
+
+  ${(props: ILinkProps) =>
+    props.opacity &&
+    css`
+      opacity: 0.6;
+    `}
+  ${(props: ILinkProps) =>
+    (props.hoverColor || props.hoverBgColor || props.hoverOpacity) &&
+    setStyles.setHoverEffect(
+      props.hoverColor,
+      props.hoverBgColor,
+      props.hoverOpacity,
+    )}
 `
 
-export const LinkStyles = {
+export const LinkSC = {
   LinkTag,
 }

@@ -2,15 +2,18 @@ import React from 'react'
 // interface
 import { ILinkProps } from '../interface/interface'
 // style
-import { LinkStyles } from './LinkTag.styles'
+import { LinkSC } from './LinkTag.styles'
 
 const LinkTag: React.FC<ILinkProps> = (props) => {
-  const { text } = props
+  const { toLink, text, children } = props
 
   return (
-    <LinkStyles.LinkTag to='/' {...props}>
-      {text}
-    </LinkStyles.LinkTag>
+    <LinkSC.LinkTag to={toLink} {...props}>
+      <>
+        {text}
+        {children && children}
+      </>
+    </LinkSC.LinkTag>
   )
 }
 
