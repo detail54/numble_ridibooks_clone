@@ -7,13 +7,13 @@ import { LinkStyles } from './LinkTag.styles'
 const LinkTag: React.FC<ILink> = (props) => {
   const {
     text,
-    styles = {
+    linkStyles = {
       fontSize: '2em',
     },
   } = props
 
   return (
-    <LinkStyles.LinkTag to='/' {...styles}>
+    <LinkStyles.LinkTag to='/' fontSize={linkStyles.fontSize}>
       {text}
     </LinkStyles.LinkTag>
   )
