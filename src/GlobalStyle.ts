@@ -13,6 +13,8 @@ export type TFontWeight =
 
 export type TFontSize = 'small' | 'medium' | 'large' | string
 
+export type TAlign = 'left' | 'center' | 'right'
+
 const setFontSize = (fontSize: string) => css`
   font-size: ${(fontSize === 'small' && '1em') ||
   (fontSize === 'medium' && '1.7em') ||
@@ -30,6 +32,25 @@ const setFontWeight = (fontWeight: TFontWeight) => css`
   (fontWeight === 'black' && 'Pretendard-Black')};
 `
 
+const setWidthAndHeight = (width?: string, height?: string) => css`
+  width: ${width || ''};
+  height: ${height || ''};
+`
+
+const setAlignX = (align: string) => css`
+  & {
+    display: flex;
+    justify-content: ${align};
+  }
+`
+
+const setAlignY = (align: string) => css`
+  & {
+    display: flex;
+    align-items: ${align};
+  }
+`
+
 const setHoverEffect = (
   color: string | undefined,
   background: string | undefined,
@@ -45,6 +66,9 @@ const setHoverEffect = (
 export const setStyles = {
   setFontSize,
   setFontWeight,
+  setWidthAndHeight,
+  setAlignX,
+  setAlignY,
   setHoverEffect,
 }
 
