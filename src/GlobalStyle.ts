@@ -32,7 +32,10 @@ const setFontWeight = (fontWeight: TFontWeight) => css`
   (fontWeight === 'black' && 'Pretendard-Black')};
 `
 
-const setWidthAndHeight = (width?: string, height?: string) => css`
+const setWidthAndHeight = (
+  width?: string | undefined,
+  height?: string | undefined,
+) => css`
   width: ${width || ''};
   height: ${height || ''};
 `
