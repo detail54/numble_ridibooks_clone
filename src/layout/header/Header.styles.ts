@@ -33,6 +33,14 @@ const Nav = styled.nav`
   display: flex;
   width: 100%;
   padding: 16px 16px 24px 20px;
+
+  button {
+    font-size: 13px;
+    padding: 0px 16px;
+    height: 30px;
+  }
+
+  ${setStyles.setAlignY('center')}
 `
 
 const Ul = styled.ul`

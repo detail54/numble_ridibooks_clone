@@ -1,10 +1,13 @@
 import React from 'react'
+// common component
+import ButtonWrap from '../../common/button/ButtonWrap'
 import SearchInput from '../../common/input/SearchInput'
 import LinkTag from '../../common/link/LinkTag'
 // style
 import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
+import { IButtonStyles } from '../../common/interface/interface'
 
 const HeaderView: React.FC<IHeader> = (props) => {
   const {
@@ -15,6 +18,18 @@ const HeaderView: React.FC<IHeader> = (props) => {
     openSearchResultModal,
     closeSearchResultModal,
   } = props
+
+  const buttonTexts = ['회원가입', '로그인']
+  const buttonStyles: IButtonStyles[] = [
+    {
+      buttonColor: 'none',
+      buttonSize: '30px',
+    },
+    {
+      buttonColor: 'outDodgerBlue',
+      buttonSize: '30px',
+    },
+  ]
 
   return (
     <HeaderSC.Header>
@@ -67,6 +82,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
+          <ButtonWrap texts={buttonTexts} styles={buttonStyles} />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 // global style type
 import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
 
@@ -26,10 +28,10 @@ export interface ISearchInput {
   placeholder?: string
   searchText: string
   onChange: (text: string) => void
-  onRemove: () => void
+  onRemove?: () => void
   openCancelButton?: boolean
-  onFocus: () => void
-  onBlur: () => void
+  onFocus?: () => void
+  onBlur?: () => void
   styles?: ISearchInputStyles
 }
 
@@ -41,4 +43,26 @@ export interface ISearchInputStyles {
   border?: string
   flex?: string
   focusOutLine?: boolean
+}
+
+type TButtonSize = '50px' | '40px' | '30px' | '25px' | '21px'
+type TButtonBgColor = 'dodgerBlue' | 'white' | 'gray' | 'outDodgerBlue' | 'none'
+
+export interface IButton {
+  text: string
+  imgUrl?: string
+  onClick?: () => void
+  styles: IButtonStyles
+}
+
+export interface IButtonStyles {
+  buttonSize: TButtonSize
+  buttonColor: TButtonBgColor
+  cursor?: string
+}
+
+export interface IButtonWrap {
+  texts: string[]
+  imgUrls?: string[]
+  styles: IButtonStyles[]
 }
