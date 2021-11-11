@@ -15,7 +15,7 @@ const Divider = css`
   }
 `
 
-const Header = styled.div`
+const Header = styled.header`
   background-color: #1f8ce6;
   width: 100%;
   display: flex;

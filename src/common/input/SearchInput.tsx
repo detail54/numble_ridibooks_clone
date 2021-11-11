@@ -36,8 +36,8 @@ const SearchInput: React.FC<ISearchInput> = (props) => {
   )
 
   return (
-    <InputSC.Form>
-      <InputSC.FormDiv>
+    <InputSC.Form maxWidth={styles && styles.maxWidth}>
+      <InputSC.Div>
         <InputSC.SearchIcon
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
@@ -62,7 +62,7 @@ const SearchInput: React.FC<ISearchInput> = (props) => {
           {...styles}
         />
         {cancleButton}
-      </InputSC.FormDiv>
+      </InputSC.Div>
     </InputSC.Form>
   )
 }

@@ -29,13 +29,13 @@ const Input = styled.input`
 `
 
 const Form = styled.form`
-  max-width: ${(props: ISearchInputStyles) => props.maxWidth && props.maxWidth};
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: ${(props: ISearchInputStyles) => props.maxWidth};
 `
 
-const FormDiv = styled.div`
+const Div = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,6 +52,7 @@ const SearchIcon = styled.svg`
   margin: 0px 4px 0px 6px;
   min-width: 24px;
   min-height: 24px;
+  flex: 0;
 `
 
 const CancleButton = styled.button`
@@ -75,7 +76,7 @@ const CancleIcon = styled.svg`
 export const InputSC = {
   Input,
   Form,
-  FormDiv,
+  Div,
   SearchIcon,
   CancleButton,
   CancleIcon,

@@ -27,7 +27,7 @@ export interface ISearchInput {
   searchText: string
   onChange: (text: string) => void
   onRemove: () => void
-  openCancelButton: boolean
+  openCancelButton?: boolean
   onFocus: () => void
   onBlur: () => void
   styles?: ISearchInputStyles

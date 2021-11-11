@@ -60,11 +60,11 @@ const HeaderView: React.FC<IHeader> = (props) => {
             onFocus={openSearchResultModal}
             onBlur={closeSearchResultModal}
             styles={{
-              maxWidth: '340px',
               fontSize: '16px',
               fontWeight: 'light',
               width: '306px',
               focusOutLine: false,
+              maxWidth: '340px',
             }}
           />
         </HeaderSC.Nav>
