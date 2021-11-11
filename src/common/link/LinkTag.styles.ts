@@ -9,7 +9,6 @@ import { colors, setStyles } from '../../GlobalStyle'
 const LinkTag = styled(Link)`
   background-color: transparent;
   text-decoration: none;
-  color: white;
 
   ${(props: ILinkStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)};
@@ -69,7 +68,12 @@ const LinkTag = styled(Link)`
         color: white;
         background: none;
         border: 1px solid white;
-      `)}
+      `) ||
+    css`
+      color: white;
+      background: none;
+      border: none;
+    `}
 `
 
 export const LinkSC = {
