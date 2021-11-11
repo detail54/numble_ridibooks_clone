@@ -7,7 +7,7 @@ import LinkTag from '../../common/link/LinkTag'
 import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
-import { IButtonStyles } from '../../common/interface/interface'
+import { IButton } from '../../common/interface/interface'
 
 const HeaderView: React.FC<IHeader> = (props) => {
   const {
@@ -19,15 +19,20 @@ const HeaderView: React.FC<IHeader> = (props) => {
     closeSearchResultModal,
   } = props
 
-  const buttonTexts = ['회원가입', '로그인']
-  const buttonStyles: IButtonStyles[] = [
+  const buttonsData: IButton[] = [
     {
-      buttonColor: 'none',
-      buttonSize: '30px',
+      text: '회원가입',
+      styles: {
+        buttonColor: 'none',
+        buttonSize: '30px',
+      },
     },
     {
-      buttonColor: 'outDodgerBlue',
-      buttonSize: '30px',
+      text: '로그인',
+      styles: {
+        buttonColor: 'outDodgerBlue',
+        buttonSize: '30px',
+      },
     },
   ]
 
@@ -82,7 +87,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <ButtonWrap texts={buttonTexts} styles={buttonStyles} />
+          <ButtonWrap datas={buttonsData} />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>

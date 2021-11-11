@@ -24,6 +24,10 @@ export interface ILinkStyles {
   hoverBgColor?: string
 }
 
+export interface ILinkWrap {
+  datas: ILink[]
+}
+
 export interface ISearchInput {
   placeholder?: string
   searchText: string
@@ -62,7 +66,5 @@ export interface IButtonStyles {
 }
 
 export interface IButtonWrap {
-  texts: string[]
-  imgUrls?: string[]
-  styles: IButtonStyles[]
+  datas: IButton[]
 }
