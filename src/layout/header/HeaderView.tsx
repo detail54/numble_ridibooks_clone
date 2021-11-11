@@ -1,13 +1,12 @@
 import React from 'react'
 // common component
-import ButtonWrap from '../../common/button/ButtonWrap'
 import SearchInput from '../../common/input/SearchInput'
-import LinkTag from '../../common/link/LinkTag'
+import LinkWrap from '../../common/link/LinkWrap'
 // style
 import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
-import { IButton } from '../../common/interface/interface'
+import { ILink } from '../../common/interface/interface'
 
 const HeaderView: React.FC<IHeader> = (props) => {
   const {
@@ -19,20 +18,30 @@ const HeaderView: React.FC<IHeader> = (props) => {
     closeSearchResultModal,
   } = props
 
-  const buttonsData: IButton[] = [
+  const mainLinks: ILink[] = [
     {
-      text: '회원가입',
+      toLink: '/',
+      text: 'RIDIBOOKS',
       styles: {
-        buttonColor: 'none',
-        buttonSize: '30px',
+        fontSize: 'medium',
+        fontWeight: 'bold',
+        hoverOpacity: '0.8',
+        height: '33px',
+        alignY: 'center',
       },
     },
     {
-      text: '로그인',
+      toLink: '/',
+      text: 'RIDI',
       styles: {
-        buttonColor: 'outDodgerBlue',
-        buttonSize: '30px',
+        fontSize: 'medium',
+        fontWeight: 'bold',
+        hoverOpacity: '0.8',
+        height: '33px',
+        alignY: 'center',
+        opacity: true,
       },
+      children: <HeaderSC.Span fontWeight='light'>Select</HeaderSC.Span>,
     },
   ]
 
@@ -40,37 +49,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     <HeaderSC.Header>
       <HeaderSC.Content>
         <HeaderSC.Nav>
-          <HeaderSC.Ul>
-            <HeaderSC.Li>
-              <LinkTag
-                toLink='/'
-                text='RIDIBOOKS'
-                styles={{
-                  fontSize: 'medium',
-                  fontWeight: 'bold',
-                  hoverOpacity: '0.8',
-                  height: '33px',
-                  alignY: 'center',
-                }}
-              />
-            </HeaderSC.Li>
-            <HeaderSC.Li divider>
-              <LinkTag
-                toLink='/'
-                text='RIDI'
-                styles={{
-                  fontSize: 'medium',
-                  fontWeight: 'bold',
-                  hoverOpacity: '0.8',
-                  height: '33px',
-                  alignY: 'center',
-                  opacity: true,
-                }}
-              >
-                <HeaderSC.Span fontWeight='light'>Select</HeaderSC.Span>
-              </LinkTag>
-            </HeaderSC.Li>
-          </HeaderSC.Ul>
+          <LinkWrap datas={mainLinks} />
           <SearchInput
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
@@ -87,7 +66,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <ButtonWrap datas={buttonsData} />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>

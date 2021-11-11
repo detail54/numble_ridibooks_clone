@@ -34,29 +34,26 @@ const Nav = styled.nav`
   width: 100%;
   padding: 16px 16px 24px 20px;
 
+  ${setStyles.setAlignY('center')}
+
   button {
     font-size: 13px;
     padding: 0px 16px;
     height: 30px;
   }
 
-  ${setStyles.setAlignY('center')}
-`
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
 
-const Ul = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-  padding: 0px;
-  margin-right: 16px;
-`
+  form {
+    margin-left: 16px;
+  }
 
-const Li = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ${(props: IHeaderStyles) => props.divider && Divider}
+  ul:nth-child(1) li:nth-last-child(1) {
+    ${Divider}
+  }
 `
 
 const Span = styled.span`
@@ -69,7 +66,5 @@ export const HeaderSC = {
   Header,
   Content,
   Nav,
-  Ul,
-  Li,
   Span,
 }

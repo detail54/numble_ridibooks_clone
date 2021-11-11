@@ -33,7 +33,7 @@ export interface ILinkWrapStyles {
 
 export interface ILinkWrap {
   datas: ILink[]
-  wrapStyle: ILinkWrapStyles
+  wrapStyle?: ILinkWrapStyles
 }
 
 export interface ISearchInput {
