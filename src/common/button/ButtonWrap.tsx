@@ -3,18 +3,25 @@ import React from 'react'
 import { IButtonWrap } from '../interface/interface'
 // component
 import Button from './Button'
+// style
+import { ButtonWrapSC } from './ButtonWrap.styles'
 
 const ButtonWrap: React.FC<IButtonWrap> = (props) => {
-  const { datas } = props
+  const { datas, wrapStyle } = props
 
-  const buttons = datas.map((data) => (
-    <Button
-      key={`${data.text} button`}
-      text={data.text}
-      imgUrl={data.imgUrl && data.imgUrl}
-      styles={data.styles}
-    />
-  ))
+  const buttons = (
+    <ButtonWrapSC.Ul {...wrapStyle}>
+      {datas.map((data) => (
+        <ButtonWrapSC.Li key={`${data.text} button`} {...wrapStyle}>
+          <Button
+            text={data.text}
+            imgUrl={data.imgUrl && data.imgUrl}
+            styles={data.styles}
+          />
+        </ButtonWrapSC.Li>
+      ))}
+    </ButtonWrapSC.Ul>
+  )
 
   return <>{buttons}</>
 }

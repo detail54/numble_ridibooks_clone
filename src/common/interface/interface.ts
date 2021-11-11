@@ -3,13 +3,6 @@
 // global style type
 import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
 
-export interface ILink {
-  toLink: string
-  children?: JSX.Element
-  text?: string
-  styles?: ILinkStyles
-}
-
 export interface ILinkStyles {
   opacity?: boolean
   disabled?: boolean
@@ -24,8 +17,23 @@ export interface ILinkStyles {
   hoverBgColor?: string
 }
 
+export interface ILink {
+  toLink: string
+  children?: JSX.Element
+  text?: string
+  styles?: ILinkStyles
+}
+
+export interface ILinkWrapStyles {
+  listAlignX?: string
+  listAlignY?: string
+  itemAlignX?: string
+  itemAlignY?: string
+}
+
 export interface ILinkWrap {
   datas: ILink[]
+  wrapStyle: ILinkWrapStyles
 }
 
 export interface ISearchInput {
@@ -52,6 +60,12 @@ export interface ISearchInputStyles {
 type TButtonSize = '50px' | '40px' | '30px' | '25px' | '21px'
 type TButtonBgColor = 'dodgerBlue' | 'white' | 'gray' | 'outDodgerBlue' | 'none'
 
+export interface IButtonStyles {
+  buttonSize: TButtonSize
+  buttonColor: TButtonBgColor
+  cursor?: string
+}
+
 export interface IButton {
   text: string
   imgUrl?: string
@@ -59,12 +73,14 @@ export interface IButton {
   styles: IButtonStyles
 }
 
-export interface IButtonStyles {
-  buttonSize: TButtonSize
-  buttonColor: TButtonBgColor
-  cursor?: string
+export interface IBUttonWrapStyles {
+  listAlignX?: string
+  listAlignY?: string
+  itemAlignX?: string
+  itemAlignY?: string
 }
 
 export interface IButtonWrap {
   datas: IButton[]
+  wrapStyle: IBUttonWrapStyles
 }
