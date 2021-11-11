@@ -8,6 +8,7 @@ export interface ILinkStyles {
   disabled?: boolean
   fontSize?: TFontSize
   fontWeight?: TFontWeight
+  bgColor?: TButtonBgColor
   alignX?: TAlign
   alignY?: TAlign
   width?: string

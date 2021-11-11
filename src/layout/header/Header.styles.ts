@@ -54,6 +54,10 @@ const Nav = styled.nav`
   ul:nth-child(1) li:nth-last-child(1) {
     ${Divider}
   }
+
+  ul:nth-last-child(1) {
+    width: 100%;
+  }
 `
 
 const Span = styled.span`

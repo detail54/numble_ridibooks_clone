@@ -45,6 +45,33 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
   ]
 
+  const signLinks: ILink[] = [
+    {
+      toLink: '/',
+      text: '회원가입',
+      styles: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        height: '30px',
+        alignX: 'center',
+        alignY: 'center',
+        bgColor: 'none',
+      },
+    },
+    {
+      toLink: '/',
+      text: '로그인',
+      styles: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        height: '30px',
+        alignX: 'center',
+        alignY: 'center',
+        bgColor: 'white',
+      },
+    },
+  ]
+
   return (
     <HeaderSC.Header>
       <HeaderSC.Content>
@@ -66,6 +93,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
+          <LinkWrap datas={signLinks} />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>

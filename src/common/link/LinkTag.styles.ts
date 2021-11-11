@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // interface
 import { ILinkStyles } from '../interface/interface'
 // global style
-import { setStyles } from '../../GlobalStyle'
+import { colors, setStyles } from '../../GlobalStyle'
 
 const LinkTag = styled(Link)`
   background-color: transparent;
@@ -38,6 +38,38 @@ const LinkTag = styled(Link)`
       props.hoverBgColor,
       props.hoverOpacity,
     )};
+
+  ${(props: ILinkStyles) =>
+    (props.bgColor === 'dodgerBlue' &&
+      css`
+        color: white;
+        background: ${colors.dodgerblue_50};
+        border: 1px solid dodger;
+      `) ||
+    (props.bgColor === 'white' &&
+      css`
+        color: ${colors.gray_50};
+        background: white;
+        border: 1px solid ${colors.gray_10};
+      `) ||
+    (props.bgColor === 'gray' &&
+      css`
+        color: white;
+        background: ${colors.gray_10};
+        border: 1px solid ${colors.gray_10};
+      `) ||
+    (props.bgColor === 'outDodgerBlue' &&
+      css`
+        color: ${colors.dodgerblue_50};
+        background: white;
+        border: 1px solid ${colors.dodgerblue_50};
+      `) ||
+    (props.bgColor === 'none' &&
+      css`
+        color: white;
+        background: none;
+        border: 1px solid white;
+      `)}
 `
 
 export const LinkSC = {
