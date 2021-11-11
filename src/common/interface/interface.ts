@@ -22,14 +22,23 @@ export interface ILinkStyles {
   hoverBgColor?: string
 }
 
-export interface IInput {
-  placeholder: string
+export interface ISearchInput {
+  placeholder?: string
+  searchText: string
   onChange: (text: string) => void
-  styles?: IInputStyles
+  onRemove: () => void
+  openCancelButton: boolean
+  onFocus: () => void
+  onBlur: () => void
+  styles?: ISearchInputStyles
 }
 
-export interface IInputStyles {
+export interface ISearchInputStyles {
+  maxWidth?: string
   fontSize?: TFontSize
   fontWeight?: TFontWeight
   width?: string
+  border?: string
+  flex?: string
+  focusOutLine?: boolean
 }

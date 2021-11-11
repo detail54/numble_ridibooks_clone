@@ -41,6 +41,7 @@ const Ul = styled.ul`
   align-items: center;
   margin: 0px;
   padding: 0px;
+  margin-right: 16px;
 `
 
 const Li = styled.li`
@@ -56,12 +57,6 @@ const Span = styled.span`
   margin-left: 3px;
 `
 
-const Form = styled.form`
-  width: 340px;
-  max-width: 340px;
-  margin-left: 16px;
-`
-
 export const HeaderSC = {
   Header,
   Content,
@@ -69,5 +64,4 @@ export const HeaderSC = {
   Ul,
   Li,
   Span,
-  Form,
 }

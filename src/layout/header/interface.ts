@@ -2,7 +2,12 @@
 import { TFontWeight } from '../../GlobalStyle'
 
 export interface IHeader {
-  onChangeSearchRext: (text: string) => void
+  searchText: string
+  onChangeSearchText: (text: string) => void
+  onRemoveSearchText: () => void
+  searchCancleButton: boolean
+  openSearchResultModal: () => void
+  closeSearchResultModal: () => void
 }
 
 export interface IHeaderStyles {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../../common/input/Input'
+import SearchInput from '../../common/input/SearchInput'
 import LinkTag from '../../common/link/LinkTag'
 // style
 import { HeaderSC } from './Header.styles'
@@ -7,7 +7,14 @@ import { HeaderSC } from './Header.styles'
 import { IHeader } from './interface'
 
 const HeaderView: React.FC<IHeader> = (props) => {
-  const { onChangeSearchRext } = props
+  const {
+    searchText,
+    onChangeSearchText,
+    onRemoveSearchText,
+    searchCancleButton,
+    openSearchResultModal,
+    closeSearchResultModal,
+  } = props
 
   return (
     <HeaderSC.Header>
@@ -44,19 +51,22 @@ const HeaderView: React.FC<IHeader> = (props) => {
               </LinkTag>
             </HeaderSC.Li>
           </HeaderSC.Ul>
-          <HeaderSC.Form>
-            <div>
-              <Input
-                placeholder='제목, 저자, 출판사 검색'
-                onChange={onChangeSearchRext}
-                styles={{
-                  fontSize: '16px',
-                  fontWeight: 'light',
-                  width: '340px',
-                }}
-              />
-            </div>
-          </HeaderSC.Form>
+          <SearchInput
+            searchText={searchText}
+            placeholder='제목, 저자, 출판사 검색'
+            onChange={onChangeSearchText}
+            onRemove={onRemoveSearchText}
+            openCancelButton={searchCancleButton}
+            onFocus={openSearchResultModal}
+            onBlur={closeSearchResultModal}
+            styles={{
+              maxWidth: '340px',
+              fontSize: '16px',
+              fontWeight: 'light',
+              width: '306px',
+              focusOutLine: false,
+            }}
+          />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>
