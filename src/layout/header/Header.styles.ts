@@ -58,6 +58,10 @@ const Nav = styled.nav`
   ul:nth-last-child(1) {
     width: 100%;
   }
+
+  ul:nth-last-child(1) li:nth-last-child(1) {
+    margin-left: 6px;
+  }
 `
 
 const Span = styled.span`

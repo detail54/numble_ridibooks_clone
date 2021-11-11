@@ -13,6 +13,7 @@ const Header: React.FC = () => {
       setSearchCancleButton(false)
     }
   }, [searchText])
+
   const onChangeSearchText = (text: string) => {
     setSearchText(text)
   }

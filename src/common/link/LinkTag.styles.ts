@@ -7,9 +7,6 @@ import { ILinkStyles } from '../interface/interface'
 import { colors, setStyles } from '../../GlobalStyle'
 
 const LinkTag = styled(Link)`
-  background-color: transparent;
-  text-decoration: none;
-
   ${(props: ILinkStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)};
 
@@ -74,6 +71,10 @@ const LinkTag = styled(Link)`
       background: none;
       border: none;
     `}
+  border: ${(props: ILinkStyles) => props.border || props.bgColor || 'none'};
+  text-decoration: none;
+  border-radius: ${(props: ILinkStyles) => props.borderRadius || 'none'};
+  color: ${(props: ILinkStyles) => props.color || props.bgColor || 'black'};
 `
 
 export const LinkSC = {

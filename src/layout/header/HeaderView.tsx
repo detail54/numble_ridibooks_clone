@@ -7,6 +7,8 @@ import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
 import { ILink } from '../../common/interface/interface'
+// global style
+import { colors } from '../../GlobalStyle'
 
 const HeaderView: React.FC<IHeader> = (props) => {
   const {
@@ -28,6 +30,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
         hoverOpacity: '0.8',
         height: '33px',
         alignY: 'center',
+        color: 'white',
       },
     },
     {
@@ -40,6 +43,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
         height: '33px',
         alignY: 'center',
         opacity: true,
+        color: 'white',
       },
       children: <HeaderSC.Span fontWeight='light'>Select</HeaderSC.Span>,
     },
@@ -52,10 +56,13 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
+        width: '82px',
         height: '30px',
         alignX: 'center',
         alignY: 'center',
         bgColor: 'none',
+        border: '1px solid #99D1FF',
+        borderRadius: '3px',
       },
     },
     {
@@ -64,10 +71,13 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
+        width: '70px',
         height: '30px',
         alignX: 'center',
         alignY: 'center',
         bgColor: 'white',
+        borderRadius: '3px',
+        color: colors.dodgerblue_50,
       },
     },
   ]
@@ -93,7 +103,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <LinkWrap datas={signLinks} />
+          <LinkWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
       </HeaderSC.Content>
     </HeaderSC.Header>
