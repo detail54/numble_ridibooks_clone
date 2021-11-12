@@ -8,14 +8,14 @@ import { colors, setStyles } from '../../GlobalStyle'
 
 const LinkTag = styled(Link)`
   ${(props: ILinkStyles) =>
-    props.fontSize && setStyles.setFontSize(props.fontSize)};
+    props.fontSize && setStyles.setFontSize(props.fontSize)}
 
   ${(props: ILinkStyles) =>
-    props.fontWeight && setStyles.setFontWeight(props.fontWeight)};
+    props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 
-  ${(props: ILinkStyles) => props.alignX && setStyles.setAlignX(props.alignX)};
+  ${(props: ILinkStyles) => props.alignX && setStyles.setAlignX(props.alignX)}
 
-  ${(props: ILinkStyles) => props.alignY && setStyles.setAlignY(props.alignY)};
+  ${(props: ILinkStyles) => props.alignY && setStyles.setAlignY(props.alignY)}
 
   ${(props: ILinkStyles) =>
     (props.width || props.height) &&
@@ -25,15 +25,27 @@ const LinkTag = styled(Link)`
     props.opacity &&
     css`
       opacity: 0.6;
-    `};
+    `}
 
   ${(props: ILinkStyles) =>
-    (props.hoverColor || props.hoverBgColor || props.hoverOpacity) &&
+    (props.hoverColor ||
+      props.hoverBgColor ||
+      props.hoverOpacity ||
+      props.hoverBorder ||
+      props.hoverBorderTop ||
+      props.hoverBorderBottom ||
+      props.hoverBorderLeft ||
+      props.hoverBorderRight) &&
     setStyles.setHoverEffect(
       props.hoverColor,
       props.hoverBgColor,
       props.hoverOpacity,
-    )};
+      props.hoverBorder,
+      props.hoverBorderTop,
+      props.hoverBorderBottom,
+      props.hoverBorderLeft,
+      props.hoverBorderRight,
+    )}
 
   ${(props: ILinkStyles) =>
     (props.bgColor === 'dodgerBlue' &&
@@ -66,10 +78,13 @@ const LinkTag = styled(Link)`
         background: none;
         border: 1px solid white;
       `)}
+
   text-decoration: none;
   border: ${(props: ILinkStyles) => props.border || 'none'};
   border-radius: ${(props: ILinkStyles) => props.borderRadius || 'none'};
   color: ${(props: ILinkStyles) => props.color || 'black'};
+  margin: ${(props: ILinkStyles) => props.margin || '0px'};
+  padding: ${(props: ILinkStyles) => props.padding || '0px'};
 `
 
 export const LinkSC = {

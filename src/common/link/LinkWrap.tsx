@@ -14,7 +14,12 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
       {datas.map((data) => (
         <LinkWrapSC.Li key={`${data.text} link`} {...wrapStyle}>
           {data.children ? (
-            <LinkTag toLink={data.toLink} text={data.text} styles={data.styles}>
+            <LinkTag
+              toLink={data.toLink}
+              text={data.text}
+              childrenFirst={data.childrenFirst}
+              styles={data.styles}
+            >
               {data.children}
             </LinkTag>
           ) : (

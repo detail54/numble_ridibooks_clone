@@ -16,10 +16,16 @@ export interface ILinkStyles {
   height?: string
   border?: string
   margin?: string
+  padding?: string
   borderRadius?: string
   hoverColor?: string
   hoverOpacity?: string
   hoverBgColor?: string
+  hoverBorder?: string
+  hoverBorderTop?: string
+  hoverBorderBottom?: string
+  hoverBorderLeft?: string
+  hoverBorderRight?: string
 }
 
 export interface ILink {
@@ -46,7 +52,7 @@ export interface ISearchInput {
   placeholder?: string
   searchText: string
   onChange: (text: string) => void
-  onRemove?: () => void
+  onRemove?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   openCancelButton?: boolean
   onFocus?: () => void
   onBlur?: () => void
