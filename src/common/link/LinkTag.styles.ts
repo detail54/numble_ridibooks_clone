@@ -65,16 +65,11 @@ const LinkTag = styled(Link)`
         color: white;
         background: none;
         border: 1px solid white;
-      `) ||
-    css`
-      color: white;
-      background: none;
-      border: none;
-    `}
-  border: ${(props: ILinkStyles) => props.border || props.bgColor || 'none'};
+      `)}
   text-decoration: none;
+  border: ${(props: ILinkStyles) => props.border || 'none'};
   border-radius: ${(props: ILinkStyles) => props.borderRadius || 'none'};
-  color: ${(props: ILinkStyles) => props.color || props.bgColor || 'black'};
+  color: ${(props: ILinkStyles) => props.color || 'black'};
 `
 
 export const LinkSC = {

@@ -25,7 +25,8 @@ export interface ILinkStyles {
 export interface ILink {
   toLink: string
   children?: JSX.Element
-  text?: string
+  childrenFirst?: boolean
+  text: string
   styles?: ILinkStyles
 }
 

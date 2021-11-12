@@ -5,16 +5,25 @@ import { ILink } from '../interface/interface'
 import { LinkSC } from './LinkTag.styles'
 
 const LinkTag: React.FC<ILink> = (props) => {
-  const { toLink, text, children, styles } = props
+  const { toLink, text, children, childrenFirst, styles } = props
 
-  return (
+  const content = (children && childrenFirst ? (
     <LinkSC.LinkTag to={toLink} {...styles}>
-      <>
-        {text}
-        {children && children}
-      </>
+      {children}
+      {text}
+    </LinkSC.LinkTag>
+  ) : (
+    <LinkSC.LinkTag to={toLink} {...styles}>
+      {text}
+      {children}
+    </LinkSC.LinkTag>
+  )) || (
+    <LinkSC.LinkTag to={toLink} {...styles}>
+      {text}
     </LinkSC.LinkTag>
   )
+
+  return <>{content}</>
 }
 
 export default LinkTag

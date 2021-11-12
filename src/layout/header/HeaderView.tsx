@@ -46,6 +46,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
         color: 'white',
       },
       children: <HeaderSC.Span fontWeight='light'>Select</HeaderSC.Span>,
+      childrenFirst: false,
     },
   ]
 
@@ -56,13 +57,14 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
-        width: '82px',
-        height: '30px',
+        width: '77px',
+        height: '28px',
         alignX: 'center',
         alignY: 'center',
         bgColor: 'none',
         border: '1px solid #99D1FF',
         borderRadius: '3px',
+        color: 'white',
       },
     },
     {
@@ -71,8 +73,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
-        width: '70px',
-        height: '30px',
+        width: '66px',
+        height: '28px',
         alignX: 'center',
         alignY: 'center',
         bgColor: 'white',
