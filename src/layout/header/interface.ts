@@ -4,10 +4,17 @@ import { TFontWeight } from '../../GlobalStyle'
 export interface IHeader {
   searchText: string
   onChangeSearchText: (text: string) => void
-  onRemoveSearchText: () => void
+  onRemoveSearchText: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void
   searchCancleButton: boolean
   openSearchResultModal: () => void
   closeSearchResultModal: () => void
+  menuEnabled: (menu: string) => void
+  homeMenuEnabled: boolean
+  noticeMenuEnabled: boolean
+  cartMenuEnabled: boolean
+  MyMenuEnabled: boolean
 }
 
 export interface IHeaderStyles {

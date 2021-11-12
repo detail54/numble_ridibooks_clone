@@ -18,6 +18,11 @@ const HeaderView: React.FC<IHeader> = (props) => {
     searchCancleButton,
     openSearchResultModal,
     closeSearchResultModal,
+    menuEnabled,
+    homeMenuEnabled,
+    noticeMenuEnabled,
+    cartMenuEnabled,
+    MyMenuEnabled,
   } = props
 
   const mainLinks: ILink[] = [
@@ -95,8 +100,9 @@ const HeaderView: React.FC<IHeader> = (props) => {
         alignx: 'center',
         color: 'white',
         padding: '0px 5px 3px 4px',
-        hoveropacity: '0.8',
+        flexflow: 'row wrap',
       },
+      onClick: menuEnabled,
       children: (
         <>
           <HeaderSC.MenuIcon viewBox='0 0 24 24'>
@@ -105,6 +111,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
         </>
       ),
       childrenFirst: true,
+      underLine: true,
+      underLineEnabled: homeMenuEnabled,
     },
     {
       toLink: '/',
@@ -115,8 +123,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
         height: '30px',
         alignx: 'center',
         color: 'white',
-        hoveropacity: '0.8',
+        padding: '0px 5px 3px 4px',
+        flexflow: 'row wrap',
       },
+      onClick: menuEnabled,
       children: (
         <>
           <HeaderSC.MenuIcon viewBox='0 0 24 24'>
@@ -125,6 +135,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
         </>
       ),
       childrenFirst: true,
+      underLine: true,
+      underLineEnabled: noticeMenuEnabled,
     },
     {
       toLink: '/',
@@ -135,8 +147,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
         height: '30px',
         alignx: 'center',
         color: 'white',
-        hoveropacity: '0.8',
+        padding: '0px 5px 3px 4px',
+        flexflow: 'row wrap',
       },
+      onClick: menuEnabled,
       children: (
         <>
           <HeaderSC.MenuIcon viewBox='0 0 24 24'>
@@ -145,6 +159,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
         </>
       ),
       childrenFirst: true,
+      underLine: true,
+      underLineEnabled: cartMenuEnabled,
     },
     {
       toLink: '/',
@@ -155,8 +171,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
         height: '30px',
         alignx: 'center',
         color: 'white',
-        hoveropacity: '0.8',
+        padding: '0px 5px 3px 4px',
+        flexflow: 'row wrap',
       },
+      onClick: menuEnabled,
       children: (
         <>
           <HeaderSC.MenuIcon viewBox='0 0 24 24'>
@@ -165,6 +183,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
         </>
       ),
       childrenFirst: true,
+      underLine: true,
+      underLineEnabled: MyMenuEnabled,
     },
   ]
 
@@ -192,7 +212,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
           <LinkWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
         <HeaderSC.Menu>
-          <LinkWrap datas={menuLinks} />
+          <LinkWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
         </HeaderSC.Menu>
       </HeaderSC.Content>
     </HeaderSC.Header>

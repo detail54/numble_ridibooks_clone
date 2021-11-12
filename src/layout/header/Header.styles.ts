@@ -27,11 +27,12 @@ const Content = styled.div`
   max-width: 1000px;
   display: flex;
   align-items: center;
+  flex-direction: column;
 `
 
 const Nav = styled.nav`
   display: flex;
-  width: 100%;
+  width: 964px;
   padding: 16px 16px 24px 20px;
 
   ${setStyles.setAlignY('center')}
@@ -70,9 +71,31 @@ const Span = styled.span`
   margin-left: 3px;
 `
 
+const Menu = styled.div`
+  width: 964px;
+  height: 37px;
+  ${setStyles.setAlignX('left')}
+  ${setStyles.setAlignY('center')}
+  ul {
+    padding: 0px;
+    li {
+      margin-right: 50px;
+    }
+  }
+`
+
+const MenuIcon = styled.svg`
+  margin-right: 15px;
+  fill: white;
+  width: 20px;
+  height: 20px;
+`
+
 export const HeaderSC = {
   Header,
   Content,
   Nav,
   Span,
+  Menu,
+  MenuIcon,
 }

@@ -5,6 +5,10 @@ const Header: React.FC = () => {
   const [searchText, setSearchText] = useState('')
   const [searchCancleButton, setSearchCancleButton] = useState(false)
   const [searchResultModal, setSearchResultModal] = useState(true)
+  const [homeMenuEnabled, setHomeMenuEnabled] = useState(true)
+  const [noticeMenuEnabled, setNoticeMenuEnabled] = useState(false)
+  const [cartMenuEnabled, setcartMenuEnabled] = useState(false)
+  const [MyMenuEnabled, setMyMenuEnabled] = useState(false)
 
   useEffect(() => {
     if (searchText.length > 0) {
@@ -18,9 +22,11 @@ const Header: React.FC = () => {
     setSearchText(text)
   }
 
-  const onRemoveSearchText = () => {
+  const onRemoveSearchText = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault()
     setSearchText('')
-    setSearchCancleButton(false)
   }
 
   const openSearchResultModal = () => {
@@ -31,6 +37,37 @@ const Header: React.FC = () => {
     setSearchResultModal(false)
   }
 
+  const menuEnabled = (data: string) => {
+    switch (data) {
+      case '홈':
+        setHomeMenuEnabled(true)
+        setNoticeMenuEnabled(false)
+        setcartMenuEnabled(false)
+        setMyMenuEnabled(false)
+        break
+      case '알림':
+        setHomeMenuEnabled(false)
+        setNoticeMenuEnabled(true)
+        setcartMenuEnabled(false)
+        setMyMenuEnabled(false)
+        break
+      case '카트':
+        setHomeMenuEnabled(false)
+        setNoticeMenuEnabled(false)
+        setcartMenuEnabled(true)
+        setMyMenuEnabled(false)
+        break
+      case '마이리디':
+        setHomeMenuEnabled(false)
+        setNoticeMenuEnabled(false)
+        setcartMenuEnabled(false)
+        setMyMenuEnabled(true)
+        break
+      default:
+        break
+    }
+  }
+
   const viewProps = {
     searchText,
     onChangeSearchText,
@@ -38,6 +75,11 @@ const Header: React.FC = () => {
     searchCancleButton,
     openSearchResultModal,
     closeSearchResultModal,
+    menuEnabled,
+    homeMenuEnabled,
+    noticeMenuEnabled,
+    cartMenuEnabled,
+    MyMenuEnabled,
   }
 
   return <HeaderView {...viewProps} />
