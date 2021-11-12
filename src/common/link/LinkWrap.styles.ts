@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 // interface
 import { ILinkWrapStyles } from '../interface/interface'
 // global style
@@ -16,6 +16,8 @@ const Ul = styled.ul`
 `
 
 const Li = styled.li`
+  transition: 0.2s;
+
   ${(props: ILinkWrapStyles) =>
     props.itemAlignX
       ? setStyles.setAlignX(props.itemAlignX)
@@ -24,6 +26,31 @@ const Li = styled.li`
     props.itemAlignY
       ? setStyles.setAlignY(props.itemAlignY)
       : setStyles.setAlignY('center')}
+
+  ${(props: ILinkWrapStyles) =>
+    props.itemUnderLine && !props.itemEnabled
+      ? css`
+          span {
+            opacity: 0;
+          }
+        `
+      : css`
+          span {
+            opacity: 1;
+          }
+        `};
+
+  ${(props: ILinkWrapStyles) =>
+    !props.itemEnabled &&
+    props.itemHoveropacity &&
+    css`
+      &:hover {
+        opacity: ${props.itemHoveropacity || ''};
+        span {
+          opacity: ${props.itemHoveropacity || ''};
+        }
+      }
+    `}
 `
 
 export const LinkWrapSC = {

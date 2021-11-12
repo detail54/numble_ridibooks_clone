@@ -26,6 +26,7 @@ export interface ILinkStyles {
   hoverBorderBottom?: string
   hoverBorderLeft?: string
   hoverBorderRight?: string
+  flexflow?: string
 }
 
 export interface ILink {
@@ -34,6 +35,9 @@ export interface ILink {
   childrenFirst?: boolean
   text: string
   styles?: ILinkStyles
+  onClick?: (data: string) => void
+  underLine?: boolean
+  underLineEnabled?: boolean
 }
 
 export interface ILinkWrapStyles {
@@ -41,11 +45,15 @@ export interface ILinkWrapStyles {
   listAlignY?: string
   itemAlignX?: string
   itemAlignY?: string
+  itemHoveropacity?: string
+  itemUnderLine?: boolean
+  itemEnabled?: boolean
 }
 
 export interface ILinkWrap {
   datas: ILink[]
   wrapStyle?: ILinkWrapStyles
+  listItemEnabled?: boolean
 }
 
 export interface ISearchInput {

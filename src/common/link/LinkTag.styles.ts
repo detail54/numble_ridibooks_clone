@@ -80,8 +80,19 @@ const LinkTag = styled(Link)`
   margin: ${(props: ILinkStyles) => props.margin || '0px'};
   padding: ${(props: ILinkStyles) => props.padding || '0px'};
   opacity: ${(props: ILinkStyles) => props.opacity || ''};
+  flex-flow: ${(props: ILinkStyles) => props.flexflow || ''};
+`
+
+const UnderLine = styled.span`
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #99d1ff;
+  position: relative;
+  bottom: -8px;
 `
 
 export const LinkSC = {
   LinkTag,
+  UnderLine,
 }
