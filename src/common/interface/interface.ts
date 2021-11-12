@@ -5,21 +5,21 @@ import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
 
 export interface ILinkStyles {
   color?: string
-  opacity?: boolean
+  opacity?: string
   disabled?: boolean
   fontSize?: TFontSize
   fontWeight?: TFontWeight
-  bgColor?: TButtonBgColor
-  alignX?: TAlign
-  alignY?: TAlign
+  bgcolor?: TButtonBgColor
+  alignx?: TAlign
+  aligny?: TAlign
   width?: string
   height?: string
   border?: string
   margin?: string
   padding?: string
-  borderRadius?: string
+  borderradius?: string
   hoverColor?: string
-  hoverOpacity?: string
+  hoveropacity?: string
   hoverBgColor?: string
   hoverBorder?: string
   hoverBorderTop?: string
