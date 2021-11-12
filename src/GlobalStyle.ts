@@ -58,11 +58,21 @@ const setHoverEffect = (
   color: string | undefined,
   background: string | undefined,
   opacity: string | undefined,
+  border: string | undefined,
+  borderTop: string | undefined,
+  borderBottom: string | undefined,
+  borderLeft: string | undefined,
+  borderRight: string | undefined,
 ) => css`
   &:hover {
     color: ${color || ''};
     background: ${background || ''};
     opacity: ${opacity || ''};
+    border: ${border || ''};
+    border-top: ${borderTop || ''};
+    border-bottom: ${borderBottom || ''};
+    border-left: ${borderLeft || ''};
+    border-right: ${borderRight || ''};
   }
 `
 
