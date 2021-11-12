@@ -71,6 +71,8 @@ const CancleIcon = styled.svg`
   font-size: 14px;
   color: #9ea7ad;
   display: block;
+  min-width: 14px;
+  min-height: 14px;
 `
 
 export const InputSC = {
