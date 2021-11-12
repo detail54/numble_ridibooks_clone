@@ -115,7 +115,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: homeMenuEnabled,
     },
     {
-      toLink: '/',
+      toLink: '/notice',
       text: '알림',
       styles: {
         fontSize: '16px',
@@ -139,7 +139,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: noticeMenuEnabled,
     },
     {
-      toLink: '/',
+      toLink: '/cart',
       text: '카트',
       styles: {
         fontSize: '16px',
@@ -163,7 +163,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: cartMenuEnabled,
     },
     {
-      toLink: '/',
+      toLink: '/mypage',
       text: '마이리디',
       styles: {
         fontSize: '16px',
