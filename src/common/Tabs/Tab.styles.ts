@@ -162,7 +162,7 @@ const BasicTab = styled.div`
   ${(props: ITabStyles) =>
     props.choice
       ? css`
-          color: ${colors.dodgerblue_50};
+          color: ${colors.dodgerblue_60};
           font-weight: bold;
         `
       : css``}

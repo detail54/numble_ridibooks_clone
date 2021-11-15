@@ -1,6 +1,6 @@
 import React from 'react'
 // common component
-import SearchInput from '../../common/input/SearchInput'
+import SearchBox from '../../common/input/SearchBox'
 import TabWrap from '../../common/Tabs/TabsWrap'
 // style
 import { HeaderSC } from './Header.styles'
@@ -209,7 +209,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       <HeaderSC.Content>
         <HeaderSC.Nav>
           <TabWrap datas={mainLinks} />
-          <SearchInput
+          <SearchBox
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
             onChange={onChangeSearchText}

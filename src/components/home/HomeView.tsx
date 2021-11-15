@@ -25,7 +25,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: '이미지',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',
@@ -40,7 +40,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: '일반',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',
@@ -56,7 +56,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: '로맨스',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',
@@ -72,7 +72,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: '판타지',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',
@@ -88,7 +88,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: '만화',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',
@@ -104,7 +104,7 @@ const HomeView: React.FC<IHome> = (props) => {
       text: 'BL',
       styles: {
         fontSize: '16px',
-        fontWeight: 'regular',
+        fontWeight: 'medium',
         height: '48px',
         alignx: 'center',
         aligny: 'center',

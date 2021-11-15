@@ -3,6 +3,7 @@
 // global style type
 import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
 
+// Tab interface
 export interface ITabStyles {
   color?: string
   opacity?: string
@@ -61,7 +62,8 @@ export interface ITabWrap {
   listItemEnabled?: boolean
 }
 
-export interface ISearchInput {
+// searchBox interface
+export interface ISearchBox {
   placeholder?: string
   searchText: string
   onChange: (text: string) => void
@@ -69,10 +71,10 @@ export interface ISearchInput {
   openCancelButton?: boolean
   onFocus?: () => void
   onBlur?: () => void
-  styles?: ISearchInputStyles
+  styles?: ISearchBoxStyles
 }
 
-export interface ISearchInputStyles {
+export interface ISearchBoxStyles {
   maxWidth?: string
   fontSize?: TFontSize
   fontWeight?: TFontWeight
@@ -82,6 +84,7 @@ export interface ISearchInputStyles {
   focusOutLine?: boolean
 }
 
+// Button interface
 type TButtonSize = '50px' | '40px' | '30px' | '25px' | '21px'
 type TButtonBgColor = 'dodgerBlue' | 'white' | 'gray' | 'outDodgerBlue' | 'none'
 
@@ -108,4 +111,22 @@ export interface IBUttonWrapStyles {
 export interface IButtonWrap {
   datas: IButton[]
   wrapStyle: IBUttonWrapStyles
+}
+
+// ImgSlide interface
+export interface IImgStyle {
+  width?: string
+  height?: string
+}
+
+export interface IImgSlide {
+  id: number
+  imgUrl: string
+  alt: string
+  href?: string
+  styles?: IImgStyle
+}
+
+export interface IImgSlideWrap {
+  datas: IImgSlide[]
 }

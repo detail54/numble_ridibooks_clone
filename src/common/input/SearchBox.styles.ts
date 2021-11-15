@@ -1,25 +1,25 @@
 import styled, { css } from 'styled-components'
 // interface
-import { ISearchInputStyles } from '../interface/interface'
+import { ISearchBoxStyles } from '../interface/interface'
 // global style
 import { setStyles } from '../../GlobalStyle'
 
 const Input = styled.input`
-  width: ${(props: ISearchInputStyles) => props.width && props.width};
-  border: ${(props: ISearchInputStyles) => props.border || 'none'};
+  width: ${(props: ISearchBoxStyles) => props.width && props.width};
+  border: ${(props: ISearchBoxStyles) => props.border || 'none'};
 
-  ${(props: ISearchInputStyles) =>
+  ${(props: ISearchBoxStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)};
 
-  ${(props: ISearchInputStyles) =>
+  ${(props: ISearchBoxStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)};
 
-  ${(props: ISearchInputStyles) =>
+  ${(props: ISearchBoxStyles) =>
     props.flex &&
     css`
       flex: ${props.flex};
     `}
-  ${(props: ISearchInputStyles) =>
+  ${(props: ISearchBoxStyles) =>
     !props.focusOutLine &&
     css`
       &:focus {
@@ -32,7 +32,7 @@ const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: ${(props: ISearchInputStyles) => props.maxWidth};
+  max-width: ${(props: ISearchBoxStyles) => props.maxWidth};
 `
 
 const Div = styled.div`
@@ -75,7 +75,7 @@ const CancleIcon = styled.svg`
   min-height: 14px;
 `
 
-export const InputSC = {
+export const SearchBoxSC = {
   Input,
   Form,
   Div,
