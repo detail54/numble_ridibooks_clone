@@ -55,13 +55,21 @@ const Tab: React.FC<ITab> = (props) => {
             {line}
           </TabSC.BasicTab>
         ) : (
-          <TabSC.BasicTab id={id} {...styles}>
+          <TabSC.BasicTab
+            id={id}
+            {...styles}
+            onClick={() => onClick && onClick(id)}
+          >
             {text}
             {children}
             {line}
           </TabSC.BasicTab>
         )) || (
-          <TabSC.BasicTab id={id} {...styles}>
+          <TabSC.BasicTab
+            id={id}
+            {...styles}
+            onClick={() => onClick && onClick(id)}
+          >
             {text}
             {line}
           </TabSC.BasicTab>

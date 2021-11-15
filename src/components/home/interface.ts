@@ -1,3 +1,9 @@
 export interface IHome {
-  bookCategory?: string
+  bookCategory: JSX.Element
+  categoryEnabled?: (data: string) => void
+  basicEnabled: boolean
+  romanceEnabled: boolean
+  fantasyEnabled: boolean
+  webToonEnabled: boolean
+  blEnabled: boolean
 }

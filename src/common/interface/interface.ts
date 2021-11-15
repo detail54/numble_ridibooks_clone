@@ -27,6 +27,7 @@ export interface ITabStyles {
   hoverBorderLeft?: string
   hoverBorderRight?: string
   flexflow?: string
+  choice?: boolean
 }
 
 type TabType = 'basic' | 'link'

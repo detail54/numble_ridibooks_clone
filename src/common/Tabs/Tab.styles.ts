@@ -158,6 +158,14 @@ const BasicTab = styled.div`
   padding: ${(props: ITabStyles) => props.padding || '0px'};
   opacity: ${(props: ITabStyles) => props.opacity || ''};
   flex-flow: ${(props: ITabStyles) => props.flexflow || ''};
+  cursor: pointer;
+  ${(props: ITabStyles) =>
+    props.choice
+      ? css`
+          color: ${colors.dodgerblue_50};
+          font-weight: bold;
+        `
+      : css``}
 `
 
 const UnderLine = styled.span`

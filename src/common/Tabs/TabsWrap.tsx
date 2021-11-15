@@ -11,8 +11,8 @@ const TabsWrap: React.FC<ITabWrap> = (props) => {
 
   const tabs = (
     <TabsWrapSC.Ul
-      listAlignX={wrapStyle && wrapStyle.itemAlignX}
-      listAlignY={wrapStyle && wrapStyle.itemAlignY}
+      listAlignX={wrapStyle && wrapStyle.listAlignX}
+      listAlignY={wrapStyle && wrapStyle.listAlignY}
     >
       {datas.map((data) => (
         <TabsWrapSC.Li
