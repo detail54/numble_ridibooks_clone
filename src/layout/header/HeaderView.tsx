@@ -27,6 +27,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
 
   const mainLinks: ILink[] = [
     {
+      id: '홈',
       toLink: '/',
       text: 'RIDIBOOKS',
       styles: {
@@ -39,6 +40,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       },
     },
     {
+      id: '홈',
       toLink: '/',
       text: 'RIDI',
       styles: {
@@ -57,6 +59,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
 
   const signLinks: ILink[] = [
     {
+      id: '홈',
       toLink: '/',
       text: '회원가입',
       styles: {
@@ -73,6 +76,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       },
     },
     {
+      id: '홈',
       toLink: '/',
       text: '로그인',
       styles: {
@@ -91,6 +95,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
 
   const menuLinks: ILink[] = [
     {
+      id: '홈',
       toLink: '/',
       text: '홈',
       styles: {
@@ -115,6 +120,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: homeMenuEnabled,
     },
     {
+      id: '알림',
       toLink: '/notice',
       text: '알림',
       styles: {
@@ -139,6 +145,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: noticeMenuEnabled,
     },
     {
+      id: '카트',
       toLink: '/cart',
       text: '카트',
       styles: {
@@ -163,6 +170,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       underLineEnabled: cartMenuEnabled,
     },
     {
+      id: '마이리디',
       toLink: '/mypage',
       text: '마이리디',
       styles: {

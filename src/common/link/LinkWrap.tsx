@@ -23,6 +23,7 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
         >
           {data.children ? (
             <LinkTag
+              id={data.id}
               toLink={data.toLink}
               text={data.text}
               childrenFirst={data.childrenFirst}
@@ -35,6 +36,7 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
             </LinkTag>
           ) : (
             <LinkTag
+              id={data.id}
               toLink={data.toLink}
               text={data.text}
               styles={data.styles}
@@ -45,32 +47,6 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
           )}
         </LinkWrapSC.Li>
       ))}
-      {/* {datas.map((data) => (
-        <LinkWrapSC.Li key={`${data.text} link`} {...wrapStyle}>
-          {data.children ? (
-            <LinkTag
-              toLink={data.toLink}
-              text={data.text}
-              childrenFirst={data.childrenFirst}
-              styles={data.styles}
-              onClick={data.onClick}
-              underLine={data.underLine}
-              underLineEnabled={data.underLineEnabled}
-            >
-              {data.children}
-            </LinkTag>
-          ) : (
-            <LinkTag
-              toLink={data.toLink}
-              text={data.text}
-              styles={data.styles}
-              onClick={data.onClick}
-              underLine={data.underLine}
-              underLineEnabled={data.underLineEnabled}
-            />
-          )}
-        </LinkWrapSC.Li>
-      ))} */}
     </LinkWrapSC.Ul>
   )
 

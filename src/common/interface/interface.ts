@@ -30,6 +30,7 @@ export interface ILinkStyles {
 }
 
 export interface ILink {
+  id: string
   toLink: string
   children?: JSX.Element
   childrenFirst?: boolean

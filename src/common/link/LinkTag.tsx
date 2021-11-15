@@ -5,15 +5,24 @@ import { ILink } from '../interface/interface'
 import { LinkSC } from './LinkTag.styles'
 
 const LinkTag: React.FC<ILink> = (props) => {
-  const { toLink, text, children, childrenFirst, styles, onClick, underLine } =
-    props
+  const {
+    id,
+    toLink,
+    text,
+    children,
+    childrenFirst,
+    styles,
+    onClick,
+    underLine,
+  } = props
 
   const line = underLine && <LinkSC.UnderLine />
 
   const content = (children && childrenFirst ? (
     <LinkSC.LinkTag
+      id={id}
       to={toLink}
-      onClick={() => onClick && onClick(text)}
+      onClick={() => onClick && onClick(id)}
       {...styles}
     >
       {children}
@@ -21,13 +30,13 @@ const LinkTag: React.FC<ILink> = (props) => {
       {line}
     </LinkSC.LinkTag>
   ) : (
-    <LinkSC.LinkTag to={toLink} {...styles}>
+    <LinkSC.LinkTag id={id} to={toLink} {...styles}>
       {text}
       {children}
       {line}
     </LinkSC.LinkTag>
   )) || (
-    <LinkSC.LinkTag to={toLink} {...styles}>
+    <LinkSC.LinkTag id={id} to={toLink} {...styles}>
       {text}
       {line}
     </LinkSC.LinkTag>
