@@ -24,6 +24,7 @@ const TabsWrap: React.FC<ITabWrap> = (props) => {
           {data.children ? (
             <Tab
               id={data.id}
+              tabType={data.tabType}
               toLink={data.toLink}
               text={data.text}
               childrenFirst={data.childrenFirst}
@@ -37,6 +38,7 @@ const TabsWrap: React.FC<ITabWrap> = (props) => {
           ) : (
             <Tab
               id={data.id}
+              tabType={data.tabType}
               toLink={data.toLink}
               text={data.text}
               styles={data.styles}

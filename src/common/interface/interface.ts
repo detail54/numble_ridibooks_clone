@@ -29,9 +29,12 @@ export interface ITabStyles {
   flexflow?: string
 }
 
+type TabType = 'basic' | 'link'
+
 export interface ITab {
   id: string
-  toLink: string
+  tabType: TabType
+  toLink?: string
   children?: JSX.Element
   childrenFirst?: boolean
   text: string

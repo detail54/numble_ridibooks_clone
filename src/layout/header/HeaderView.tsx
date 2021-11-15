@@ -28,6 +28,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
   const mainLinks: ITab[] = [
     {
       id: '홈',
+      tabType: 'link',
       toLink: '/',
       text: 'RIDIBOOKS',
       styles: {
@@ -41,6 +42,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '홈',
+      tabType: 'link',
       toLink: '/',
       text: 'RIDI',
       styles: {
@@ -60,6 +62,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
   const signLinks: ITab[] = [
     {
       id: '홈',
+      tabType: 'link',
       toLink: '/',
       text: '회원가입',
       styles: {
@@ -77,6 +80,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '홈',
+      tabType: 'link',
       toLink: '/',
       text: '로그인',
       styles: {
@@ -96,6 +100,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
   const menuLinks: ITab[] = [
     {
       id: '홈',
+      tabType: 'link',
       toLink: '/',
       text: '홈',
       styles: {
@@ -121,6 +126,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '알림',
+      tabType: 'link',
       toLink: '/notice',
       text: '알림',
       styles: {
@@ -146,6 +152,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '카트',
+      tabType: 'link',
       toLink: '/cart',
       text: '카트',
       styles: {
@@ -171,6 +178,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '마이리디',
+      tabType: 'link',
       toLink: '/mypage',
       text: '마이리디',
       styles: {
