@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { createNumericLiteral } from 'typescript'
 // component
 import Basic from './basic/Basic'
 import Bl from './bl/Bl'
@@ -15,12 +14,6 @@ const Home: React.FC = () => {
   const [fantasyEnabled, setFantasyEnabled] = useState<boolean>(false)
   const [webToonEnabled, setWebToonEnabled] = useState<boolean>(false)
   const [blEnabled, setBlEnabled] = useState<boolean>(false)
-
-  console.log('basicEnabled:::', basicEnabled)
-  console.log('romanceEnabled:::', romanceEnabled)
-  console.log('fantasyEnabled:::', fantasyEnabled)
-  console.log('webToonEnabled:::', webToonEnabled)
-  console.log('blEnabled:::', blEnabled)
 
   const categoryEnabled = (data: string) => {
     switch (data) {
