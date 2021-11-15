@@ -1,28 +1,28 @@
 import React from 'react'
 // interface
-import { ILinkWrap } from '../interface/interface'
+import { ITabWrap } from '../interface/interface'
 // component
-import LinkTag from './LinkTag'
+import Tab from './Tab'
 // style
-import { LinkWrapSC } from './LinkWrap.styles'
+import { TabsWrapSC } from './TabsWrap.styles'
 
-const LinkWrap: React.FC<ILinkWrap> = (props) => {
+const TabsWrap: React.FC<ITabWrap> = (props) => {
   const { datas, wrapStyle } = props
 
-  const LinkTags = (
-    <LinkWrapSC.Ul
+  const tabs = (
+    <TabsWrapSC.Ul
       listAlignX={wrapStyle && wrapStyle.itemAlignX}
       listAlignY={wrapStyle && wrapStyle.itemAlignY}
     >
       {datas.map((data) => (
-        <LinkWrapSC.Li
+        <TabsWrapSC.Li
           key={`${data.text} link`}
           itemUnderLine={data.underLine}
           itemEnabled={data.underLineEnabled}
           {...wrapStyle}
         >
           {data.children ? (
-            <LinkTag
+            <Tab
               id={data.id}
               toLink={data.toLink}
               text={data.text}
@@ -33,9 +33,9 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
               underLineEnabled={data.underLineEnabled}
             >
               {data.children}
-            </LinkTag>
+            </Tab>
           ) : (
-            <LinkTag
+            <Tab
               id={data.id}
               toLink={data.toLink}
               text={data.text}
@@ -45,12 +45,12 @@ const LinkWrap: React.FC<ILinkWrap> = (props) => {
               underLineEnabled={data.underLineEnabled}
             />
           )}
-        </LinkWrapSC.Li>
+        </TabsWrapSC.Li>
       ))}
-    </LinkWrapSC.Ul>
+    </TabsWrapSC.Ul>
   )
 
-  return <>{LinkTags}</>
+  return <>{tabs}</>
 }
 
-export default LinkWrap
+export default TabsWrap

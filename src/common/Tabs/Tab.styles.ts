@@ -2,26 +2,26 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 // interface
-import { ILinkStyles } from '../interface/interface'
+import { ITabStyles } from '../interface/interface'
 // global style
 import { colors, setStyles } from '../../GlobalStyle'
 
-const LinkTag = styled(Link)`
-  ${(props: ILinkStyles) =>
+const LinkTab = styled(Link)`
+  ${(props: ITabStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)}
 
-  ${(props: ILinkStyles) =>
+  ${(props: ITabStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 
-  ${(props: ILinkStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
+  ${(props: ITabStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
 
-  ${(props: ILinkStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
+  ${(props: ITabStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
 
-  ${(props: ILinkStyles) =>
+  ${(props: ITabStyles) =>
     (props.width || props.height) &&
     setStyles.setWidthAndHeight(props.width, props.height)};
 
-  ${(props: ILinkStyles) =>
+  ${(props: ITabStyles) =>
     (props.hoverColor ||
       props.hoverBgColor ||
       props.hoveropacity ||
@@ -41,7 +41,7 @@ const LinkTag = styled(Link)`
       props.hoverBorderRight,
     )}
 
-  ${(props: ILinkStyles) =>
+  ${(props: ITabStyles) =>
     (props.bgcolor === 'dodgerBlue' &&
       css`
         color: white;
@@ -74,13 +74,13 @@ const LinkTag = styled(Link)`
       `)}
 
   text-decoration: none;
-  border: ${(props: ILinkStyles) => props.border || 'none'};
-  border-radius: ${(props: ILinkStyles) => props.borderradius || 'none'};
-  color: ${(props: ILinkStyles) => props.color || 'black'};
-  margin: ${(props: ILinkStyles) => props.margin || '0px'};
-  padding: ${(props: ILinkStyles) => props.padding || '0px'};
-  opacity: ${(props: ILinkStyles) => props.opacity || ''};
-  flex-flow: ${(props: ILinkStyles) => props.flexflow || ''};
+  border: ${(props: ITabStyles) => props.border || 'none'};
+  border-radius: ${(props: ITabStyles) => props.borderradius || 'none'};
+  color: ${(props: ITabStyles) => props.color || 'black'};
+  margin: ${(props: ITabStyles) => props.margin || '0px'};
+  padding: ${(props: ITabStyles) => props.padding || '0px'};
+  opacity: ${(props: ITabStyles) => props.opacity || ''};
+  flex-flow: ${(props: ITabStyles) => props.flexflow || ''};
 `
 
 const UnderLine = styled.span`
@@ -92,7 +92,7 @@ const UnderLine = styled.span`
   bottom: -8px;
 `
 
-export const LinkSC = {
-  LinkTag,
+export const TabSC = {
+  LinkTab,
   UnderLine,
 }

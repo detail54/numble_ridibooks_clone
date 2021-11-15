@@ -1,10 +1,10 @@
 import React from 'react'
 // interface
-import { ILink } from '../interface/interface'
+import { ITab } from '../interface/interface'
 // style
-import { LinkSC } from './LinkTag.styles'
+import { TabSC } from './Tab.styles'
 
-const LinkTag: React.FC<ILink> = (props) => {
+const Tab: React.FC<ITab> = (props) => {
   const {
     id,
     toLink,
@@ -16,10 +16,10 @@ const LinkTag: React.FC<ILink> = (props) => {
     underLine,
   } = props
 
-  const line = underLine && <LinkSC.UnderLine />
+  const line = underLine && <TabSC.UnderLine />
 
   const content = (children && childrenFirst ? (
-    <LinkSC.LinkTag
+    <TabSC.LinkTab
       id={id}
       to={toLink}
       onClick={() => onClick && onClick(id)}
@@ -28,21 +28,21 @@ const LinkTag: React.FC<ILink> = (props) => {
       {children}
       {text}
       {line}
-    </LinkSC.LinkTag>
+    </TabSC.LinkTab>
   ) : (
-    <LinkSC.LinkTag id={id} to={toLink} {...styles}>
+    <TabSC.LinkTab id={id} to={toLink} {...styles}>
       {text}
       {children}
       {line}
-    </LinkSC.LinkTag>
+    </TabSC.LinkTab>
   )) || (
-    <LinkSC.LinkTag id={id} to={toLink} {...styles}>
+    <TabSC.LinkTab id={id} to={toLink} {...styles}>
       {text}
       {line}
-    </LinkSC.LinkTag>
+    </TabSC.LinkTab>
   )
 
   return <>{content}</>
 }
 
-export default LinkTag
+export default Tab

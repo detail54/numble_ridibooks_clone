@@ -1,12 +1,12 @@
 import React from 'react'
 // common component
 import SearchInput from '../../common/input/SearchInput'
-import LinkWrap from '../../common/link/LinkWrap'
+import TabWrap from '../../common/Tabs/TabsWrap'
 // style
 import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
-import { ILink } from '../../common/interface/interface'
+import { ITab } from '../../common/interface/interface'
 // global style
 import { colors } from '../../GlobalStyle'
 
@@ -25,7 +25,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     MyMenuEnabled,
   } = props
 
-  const mainLinks: ILink[] = [
+  const mainLinks: ITab[] = [
     {
       id: '홈',
       toLink: '/',
@@ -57,7 +57,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
   ]
 
-  const signLinks: ILink[] = [
+  const signLinks: ITab[] = [
     {
       id: '홈',
       toLink: '/',
@@ -93,7 +93,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
   ]
 
-  const menuLinks: ILink[] = [
+  const menuLinks: ITab[] = [
     {
       id: '홈',
       toLink: '/',
@@ -200,7 +200,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     <HeaderSC.Header>
       <HeaderSC.Content>
         <HeaderSC.Nav>
-          <LinkWrap datas={mainLinks} />
+          <TabWrap datas={mainLinks} />
           <SearchInput
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
@@ -217,10 +217,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <LinkWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
+          <TabWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
         <HeaderSC.Menu>
-          <LinkWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
+          <TabWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
         </HeaderSC.Menu>
       </HeaderSC.Content>
     </HeaderSC.Header>

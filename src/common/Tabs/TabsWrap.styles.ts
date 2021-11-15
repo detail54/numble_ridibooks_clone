@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components'
 // interface
-import { ILinkWrapStyles } from '../interface/interface'
+import { ITabsWrapStyles } from '../interface/interface'
 // global style
 import { setStyles } from '../../GlobalStyle'
 
 const Ul = styled.ul`
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     props.listAlignX
       ? setStyles.setAlignX(props.listAlignX)
       : setStyles.setAlignX('center')}
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     props.listAlignY
       ? setStyles.setAlignY(props.listAlignY)
       : setStyles.setAlignY('center')}
@@ -18,16 +18,16 @@ const Ul = styled.ul`
 const Li = styled.li`
   transition: 0.2s;
 
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     props.itemAlignX
       ? setStyles.setAlignX(props.itemAlignX)
       : setStyles.setAlignX('center')}
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     props.itemAlignY
       ? setStyles.setAlignY(props.itemAlignY)
       : setStyles.setAlignY('center')}
 
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     props.itemUnderLine && !props.itemEnabled
       ? css`
           span {
@@ -40,7 +40,7 @@ const Li = styled.li`
           }
         `};
 
-  ${(props: ILinkWrapStyles) =>
+  ${(props: ITabsWrapStyles) =>
     !props.itemEnabled &&
     props.itemHoveropacity &&
     css`
@@ -53,7 +53,7 @@ const Li = styled.li`
     `}
 `
 
-export const LinkWrapSC = {
+export const TabsWrapSC = {
   Ul,
   Li,
 }

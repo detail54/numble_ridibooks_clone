@@ -3,7 +3,7 @@
 // global style type
 import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
 
-export interface ILinkStyles {
+export interface ITabStyles {
   color?: string
   opacity?: string
   disabled?: boolean
@@ -29,19 +29,19 @@ export interface ILinkStyles {
   flexflow?: string
 }
 
-export interface ILink {
+export interface ITab {
   id: string
   toLink: string
   children?: JSX.Element
   childrenFirst?: boolean
   text: string
-  styles?: ILinkStyles
+  styles?: ITabStyles
   onClick?: (data: string) => void
   underLine?: boolean
   underLineEnabled?: boolean
 }
 
-export interface ILinkWrapStyles {
+export interface ITabsWrapStyles {
   listAlignX?: string
   listAlignY?: string
   itemAlignX?: string
@@ -51,9 +51,9 @@ export interface ILinkWrapStyles {
   itemEnabled?: boolean
 }
 
-export interface ILinkWrap {
-  datas: ILink[]
-  wrapStyle?: ILinkWrapStyles
+export interface ITabWrap {
+  datas: ITab[]
+  wrapStyle?: ITabsWrapStyles
   listItemEnabled?: boolean
 }
 
