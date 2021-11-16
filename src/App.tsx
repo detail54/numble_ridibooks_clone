@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import GlobalStyle from './GlobalStyle'
+import GlobalStyle from './asset/css/GlobalStyle'
 import Header from './layout/header/Header'
 import Main from './layout/main/Main'
 

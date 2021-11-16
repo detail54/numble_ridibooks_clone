@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 // global style
-import { setStyles } from '../../GlobalStyle'
+import { setStyles } from '../../asset/css/GlobalStyle'
 
 const HomeMenu = styled.div`
   border-bottom: 1px solid #e3e3e3;

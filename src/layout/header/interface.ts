@@ -1,5 +1,5 @@
 // global style type
-import { TFontWeight } from '../../GlobalStyle'
+import { TFontWeight } from '../../asset/css/GlobalStyle'
 
 export interface IHeader {
   searchText: string

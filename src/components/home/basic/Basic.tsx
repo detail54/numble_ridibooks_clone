@@ -1,10 +1,10 @@
 import React from 'react'
-import { IImgSlide } from '../../../common/interface/interface'
-import ImgSlide from '../../../common/slide/Slide'
+import { ICarousel } from '../../../common/interface/interface'
+import ImgSlide from '../../../common/carousel/Carousel'
 import { BasicSC } from './Basic.styles'
 
 const Basic: React.FC = () => {
-  const imgData: IImgSlide[] = [
+  const imgData: ICarousel[] = [
     {
       id: 1,
       imgUrl:

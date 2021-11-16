@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 // global style
-import { setStyles } from '../../GlobalStyle'
+import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
 import { IBUttonWrapStyles } from '../interface/interface'
 

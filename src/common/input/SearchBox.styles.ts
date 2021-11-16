@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 // interface
 import { ISearchBoxStyles } from '../interface/interface'
 // global style
-import { setStyles } from '../../GlobalStyle'
+import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Input = styled.input`
   width: ${(props: ISearchBoxStyles) => props.width && props.width};

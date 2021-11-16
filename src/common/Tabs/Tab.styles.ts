@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // interface
 import { ITabStyles } from '../interface/interface'
 // global style
-import { colors, setStyles } from '../../GlobalStyle'
+import { colors, setStyles } from '../../asset/css/GlobalStyle'
 
 const LinkTab = styled(Link)`
   ${(props: ITabStyles) =>

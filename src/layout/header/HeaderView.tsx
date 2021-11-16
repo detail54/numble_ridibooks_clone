@@ -8,7 +8,7 @@ import { HeaderSC } from './Header.styles'
 import { IHeader } from './interface'
 import { ITab } from '../../common/interface/interface'
 // global style
-import { colors } from '../../GlobalStyle'
+import { colors } from '../../asset/css/GlobalStyle'
 
 const HeaderView: React.FC<IHeader> = (props) => {
   const {

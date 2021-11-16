@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 // interface
 import { IButtonStyles } from '../interface/interface'
 // global style
-import { setStyles, colors } from '../../GlobalStyle'
+import { setStyles, colors } from '../../asset/css/GlobalStyle'
 
 const Button = styled.button`
   ${(props: IButtonStyles) =>

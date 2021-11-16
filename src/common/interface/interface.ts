@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 // global style type
-import { TFontSize, TFontWeight, TAlign } from '../../GlobalStyle'
+import { TFontSize, TFontWeight, TAlign } from '../../asset/css/GlobalStyle'
 
 // Tab interface
 export interface ITabStyles {
@@ -119,7 +119,7 @@ export interface IImgStyle {
   height?: string
 }
 
-export interface IImgSlide {
+export interface ICarousel {
   id: number
   imgUrl: string
   alt: string
@@ -127,6 +127,6 @@ export interface IImgSlide {
   styles?: IImgStyle
 }
 
-export interface IImgSlideWrap {
-  datas: IImgSlide[]
+export interface ICarouselWrap {
+  datas: ICarousel[]
 }

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 // interface
 import { ITabsWrapStyles } from '../interface/interface'
 // global style
-import { setStyles } from '../../GlobalStyle'
+import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Ul = styled.ul`
   ${(props: ITabsWrapStyles) =>
