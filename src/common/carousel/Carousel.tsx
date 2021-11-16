@@ -17,12 +17,16 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   ))
 
   return (
-    <CarouselSC.CarouselWrap>
-      <CarouselSC.Imgs>{imgs}</CarouselSC.Imgs>
-      <CarouselSC.ViewContainer>
-        <CarouselSC.View />
-      </CarouselSC.ViewContainer>
-    </CarouselSC.CarouselWrap>
+    <>
+      <CarouselSC.CarouselWrap>
+        <CarouselSC.ViewContainer>
+          <CarouselSC.Imgs>{imgs}</CarouselSC.Imgs>
+        </CarouselSC.ViewContainer>
+      </CarouselSC.CarouselWrap>
+      <CarouselSC.ControlContainer>
+        <CarouselSC.RightButton />
+      </CarouselSC.ControlContainer>
+    </>
   )
 }
 

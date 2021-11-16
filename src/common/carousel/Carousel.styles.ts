@@ -1,31 +1,34 @@
 import styled from 'styled-components'
 import { setStyles } from '../../asset/css/GlobalStyle'
 import { IImgStyle } from '../interface/interface'
+import behind from '../../asset/images/icons/behind.png'
 
 const CarouselWrap = styled.div`
   width: 100%;
   position: relative;
-`
-
-const ViewContainer = styled.div`
-  width: 100%;
-  height: 286px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
 `
 
-const View = styled.div`
-  overflow-x: hidden;
-  width: 430px;
-  height: 286px;
-  background: yellow;
+const ViewContainer = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+  @media (min-width: 375px) {
+    width: 355px;
+    height: 236px;
+  }
+  @media (min-width: 1000px) {
+    width: 430px;
+    height: 286px;
+  }
 `
 
 const Imgs = styled.div`
+  position: absolute;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
   transform: translateX(1935px);
@@ -38,19 +41,43 @@ const Img = styled.img`
     setStyles.setWidthAndHeight(props.width, props.height)}
 `
 
-const leftButton = styled.div``
+const ControlContainer = styled.div`
+  @media (min-width: 375px) {
+    width: 355px;
+    height: 236px;
+  }
+  @media (min-width: 1000px) {
+    width: 430px;
+    height: 286px;
+  }
+`
 
-const rightButton = styled.div``
+const LeftButton = styled.button``
 
-const imgCount = styled.div``
+const RightButton = styled.button`
+  background-image: url(${behind});
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border-radius: 30px;
+  opacity: 0.5;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+`
+
+const ImgCount = styled.div``
 
 export const CarouselSC = {
   CarouselWrap,
   ViewContainer,
-  View,
   Imgs,
   Img,
-  leftButton,
-  rightButton,
-  imgCount,
+  ControlContainer,
+  LeftButton,
+  RightButton,
+  ImgCount,
 }
