@@ -6,6 +6,7 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   const { datas } = props
 
   const totalImg = datas.length
+  const imgCount = 1
 
   const imgs = datas.map((img) => (
     <CarouselSC.Img
@@ -22,10 +23,18 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
         <CarouselSC.ViewContainer>
           <CarouselSC.Imgs>{imgs}</CarouselSC.Imgs>
         </CarouselSC.ViewContainer>
+        <CarouselSC.ControlContainer>
+          <CarouselSC.Left>
+            <CarouselSC.BehindButton />
+          </CarouselSC.Left>
+          <CarouselSC.Center>
+            <CarouselSC.ImgCount>{`${imgCount} / ${totalImg}`}</CarouselSC.ImgCount>
+          </CarouselSC.Center>
+          <CarouselSC.Right>
+            <CarouselSC.NextButton />
+          </CarouselSC.Right>
+        </CarouselSC.ControlContainer>
       </CarouselSC.CarouselWrap>
-      <CarouselSC.ControlContainer>
-        <CarouselSC.RightButton />
-      </CarouselSC.ControlContainer>
     </>
   )
 }

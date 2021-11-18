@@ -4,6 +4,7 @@ import { setStyles } from '../../asset/css/GlobalStyle'
 
 const HomeMenu = styled.div`
   border-bottom: 1px solid #e3e3e3;
+  margin-bottom: 20px;
   ${setStyles.setWidthAndHeight('100%', '48px')}
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
