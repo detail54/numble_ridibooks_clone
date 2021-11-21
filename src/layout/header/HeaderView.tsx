@@ -1,7 +1,7 @@
 import React from 'react'
 // common component
 import SearchBox from '../../common/input/SearchBox'
-import TabWrap from '../../common/Tabs/TabsWrap'
+import TabsWrap from '../../common/Tabs/TabsWrap'
 // style
 import { HeaderSC } from './Header.styles'
 // interface
@@ -208,7 +208,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     <HeaderSC.Header>
       <HeaderSC.Content>
         <HeaderSC.Nav>
-          <TabWrap datas={mainLinks} />
+          <TabsWrap datas={mainLinks} />
           <SearchBox
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
@@ -225,10 +225,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <TabWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
+          <TabsWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
         <HeaderSC.Menu>
-          <TabWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
+          <TabsWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
         </HeaderSC.Menu>
       </HeaderSC.Content>
     </HeaderSC.Header>
