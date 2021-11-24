@@ -114,6 +114,31 @@ export interface IButtonWrap {
 }
 
 // ImgSlide interface
+export interface ICarouselMediaStyled {
+  mediaAMinWidth: string
+  mediaAWidth: string
+  mediaAHeight: string
+  mediaATransform: string
+  mediaBMinWidth: string
+  mediaBWidth: string
+  mediaBHeight: string
+  mediaBTransform: string
+}
+
+export interface IImgsMediaProps {
+  mediaAMinWidth: string
+  mediaBMinWidth: string
+  mediaATransform: string
+  mediaBTransform: string
+}
+
+export const initImgMediaProps: IImgsMediaProps = {
+  mediaAMinWidth: '',
+  mediaBMinWidth: '',
+  mediaATransform: '',
+  mediaBTransform: '',
+}
+
 export interface IImgStyle {
   width?: string
   height?: string
@@ -129,4 +154,5 @@ export interface ICarousel {
 
 export interface ICarouselWrap {
   datas: ICarousel[]
+  mediaStyled: ICarouselMediaStyled
 }

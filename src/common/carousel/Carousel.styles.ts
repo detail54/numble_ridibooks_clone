@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { setStyles } from '../../asset/css/GlobalStyle'
-import { IImgStyle } from '../interface/interface'
+import {
+  ICarouselMediaStyled,
+  IImgsMediaProps,
+  IImgStyle,
+} from '../interface/interface'
 import behind from '../../asset/images/icons/behind.png'
 import next from '../../asset/images/icons/next.png'
 
@@ -18,13 +22,13 @@ const ViewContainer = styled.div`
   overflow: hidden;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
-  @media (min-width: 375px) {
-    width: 355px;
-    height: 236px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaAMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: 1000px) {
-    width: 430px;
-    height: 286px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
   }
 `
 
@@ -32,19 +36,26 @@ const Imgs = styled.div`
   position: absolute;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
-  transform: translateX(1935px);
   transition: 1s;
+  @media (min-width: ${(props: IImgsMediaProps) => props.mediaAMinWidth}) {
+    transform: ${(props: IImgsMediaProps) =>
+      `translateX(${props.mediaATransform})`};
+  }
+  @media (min-width: ${(props: IImgsMediaProps) => props.mediaBMinWidth}) {
+    transform: ${(props: IImgsMediaProps) =>
+      `translateX(${props.mediaBTransform})`};
+  }
 `
 
 const Img = styled.img`
   border-radius: 6px;
-  @media (min-width: 375px) {
-    width: 355px;
-    height: 236px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaAMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: 1000px) {
-    width: 430px;
-    height: 286px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
   }
 `
 
@@ -56,13 +67,13 @@ const ControlContainer = styled.div`
 `
 const Center = styled.div`
   position: relative;
-  @media (min-width: 375px) {
-    width: 355px;
-    height: 236px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaAMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: 1000px) {
-    width: 430px;
-    height: 286px;
+  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
+    width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
+    height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
   }
 `
 
