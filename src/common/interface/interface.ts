@@ -126,17 +126,11 @@ export interface ICarouselMediaStyled {
 }
 
 export interface IImgsMediaProps {
+  imgCount: number
   mediaAMinWidth: string
   mediaBMinWidth: string
   mediaATransform: string
   mediaBTransform: string
-}
-
-export const initImgMediaProps: IImgsMediaProps = {
-  mediaAMinWidth: '',
-  mediaBMinWidth: '',
-  mediaATransform: '',
-  mediaBTransform: '',
 }
 
 export interface IImgStyle {

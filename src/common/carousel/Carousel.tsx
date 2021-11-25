@@ -1,67 +1,100 @@
 import React, { useState, useEffect } from 'react'
-import {
-  ICarouselWrap,
-  IImgsMediaProps,
-  initImgMediaProps,
-} from '../interface/interface'
+import { ICarouselWrap, IImgsMediaProps } from '../interface/interface'
 import { CarouselSC } from './Carousel.styles'
 
 const Carousel: React.FC<ICarouselWrap> = (props) => {
   const { datas, mediaStyled } = props
-  const [imgsMediaProps, setImgsMediaProps] =
-    useState<IImgsMediaProps>(initImgMediaProps)
-
-  useEffect(() => {
-    setImgsMediaProps({
-      mediaAMinWidth: mediaStyled.mediaAMinWidth,
-      mediaBMinWidth: mediaStyled.mediaBMinWidth,
-      mediaATransform: mediaStyled.mediaATransform,
-      mediaBTransform: mediaStyled.mediaBTransform,
-    })
-  }, [])
+  const [imgMediaProps, setImgMediaProps] = useState<IImgsMediaProps>({
+    imgCount: 1,
+    mediaAMinWidth: mediaStyled.mediaAMinWidth,
+    mediaBMinWidth: mediaStyled.mediaBMinWidth,
+    mediaATransform: mediaStyled.mediaATransform,
+    mediaBTransform: mediaStyled.mediaBTransform,
+  })
 
   const totalImg = datas.length
-  const imgCount = 1
 
-  const mediaATransformIndex = imgsMediaProps.mediaATransform.indexOf('px')
-  const mediaATransformRemovePx = imgsMediaProps.mediaATransform.substr(
-    0,
-    mediaATransformIndex,
+  const mediaAWidth = parseInt(
+    mediaStyled.mediaAWidth.substr(0, mediaStyled.mediaAWidth.indexOf('px')),
+    10,
   )
-  const mediaATransformPx = parseInt(mediaATransformRemovePx, 10)
 
-  const mediaAMinWidthIndex = imgsMediaProps.mediaATransform.indexOf('px')
-  const mediaAMinWidthRemovePx = imgsMediaProps.mediaATransform.substr(
-    0,
-    mediaAMinWidthIndex,
+  const mediaATransform = parseInt(
+    imgMediaProps.mediaATransform.substr(
+      0,
+      imgMediaProps.mediaATransform.indexOf('px'),
+    ),
+    10,
   )
-  const mediaAMinWidthPx = parseInt(mediaAMinWidthRemovePx, 10)
 
-  const mediaBTransformIndex = imgsMediaProps.mediaBTransform.indexOf('px')
-  const mediaBTransformRemovePx = imgsMediaProps.mediaBTransform.substr(
-    0,
-    mediaBTransformIndex,
+  const mediaBWidth = parseInt(
+    mediaStyled.mediaBWidth.substr(0, mediaStyled.mediaBWidth.indexOf('px')),
+    10,
   )
-  const mediaBTransformPx = parseInt(mediaBTransformRemovePx, 10)
 
-  const mediaBMinWidthIndex = imgsMediaProps.mediaBTransform.indexOf('px')
-  const mediaBMinWidthRemovePx = imgsMediaProps.mediaBTransform.substr(
-    0,
-    mediaBMinWidthIndex,
+  const mediaBTransform = parseInt(
+    imgMediaProps.mediaBTransform.substr(
+      0,
+      imgMediaProps.mediaBTransform.indexOf('px'),
+    ),
+    10,
   )
-  const mediaBMinWidthPx = parseInt(mediaBMinWidthRemovePx, 10)
 
-  setTimeout(() => {
-    useEffect(() => {
-      setImgsMediaProps({
-        ...imgsMediaProps,
-        mediaATransform: `${mediaATransformPx - mediaAMinWidthPx}px`,
-        mediaBTransform: `${mediaBTransformPx - mediaBMinWidthPx}px`,
+  console.log(imgMediaProps)
+
+  const moveNextImgs = () => {
+    if (imgMediaProps.imgCount === datas.length) {
+      setImgMediaProps({
+        ...imgMediaProps,
+        imgCount: 1,
+        mediaATransform: mediaStyled.mediaATransform,
+        mediaBTransform: mediaStyled.mediaBTransform,
       })
-    }, [])
-  }, 1000)
+    } else {
+      setImgMediaProps({
+        ...imgMediaProps,
+        imgCount: imgMediaProps.imgCount + 1,
+        mediaATransform: `${mediaATransform - mediaAWidth}px`,
+        mediaBTransform: `${mediaBTransform - mediaBWidth}px`,
+      })
+    }
+  }
 
-  console.log(imgsMediaProps)
+  const moveBehindImgs = () => {
+    if (imgMediaProps.imgCount === 1) {
+      setImgMediaProps({
+        ...imgMediaProps,
+        imgCount: 10,
+        mediaATransform: `-${mediaStyled.mediaATransform}`,
+        mediaBTransform: `-${mediaStyled.mediaBTransform}`,
+      })
+    } else {
+      setImgMediaProps({
+        ...imgMediaProps,
+        imgCount: imgMediaProps.imgCount - 1,
+        mediaATransform: `${mediaATransform + mediaAWidth}px`,
+        mediaBTransform: `${mediaBTransform + mediaBWidth}px`,
+      })
+    }
+  }
+
+  const autoImgMove = () => {
+    setTimeout(moveNextImgs, 5000)
+  }
+
+  const nextImg = () => {
+    window.clearTimeout()
+    moveNextImgs()
+  }
+
+  const behindImg = () => {
+    window.clearTimeout()
+    moveBehindImgs()
+  }
+
+  useEffect(() => {
+    autoImgMove()
+  }, [imgMediaProps])
 
   const imgs = datas.map((img) => (
     <CarouselSC.Img
@@ -77,17 +110,17 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
     <>
       <CarouselSC.CarouselWrap>
         <CarouselSC.ViewContainer {...mediaStyled}>
-          <CarouselSC.Imgs {...imgsMediaProps}>{imgs}</CarouselSC.Imgs>
+          <CarouselSC.Imgs {...imgMediaProps}>{imgs}</CarouselSC.Imgs>
         </CarouselSC.ViewContainer>
         <CarouselSC.ControlContainer>
           <CarouselSC.Left>
-            <CarouselSC.BehindButton />
+            <CarouselSC.BehindButton onClick={behindImg} />
           </CarouselSC.Left>
           <CarouselSC.Center {...mediaStyled}>
-            <CarouselSC.ImgCount>{`${imgCount} / ${totalImg}`}</CarouselSC.ImgCount>
+            <CarouselSC.ImgCount>{`${imgMediaProps.imgCount} / ${totalImg}`}</CarouselSC.ImgCount>
           </CarouselSC.Center>
           <CarouselSC.Right>
-            <CarouselSC.NextButton />
+            <CarouselSC.NextButton onClick={nextImg} />
           </CarouselSC.Right>
         </CarouselSC.ControlContainer>
       </CarouselSC.CarouselWrap>
