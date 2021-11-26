@@ -5,7 +5,7 @@ import { CarouselSC } from './Carousel.styles'
 const Carousel: React.FC<ICarouselWrap> = (props) => {
   const { datas, mediaStyled } = props
   const [imgMediaProps, setImgMediaProps] = useState<IImgsMediaProps>({
-    imgCount: 1,
+    imgNumber: 1,
     mediaAMinWidth: mediaStyled.mediaAMinWidth,
     mediaBMinWidth: mediaStyled.mediaBMinWidth,
     mediaATransform: mediaStyled.mediaATransform,
@@ -43,17 +43,17 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   console.log(imgMediaProps)
 
   const moveNextImgs = () => {
-    if (imgMediaProps.imgCount === datas.length) {
+    if (imgMediaProps.imgNumber === datas.length) {
       setImgMediaProps({
         ...imgMediaProps,
-        imgCount: 1,
+        imgNumber: 1,
         mediaATransform: mediaStyled.mediaATransform,
         mediaBTransform: mediaStyled.mediaBTransform,
       })
     } else {
       setImgMediaProps({
         ...imgMediaProps,
-        imgCount: imgMediaProps.imgCount + 1,
+        imgNumber: imgMediaProps.imgNumber + 1,
         mediaATransform: `${mediaATransform - mediaAWidth}px`,
         mediaBTransform: `${mediaBTransform - mediaBWidth}px`,
       })
@@ -61,17 +61,17 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   }
 
   const moveBehindImgs = () => {
-    if (imgMediaProps.imgCount === 1) {
+    if (imgMediaProps.imgNumber === 1) {
       setImgMediaProps({
         ...imgMediaProps,
-        imgCount: 10,
+        imgNumber: 10,
         mediaATransform: `-${mediaStyled.mediaATransform}`,
         mediaBTransform: `-${mediaStyled.mediaBTransform}`,
       })
     } else {
       setImgMediaProps({
         ...imgMediaProps,
-        imgCount: imgMediaProps.imgCount - 1,
+        imgNumber: imgMediaProps.imgNumber - 1,
         mediaATransform: `${mediaATransform + mediaAWidth}px`,
         mediaBTransform: `${mediaBTransform + mediaBWidth}px`,
       })
@@ -83,18 +83,16 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   }
 
   const nextImg = () => {
-    window.clearTimeout()
     moveNextImgs()
   }
 
   const behindImg = () => {
-    window.clearTimeout()
     moveBehindImgs()
   }
 
   useEffect(() => {
     autoImgMove()
-  }, [imgMediaProps])
+  }, [])
 
   const imgs = datas.map((img) => (
     <CarouselSC.Img
@@ -117,7 +115,9 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
             <CarouselSC.BehindButton onClick={behindImg} />
           </CarouselSC.Left>
           <CarouselSC.Center {...mediaStyled}>
-            <CarouselSC.ImgCount>{`${imgMediaProps.imgCount} / ${totalImg}`}</CarouselSC.ImgCount>
+            <CarouselSC.ImgCount>
+              {`${imgMediaProps.imgNumber} / ${totalImg}`}
+            </CarouselSC.ImgCount>
           </CarouselSC.Center>
           <CarouselSC.Right>
             <CarouselSC.NextButton onClick={nextImg} />

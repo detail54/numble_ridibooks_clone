@@ -126,7 +126,7 @@ export interface ICarouselMediaStyled {
 }
 
 export interface IImgsMediaProps {
-  imgCount: number
+  imgNumber: number
   mediaAMinWidth: string
   mediaBMinWidth: string
   mediaATransform: string
