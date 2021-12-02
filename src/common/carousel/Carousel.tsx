@@ -1,86 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { ICarouselWrap, IImgsMediaProps } from '../interface/interface'
+import { ICarousel, ICarouselWrap } from '../interface/interface'
 import { CarouselSC } from './Carousel.styles'
 
 const Carousel: React.FC<ICarouselWrap> = (props) => {
   const { datas, mediaStyled } = props
-  const [imgMediaProps, setImgMediaProps] = useState<IImgsMediaProps>({
-    imgNumber: 1,
-    mediaAMinWidth: mediaStyled.mediaAMinWidth,
-    mediaBMinWidth: mediaStyled.mediaBMinWidth,
-    mediaATransform: mediaStyled.mediaATransform,
-    mediaBTransform: mediaStyled.mediaBTransform,
-  })
+  const [imgNumber, setImgNumber] = useState<number>(1)
+  // const [imgs, setImgs] = useState<JSX.Element>(<></>)
 
   const totalImg = datas.length
 
-  const mediaAWidth = parseInt(
-    mediaStyled.mediaAWidth.substr(0, mediaStyled.mediaAWidth.indexOf('px')),
-    10,
-  )
-
-  const mediaATransform = parseInt(
-    imgMediaProps.mediaATransform.substr(
-      0,
-      imgMediaProps.mediaATransform.indexOf('px'),
-    ),
-    10,
-  )
-
-  const mediaBWidth = parseInt(
-    mediaStyled.mediaBWidth.substr(0, mediaStyled.mediaBWidth.indexOf('px')),
-    10,
-  )
-
-  const mediaBTransform = parseInt(
-    imgMediaProps.mediaBTransform.substr(
-      0,
-      imgMediaProps.mediaBTransform.indexOf('px'),
-    ),
-    10,
-  )
-
-  console.log(imgMediaProps)
-
   const moveNextImgs = () => {
-    if (imgMediaProps.imgNumber === datas.length) {
-      setImgMediaProps({
-        ...imgMediaProps,
-        imgNumber: 1,
-        mediaATransform: mediaStyled.mediaATransform,
-        mediaBTransform: mediaStyled.mediaBTransform,
-      })
+    if (imgNumber === datas.length) {
+      setImgNumber(1)
     } else {
-      setImgMediaProps({
-        ...imgMediaProps,
-        imgNumber: imgMediaProps.imgNumber + 1,
-        mediaATransform: `${mediaATransform - mediaAWidth}px`,
-        mediaBTransform: `${mediaBTransform - mediaBWidth}px`,
-      })
+      setImgNumber(imgNumber + 1)
     }
   }
 
   const moveBehindImgs = () => {
-    if (imgMediaProps.imgNumber === 1) {
-      setImgMediaProps({
-        ...imgMediaProps,
-        imgNumber: 10,
-        mediaATransform: `-${mediaStyled.mediaATransform}`,
-        mediaBTransform: `-${mediaStyled.mediaBTransform}`,
-      })
+    if (imgNumber === 1) {
+      setImgNumber(10)
     } else {
-      setImgMediaProps({
-        ...imgMediaProps,
-        imgNumber: imgMediaProps.imgNumber - 1,
-        mediaATransform: `${mediaATransform + mediaAWidth}px`,
-        mediaBTransform: `${mediaBTransform + mediaBWidth}px`,
-      })
+      setImgNumber(imgNumber - 1)
     }
   }
 
-  const autoImgMove = () => {
-    setTimeout(moveNextImgs, 5000)
-  }
+  // const autoImgMove = () => {
+  //   setTimeout(() => {
+  //     moveNextImgs()
+  //   }, 5000)
+  // }
 
   const nextImg = () => {
     moveNextImgs()
@@ -91,33 +40,48 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   }
 
   useEffect(() => {
-    autoImgMove()
-  }, [])
+    const autoImgMove = setTimeout(moveNextImgs, 5000)
+    return () => clearTimeout(autoImgMove)
+  }, [imgNumber])
 
-  const imgs = datas.map((img) => (
-    <CarouselSC.Img
-      key={img.id}
-      src={img.imgUrl}
-      alt={img.alt}
-      {...img.styles}
-      {...mediaStyled}
-    />
-  ))
+  const createCarouselItem = (data: ICarousel, className: string) => (
+    <CarouselSC.ImgList className={className} key={data.id} {...mediaStyled}>
+      <CarouselSC.ImgLink to={data.toLink}>
+        <CarouselSC.Img src={data.imgUrl} alt={data.alt} {...data.styles} />
+      </CarouselSC.ImgLink>
+    </CarouselSC.ImgList>
+  )
+
+  const basicImgs = datas.map((img, index) =>
+    // eslint-disable-next-line no-nested-ternary
+    index + 1 === imgNumber
+      ? createCarouselItem(img, 'view')
+      : // eslint-disable-next-line no-nested-ternary
+      index + 1 === imgNumber - 1
+      ? createCarouselItem(img, 'left-view')
+      : // eslint-disable-next-line no-nested-ternary
+      index + 1 === imgNumber + 1
+      ? createCarouselItem(img, 'right-view')
+      : // eslint-disable-next-line no-nested-ternary
+      index + 1 === imgNumber - 2
+      ? createCarouselItem(img, 'left-hide')
+      : index + 1 === imgNumber + 2
+      ? createCarouselItem(img, 'right-hide')
+      : createCarouselItem(img, 'hide'),
+  )
+
+  console.log(basicImgs)
 
   return (
     <>
       <CarouselSC.CarouselWrap>
-        <CarouselSC.ViewContainer {...mediaStyled}>
-          <CarouselSC.Imgs {...imgMediaProps}>{imgs}</CarouselSC.Imgs>
-        </CarouselSC.ViewContainer>
+        <CarouselSC.Imgs {...mediaStyled}>{basicImgs}</CarouselSC.Imgs>
         <CarouselSC.ControlContainer>
           <CarouselSC.Left>
             <CarouselSC.BehindButton onClick={behindImg} />
           </CarouselSC.Left>
           <CarouselSC.Center {...mediaStyled}>
-            <CarouselSC.ImgCount>
-              {`${imgMediaProps.imgNumber} / ${totalImg}`}
-            </CarouselSC.ImgCount>
+            <CarouselSC.ImgNumber>{`${imgNumber} / ${totalImg}`}</CarouselSC.ImgNumber>
           </CarouselSC.Center>
           <CarouselSC.Right>
             <CarouselSC.NextButton onClick={nextImg} />

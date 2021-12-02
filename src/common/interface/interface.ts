@@ -125,14 +125,6 @@ export interface ICarouselMediaStyled {
   mediaBTransform: string
 }
 
-export interface IImgsMediaProps {
-  imgNumber: number
-  mediaAMinWidth: string
-  mediaBMinWidth: string
-  mediaATransform: string
-  mediaBTransform: string
-}
-
 export interface IImgStyle {
   width?: string
   height?: string
@@ -142,7 +134,7 @@ export interface ICarousel {
   id: number
   imgUrl: string
   alt: string
-  href?: string
+  toLink: string
   styles?: IImgStyle
 }
 
