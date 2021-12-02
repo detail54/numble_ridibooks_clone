@@ -12,7 +12,7 @@ const imgMarginSum =
 type TCalType = '-' | '+'
 type TClassType = 'view' | 'hide'
 
-const setMediaStyle = (
+const setSideMediaStyle = (
   cal: TCalType,
   after: boolean,
   classType: TClassType,
@@ -254,21 +254,25 @@ const Imgs = styled.ul`
   }
 
   .left-view {
-    ${(props: ICarouselMediaStyled) => setMediaStyle('-', true, 'view', props)}
+    ${(props: ICarouselMediaStyled) =>
+      setSideMediaStyle('-', true, 'view', props)}
   }
 
   .right-view {
-    ${(props: ICarouselMediaStyled) => setMediaStyle('+', true, 'view', props)}
+    ${(props: ICarouselMediaStyled) =>
+      setSideMediaStyle('+', true, 'view', props)}
   }
 
   .left-hide {
     opacity: 0;
-    ${(props: ICarouselMediaStyled) => setMediaStyle('-', false, 'hide', props)}
+    ${(props: ICarouselMediaStyled) =>
+      setSideMediaStyle('-', false, 'hide', props)}
   }
 
   .right-hide {
     opacity: 0;
-    ${(props: ICarouselMediaStyled) => setMediaStyle('+', false, 'hide', props)}
+    ${(props: ICarouselMediaStyled) =>
+      setSideMediaStyle('+', false, 'hide', props)}
   }
 
   .hide {
