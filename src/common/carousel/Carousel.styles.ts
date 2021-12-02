@@ -9,6 +9,205 @@ const imgListMargin = '5px'
 const imgMarginSum =
   parseInt(imgListMargin.substr(0, imgListMargin.indexOf('px')), 10) * 2
 
+type TCalType = '-' | '+'
+type TClassType = 'view' | 'hide'
+
+const setMediaStyle = (
+  cal: TCalType,
+  after: boolean,
+  classType: TClassType,
+  data: ICarouselMediaStyled,
+) => css`
+  @media (min-width: ${data.mediaAMinWidth}) {
+    width: ${`${
+      parseInt(data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')), 10) -
+      10
+    }px`};
+    height: ${`${
+      parseInt(
+        data.mediaAHeight.substr(0, data.mediaAHeight.indexOf('px')),
+        10,
+      ) - 10
+    }px`};
+    position: absolute;
+    top: ${imgListMargin};
+    left: 0;
+    transform: ${`translateX(${
+      // eslint-disable-next-line no-nested-ternary
+      classType === 'view'
+        ? cal === '-'
+          ? parseInt(
+              data.mediaATransform.substr(
+                0,
+                data.mediaATransform.indexOf('px'),
+              ),
+              10,
+            ) -
+            parseInt(
+              data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
+              10,
+            )
+          : parseInt(
+              data.mediaATransform.substr(
+                0,
+                data.mediaATransform.indexOf('px'),
+              ),
+              10,
+            ) +
+            parseInt(
+              data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
+              10,
+            ) +
+            10
+        : cal === '-'
+        ? parseInt(
+            data.mediaATransform.substr(0, data.mediaATransform.indexOf('px')),
+            10,
+          ) -
+          parseInt(
+            data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
+            10,
+          ) *
+            2
+        : parseInt(
+            data.mediaATransform.substr(0, data.mediaATransform.indexOf('px')),
+            10,
+          ) +
+          parseInt(
+            data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
+            10,
+          ) *
+            2
+    }px)`};
+
+    ${after
+      ? css`
+          ::after {
+            border-radius: 6px;
+            display: block;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: ${`${
+              parseInt(
+                data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
+                10,
+              ) - 10
+            }px`};
+            height: ${`${
+              parseInt(
+                data.mediaAHeight.substr(0, data.mediaAHeight.indexOf('px')),
+                10,
+              ) -
+              imgMarginSum +
+              2
+            }px`};
+            -webkit-transition: background-color 0.2s;
+            transition: background-color 0.2s;
+            background-color: red;
+            background-color: rgba(26, 26, 26, 0.5);
+          }
+        `
+      : css``}
+  }
+
+  @media (min-width: ${data.mediaBMinWidth}) {
+    width: ${`${
+      parseInt(data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')), 10) -
+      10
+    }px`};
+    height: ${`${
+      parseInt(
+        data.mediaBHeight.substr(0, data.mediaBHeight.indexOf('px')),
+        10,
+      ) - 10
+    }px`};
+    position: absolute;
+    top: ${imgListMargin};
+    left: 0;
+    transform: ${`translateX(${
+      // eslint-disable-next-line no-nested-ternary
+      classType === 'view'
+        ? cal === '-'
+          ? parseInt(
+              data.mediaBTransform.substr(
+                0,
+                data.mediaBTransform.indexOf('px'),
+              ),
+              10,
+            ) -
+            parseInt(
+              data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
+              10,
+            )
+          : parseInt(
+              data.mediaBTransform.substr(
+                0,
+                data.mediaBTransform.indexOf('px'),
+              ),
+              10,
+            ) +
+            parseInt(
+              data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
+              10,
+            ) +
+            10
+        : cal === '-'
+        ? parseInt(
+            data.mediaBTransform.substr(0, data.mediaBTransform.indexOf('px')),
+            10,
+          ) -
+          parseInt(
+            data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
+            10,
+          ) *
+            2
+        : parseInt(
+            data.mediaBTransform.substr(0, data.mediaBTransform.indexOf('px')),
+            10,
+          ) +
+          parseInt(
+            data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
+            10,
+          ) *
+            2 +
+          10
+    }px)`};
+
+    ${after
+      ? css`
+          ::after {
+            border-radius: 6px;
+            display: block;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: ${`${
+              parseInt(
+                data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
+                10,
+              ) - 10
+            }px`};
+            height: ${`${
+              parseInt(
+                data.mediaBHeight.substr(0, data.mediaBHeight.indexOf('px')),
+                10,
+              ) -
+              imgMarginSum +
+              2
+            }px`};
+            -webkit-transition: background-color 0.2s;
+            transition: background-color 0.2s;
+            background-color: red;
+            background-color: rgba(26, 26, 26, 0.5);
+          }
+        `
+      : css``}
+  }
+`
+
 const CarouselWrap = styled.div`
   width: 100%;
   position: relative;
@@ -28,6 +227,7 @@ const Imgs = styled.ul`
   @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
     height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
   }
+
   .view {
     @media (min-width: ${(props: ICarouselMediaStyled) =>
         props.mediaAMinWidth}) {
@@ -54,491 +254,21 @@ const Imgs = styled.ul`
   }
 
   .left-view {
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaATransform.substr(
-              0,
-              props.mediaATransform.indexOf('px'),
-            ),
-            10,
-          ) -
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          )
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: red;
-        /* background-color: rgba(26, 26, 26, 0.5); */
-      }
-    }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaBTransform.substr(
-              0,
-              props.mediaBTransform.indexOf('px'),
-            ),
-            10,
-          ) -
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          )
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
+    ${(props: ICarouselMediaStyled) => setMediaStyle('-', true, 'view', props)}
   }
 
   .right-view {
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaATransform.substr(
-              0,
-              props.mediaATransform.indexOf('px'),
-            ),
-            10,
-          ) +
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) +
-          imgMarginSum
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaBTransform.substr(
-              0,
-              props.mediaBTransform.indexOf('px'),
-            ),
-            10,
-          ) +
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) +
-          imgMarginSum
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
+    ${(props: ICarouselMediaStyled) => setMediaStyle('+', true, 'view', props)}
   }
 
   .left-hide {
     opacity: 0;
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaATransform.substr(
-              0,
-              props.mediaATransform.indexOf('px'),
-            ),
-            10,
-          ) -
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) *
-            2
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: red;
-        /* background-color: rgba(26, 26, 26, 0.5); */
-      }
-    }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaBTransform.substr(
-              0,
-              props.mediaBTransform.indexOf('px'),
-            ),
-            10,
-          ) -
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) *
-            2
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
+    ${(props: ICarouselMediaStyled) => setMediaStyle('-', false, 'hide', props)}
   }
 
   .right-hide {
     opacity: 0;
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaATransform.substr(
-              0,
-              props.mediaATransform.indexOf('px'),
-            ),
-            10,
-          ) +
-          (parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-            10,
-          ) +
-            imgMarginSum) *
-            2
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaAHeight.substr(0, props.mediaAHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      height: ${(props: ICarouselMediaStyled) =>
-        `${
-          parseInt(
-            props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-            10,
-          ) - 10
-        }px`};
-      position: absolute;
-      top: ${imgListMargin};
-      left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
-        `translateX(${
-          parseInt(
-            props.mediaBTransform.substr(
-              0,
-              props.mediaBTransform.indexOf('px'),
-            ),
-            10,
-          ) +
-          (parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-            10,
-          ) +
-            imgMarginSum) *
-            2
-        }px)`};
-      img::after {
-        display: block;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: ${imgListMargin};
-        width: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        height: ${(props: ICarouselMediaStyled) =>
-          `${
-            parseInt(
-              props.mediaBHeight.substr(0, props.mediaBHeight.indexOf('px')),
-              10,
-            ) - 10
-          }px`};
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-        background-color: rgba(26, 26, 26, 0.5);
-      }
-    }
+    ${(props: ICarouselMediaStyled) => setMediaStyle('+', false, 'hide', props)}
   }
 
   .hide {
