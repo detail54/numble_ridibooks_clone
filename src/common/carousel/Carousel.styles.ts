@@ -217,6 +217,7 @@ const CarouselWrap = styled.div`
 
 const ViewContainer = styled.div`
   width: 100%;
+  overflow: hidden;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
 `
