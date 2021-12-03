@@ -280,26 +280,28 @@ const BasicView: React.FC = () => {
   ]
 
   return (
-    <BasicSC.ImgSlideSection>
-      <Carousel
-        datas={imgData}
-        mediaStyled={{
-          mediaAMinWidth: '375px',
-          mediaAWidth: '355px',
-          mediaAHeight: '236px',
-          mediaATransform: '-182px',
-          mediaBMinWidth: '1000px',
-          mediaBWidth: '430px',
-          mediaBHeight: '286px',
-          mediaBTransform: '-220px',
-        }}
-      >
-        home/basic
-      </Carousel>
+    <>
+      <BasicSC.CarouselSection>
+        <Carousel
+          datas={imgData}
+          mediaStyled={{
+            mediaAMinWidth: '375px',
+            mediaAWidth: '355px',
+            mediaAHeight: '236px',
+            mediaATransform: '-182px',
+            mediaBMinWidth: '1000px',
+            mediaBWidth: '430px',
+            mediaBHeight: '286px',
+            mediaBTransform: '-220px',
+          }}
+        >
+          home/basic
+        </Carousel>
+      </BasicSC.CarouselSection>
       <BasicSC.QuickMenuSection>
         <TabsWrap datas={quickMenuData} />
       </BasicSC.QuickMenuSection>
-    </BasicSC.ImgSlideSection>
+    </>
   )
 }
 

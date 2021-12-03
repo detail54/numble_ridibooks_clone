@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { setStyles } from '../../../asset/css/GlobalStyle'
 import { IQuickMenuStyle } from './interface'
 
-const ImgSlideSection = styled.section`
+const CarouselSection = styled.section`
   width: 100%;
 `
 
@@ -32,7 +32,7 @@ const QuickMenuIcon = styled.img`
 `
 
 export const BasicSC = {
-  ImgSlideSection,
+  CarouselSection,
   QuickMenuSection,
   QuickMenuIcon,
 }
