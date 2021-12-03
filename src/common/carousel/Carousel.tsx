@@ -41,7 +41,7 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
   const createCarouselItem = (data: ICarousel, className: string) => (
     <CarouselSC.ImgList className={className} key={data.id} {...mediaStyled}>
       <CarouselSC.ImgLink to={data.toLink}>
-        <CarouselSC.Img src={data.imgUrl} alt={data.alt} {...data.styles} />
+        <CarouselSC.Img src={data.imgUrl} alt={data.alt} />
       </CarouselSC.ImgLink>
     </CarouselSC.ImgList>
   )
