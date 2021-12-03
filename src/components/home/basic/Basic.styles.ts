@@ -31,8 +31,18 @@ const QuickMenuIcon = styled.img`
   margin-bottom: 8px;
 `
 
+const NewBooksSection = styled.section`
+  width: 100%;
+  background: url('https://static.ridicdn.net/_next/static/images/rec…ound@desktop-cf4f6e0299ba7bd46fca9c85a9b757de.png')
+    center center no-repeat #17202e;
+  background-size: contain;
+  padding-top: 31px;
+  padding-bottom: 36px;
+`
+
 export const BasicSC = {
   CarouselSection,
   QuickMenuSection,
   QuickMenuIcon,
+  NewBooksSection,
 }

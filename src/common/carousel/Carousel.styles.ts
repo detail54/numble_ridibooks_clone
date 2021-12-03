@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components'
+// lib
 import { Link } from 'react-router-dom'
+// global style
 import { setStyles } from '../../asset/css/GlobalStyle'
+// interface
 import { ICarouselMediaStyled } from '../interface/interface'
+// image
 import behind from '../../asset/images/icons/behind.png'
 import next from '../../asset/images/icons/next.png'
 

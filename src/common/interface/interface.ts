@@ -113,7 +113,7 @@ export interface IButtonWrap {
   wrapStyle: IBUttonWrapStyles
 }
 
-// ImgSlide interface
+// Carousel interface
 export interface ICarouselMediaStyled {
   mediaAMinWidth: string
   mediaAWidth: string
@@ -135,4 +135,53 @@ export interface ICarousel {
 export interface ICarouselWrap {
   datas: ICarousel[]
   mediaStyled: ICarouselMediaStyled
+}
+
+// BookCarousel interface
+export interface IBooks {
+  id: number
+  thumbnail: string
+  type: string // novel, ebook, webNovel
+  category: string[] // romance, fantasy, humanities, thriller, detective, society, history, sf
+  title: string
+  author: {
+    name: string
+    awards: string[]
+    representatives: {
+      name: string
+      thumbnail: string
+    }
+    introduction: string
+  }
+  translator: {
+    name: string
+    nationality: string
+    career: string[]
+    representatives: string[]
+    introduction: string
+  }
+  publisher: string
+  starRate: {
+    rate: number
+    rateNum: number // 별점 참여자 수
+    rateBuyerNum: number // 별점 참여자 중 구매자 수
+  }
+  rentalPrice: number
+  rentalSalePercent: number
+  buyPrice: number
+  buySalePercent: number
+  count: number // 총 권 수
+  freeCount: number // 무료 권 수. count보다 큰 경우는 전권 무료입니다.
+  isFinished: boolean
+  canRent: boolean // canRent 항목의 우선 순위가 rentalPrice, rentalSalePrice보다 높습니다.
+  waitFree: boolean
+  xRated: boolean
+  description: string[]
+  index: string[]
+  lastlyRead: string // yyyy-mm-dd
+}
+
+export interface IBookCarousel {
+  header: string
+  books: string
 }

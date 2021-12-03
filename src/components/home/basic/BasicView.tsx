@@ -3,6 +3,7 @@ import Carousel from '../../../common/carousel/Carousel'
 import { ICarousel, ITab } from '../../../common/interface/interface'
 import { BasicSC } from './Basic.styles'
 import TabsWrap from '../../../common/Tabs/TabsWrap'
+import BookCarousel from '../../../common/carousel/BookCarousel'
 
 const BasicView: React.FC = () => {
   const imgData: ICarousel[] = [
@@ -301,6 +302,12 @@ const BasicView: React.FC = () => {
       <BasicSC.QuickMenuSection>
         <TabsWrap datas={quickMenuData} />
       </BasicSC.QuickMenuSection>
+      <BasicSC.NewBooksSection>
+        <BookCarousel
+          header='집 앞 서점에 방금 나온 신간!'
+          books='books sample'
+        />
+      </BasicSC.NewBooksSection>
     </>
   )
 }
