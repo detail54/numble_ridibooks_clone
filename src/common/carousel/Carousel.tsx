@@ -25,12 +25,6 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
     }
   }
 
-  // const autoImgMove = () => {
-  //   setTimeout(() => {
-  //     moveNextImgs()
-  //   }, 5000)
-  // }
-
   const nextImg = () => {
     moveNextImgs()
   }
@@ -52,30 +46,45 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
     </CarouselSC.ImgList>
   )
 
-  const basicImgs = datas.map((img, index) =>
-    // eslint-disable-next-line no-nested-ternary
-    index + 1 === imgNumber
-      ? createCarouselItem(img, 'view')
-      : // eslint-disable-next-line no-nested-ternary
-      index + 1 === imgNumber - 1
-      ? createCarouselItem(img, 'left-view')
-      : // eslint-disable-next-line no-nested-ternary
-      index + 1 === imgNumber + 1
-      ? createCarouselItem(img, 'right-view')
-      : // eslint-disable-next-line no-nested-ternary
-      index + 1 === imgNumber - 2
-      ? createCarouselItem(img, 'left-hide')
-      : index + 1 === imgNumber + 2
-      ? createCarouselItem(img, 'right-hide')
-      : createCarouselItem(img, 'hide'),
-  )
-
-  console.log(basicImgs)
+  const Imgs = datas.map((img, index) => {
+    if (img.id === imgNumber) {
+      return <>{createCarouselItem(img, 'view')}</>
+    }
+    if (
+      img.id === imgNumber - 1 ||
+      (imgNumber === 1 && index === datas.length - 1)
+    ) {
+      return <>{createCarouselItem(img, 'left-view')}</>
+    }
+    if (
+      img.id === imgNumber + 1 ||
+      (imgNumber === datas.length && index === 0)
+    ) {
+      return <>{createCarouselItem(img, 'right-view')}</>
+    }
+    if (
+      img.id === imgNumber - 2 ||
+      (imgNumber === 1 && index === datas.length - 2) ||
+      (imgNumber === 2 && index === datas.length - 1)
+    ) {
+      return <>{createCarouselItem(img, 'left-hide')}</>
+    }
+    if (
+      img.id === imgNumber + 2 ||
+      (imgNumber === datas.length && index === 1) ||
+      (imgNumber === datas.length - 1 && index === 0)
+    ) {
+      return <>{createCarouselItem(img, 'right-hide')}</>
+    }
+    return <>{createCarouselItem(img, 'hide')}</>
+  })
 
   return (
     <>
       <CarouselSC.CarouselWrap>
-        <CarouselSC.Imgs {...mediaStyled}>{basicImgs}</CarouselSC.Imgs>
+        <CarouselSC.ViewContainer>
+          <CarouselSC.Imgs {...mediaStyled}>{Imgs}</CarouselSC.Imgs>
+        </CarouselSC.ViewContainer>
         <CarouselSC.ControlContainer>
           <CarouselSC.Left>
             <CarouselSC.BehindButton onClick={behindImg} />

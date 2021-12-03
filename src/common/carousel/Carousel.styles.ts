@@ -88,7 +88,7 @@ const setSideMediaStyle = (
             content: '';
             position: absolute;
             left: 0;
-            top: -1px;
+            top: -3px;
             width: ${`${
               parseInt(
                 data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')),
@@ -101,7 +101,7 @@ const setSideMediaStyle = (
                 10,
               ) -
               imgMarginSum +
-              2
+              3
             }px`};
             -webkit-transition: background-color 0.2s;
             transition: background-color 0.2s;
@@ -183,7 +183,7 @@ const setSideMediaStyle = (
             content: '';
             position: absolute;
             left: 0;
-            top: -2px;
+            top: -3px;
             width: ${`${
               parseInt(
                 data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')),
@@ -196,7 +196,7 @@ const setSideMediaStyle = (
                 10,
               ) -
               imgMarginSum +
-              2
+              3
             }px`};
             -webkit-transition: background-color 0.2s;
             transition: background-color 0.2s;
@@ -215,9 +215,16 @@ const CarouselWrap = styled.div`
   ${setStyles.setAlignY('center')}
 `
 
+const ViewContainer = styled.div`
+  width: 100%;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+`
+
 const Imgs = styled.ul`
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
+  position: relative;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -403,6 +410,7 @@ const ImgNumber = styled.div`
 
 export const CarouselSC = {
   CarouselWrap,
+  ViewContainer,
   Imgs,
   ImgList,
   ImgLink,

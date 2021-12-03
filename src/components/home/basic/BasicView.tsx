@@ -287,11 +287,11 @@ const BasicView: React.FC = () => {
           mediaAMinWidth: '375px',
           mediaAWidth: '355px',
           mediaAHeight: '236px',
-          mediaATransform: '440px',
+          mediaATransform: '-182px',
           mediaBMinWidth: '1000px',
           mediaBWidth: '430px',
           mediaBHeight: '286px',
-          mediaBTransform: '740px',
+          mediaBTransform: '-220px',
         }}
       >
         home/basic
