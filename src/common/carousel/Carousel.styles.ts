@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
-import { ICarouselMediaStyled } from '../interface/interface'
+import { IMediaStyled } from '../interface/interface'
 // image
 import behind from '../../asset/images/icons/behind.png'
 import next from '../../asset/images/icons/next.png'
@@ -20,14 +20,15 @@ const setSideMediaStyle = (
   cal: TCalType,
   after: boolean,
   classType: TClassType,
-  data: ICarouselMediaStyled,
+  data: IMediaStyled,
 ) => css`
   @media (min-width: ${data.mediaAMinWidth}) {
     width: ${`${
       parseInt(data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')), 10) -
       10
     }px`};
-    height: ${`${
+    height: ${data.mediaAHeight &&
+    `${
       parseInt(
         data.mediaAHeight.substr(0, data.mediaAHeight.indexOf('px')),
         10,
@@ -36,7 +37,8 @@ const setSideMediaStyle = (
     position: absolute;
     top: ${imgListMargin};
     left: 0;
-    transform: ${`translateX(${
+    transform: ${data.mediaATransform &&
+    `translateX(${
       // eslint-disable-next-line no-nested-ternary
       classType === 'view'
         ? cal === '-'
@@ -99,7 +101,8 @@ const setSideMediaStyle = (
                 10,
               ) - 10
             }px`};
-            height: ${`${
+            height: ${data.mediaAHeight &&
+            `${
               parseInt(
                 data.mediaAHeight.substr(0, data.mediaAHeight.indexOf('px')),
                 10,
@@ -121,7 +124,8 @@ const setSideMediaStyle = (
       parseInt(data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')), 10) -
       10
     }px`};
-    height: ${`${
+    height: ${data.mediaBHeight &&
+    `${
       parseInt(
         data.mediaBHeight.substr(0, data.mediaBHeight.indexOf('px')),
         10,
@@ -130,7 +134,8 @@ const setSideMediaStyle = (
     position: absolute;
     top: ${imgListMargin};
     left: 0;
-    transform: ${`translateX(${
+    transform: ${data.mediaBTransform &&
+    `translateX(${
       // eslint-disable-next-line no-nested-ternary
       classType === 'view'
         ? cal === '-'
@@ -194,7 +199,8 @@ const setSideMediaStyle = (
                 10,
               ) - 10
             }px`};
-            height: ${`${
+            height: ${data.mediaBHeight &&
+            `${
               parseInt(
                 data.mediaBHeight.substr(0, data.mediaBHeight.indexOf('px')),
                 10,
@@ -233,73 +239,65 @@ const Imgs = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaAMinWidth}) {
-    height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
+  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+    height: ${(props: IMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
-    height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
+  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+    height: ${(props: IMediaStyled) => props.mediaBHeight};
   }
 
   .view {
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
+    @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
       cursor: pointer;
-      width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
-      height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
+      width: ${(props: IMediaStyled) => props.mediaAWidth};
+      height: ${(props: IMediaStyled) => props.mediaAHeight};
       position: absolute;
       top: 0;
       left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
+      transform: ${(props: IMediaStyled) =>
         `translateX(${props.mediaATransform})`};
     }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
+    @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
       cursor: pointer;
-      width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
-      height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
+      width: ${(props: IMediaStyled) => props.mediaBWidth};
+      height: ${(props: IMediaStyled) => props.mediaBHeight};
       position: absolute;
       top: 0;
       left: 0;
-      transform: ${(props: ICarouselMediaStyled) =>
+      transform: ${(props: IMediaStyled) =>
         `translateX(${props.mediaBTransform})`};
     }
   }
 
   .left-view {
-    ${(props: ICarouselMediaStyled) =>
-      setSideMediaStyle('-', true, 'view', props)}
+    ${(props: IMediaStyled) => setSideMediaStyle('-', true, 'view', props)}
   }
 
   .right-view {
-    ${(props: ICarouselMediaStyled) =>
-      setSideMediaStyle('+', true, 'view', props)}
+    ${(props: IMediaStyled) => setSideMediaStyle('+', true, 'view', props)}
   }
 
   .left-hide {
     opacity: 0;
-    ${(props: ICarouselMediaStyled) =>
-      setSideMediaStyle('-', false, 'hide', props)}
+    ${(props: IMediaStyled) => setSideMediaStyle('-', false, 'hide', props)}
   }
 
   .right-hide {
     opacity: 0;
-    ${(props: ICarouselMediaStyled) =>
-      setSideMediaStyle('+', false, 'hide', props)}
+    ${(props: IMediaStyled) => setSideMediaStyle('+', false, 'hide', props)}
   }
 
   .hide {
     opacity: 0;
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaAMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
-      height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
+    @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+      width: ${(props: IMediaStyled) => props.mediaAWidth};
+      height: ${(props: IMediaStyled) => props.mediaAHeight};
       position: absolute;
       transform: translateX(300%);
     }
-    @media (min-width: ${(props: ICarouselMediaStyled) =>
-        props.mediaBMinWidth}) {
-      width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
-      height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
+    @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+      width: ${(props: IMediaStyled) => props.mediaBWidth};
+      height: ${(props: IMediaStyled) => props.mediaBHeight};
       position: absolute;
       transform: translateX(300%);
     }
@@ -334,13 +332,13 @@ const ControlContainer = styled.div`
 `
 const Center = styled.div`
   position: relative;
-  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaAMinWidth}) {
-    width: ${(props: ICarouselMediaStyled) => props.mediaAWidth};
-    height: ${(props: ICarouselMediaStyled) => props.mediaAHeight};
+  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+    width: ${(props: IMediaStyled) => props.mediaAWidth};
+    height: ${(props: IMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: ${(props: ICarouselMediaStyled) => props.mediaBMinWidth}) {
-    width: ${(props: ICarouselMediaStyled) => props.mediaBWidth};
-    height: ${(props: ICarouselMediaStyled) => props.mediaBHeight};
+  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+    width: ${(props: IMediaStyled) => props.mediaBWidth};
+    height: ${(props: IMediaStyled) => props.mediaBHeight};
   }
 `
 

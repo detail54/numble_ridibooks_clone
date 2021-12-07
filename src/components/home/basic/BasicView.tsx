@@ -1,9 +1,13 @@
 import React from 'react'
+// common
 import Carousel from '../../../common/carousel/Carousel'
-import { ICarousel, ITab } from '../../../common/interface/interface'
-import { BasicSC } from './Basic.styles'
 import TabsWrap from '../../../common/Tabs/TabsWrap'
 import BookCarousel from '../../../common/carousel/BookCarousel'
+// interface
+import { ICarousel, ITab } from '../../../common/interface/interface'
+import { books } from '../../../config/data/books'
+// style
+import { BasicSC } from './Basic.styles'
 
 const BasicView: React.FC = () => {
   const imgData: ICarousel[] = [
@@ -280,6 +284,8 @@ const BasicView: React.FC = () => {
     },
   ]
 
+  const newBooks = books.slice(0, 16)
+
   return (
     <>
       <BasicSC.CarouselSection>
@@ -305,7 +311,15 @@ const BasicView: React.FC = () => {
       <BasicSC.NewBooksSection>
         <BookCarousel
           header='집 앞 서점에 방금 나온 신간!'
-          books='books sample'
+          booksData={newBooks}
+          mediaStyled={{
+            mediaAMinWidth: '375px',
+            mediaAWidth: '100px',
+            mediaATransform: '520px',
+            mediaBMinWidth: '1000px',
+            mediaBWidth: '140px',
+            mediaBTransform: '805px',
+          }}
         />
       </BasicSC.NewBooksSection>
     </>

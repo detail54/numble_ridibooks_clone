@@ -5,7 +5,6 @@ import { CarouselSC } from './Carousel.styles'
 const Carousel: React.FC<ICarouselWrap> = (props) => {
   const { datas, mediaStyled } = props
   const [imgNumber, setImgNumber] = useState<number>(1)
-  // const [imgs, setImgs] = useState<JSX.Element>(<></>)
 
   const totalImg = datas.length
 
@@ -38,45 +37,75 @@ const Carousel: React.FC<ICarouselWrap> = (props) => {
     return () => clearTimeout(autoImgMove)
   }, [imgNumber])
 
-  const createCarouselItem = (data: ICarousel, className: string) => (
-    <CarouselSC.ImgList className={className} key={data.id} {...mediaStyled}>
-      <CarouselSC.ImgLink to={data.toLink}>
-        <CarouselSC.Img src={data.imgUrl} alt={data.alt} />
-      </CarouselSC.ImgLink>
-    </CarouselSC.ImgList>
+  const createCarouselItem = (data: ICarousel) => (
+    <CarouselSC.ImgLink to={data.toLink}>
+      <CarouselSC.Img src={data.imgUrl} alt={data.alt} />
+    </CarouselSC.ImgLink>
   )
 
   const Imgs = datas.map((img, index) => {
     if (img.id === imgNumber) {
-      return <>{createCarouselItem(img, 'view')}</>
+      return (
+        <CarouselSC.ImgList className='view' key={img.id} {...mediaStyled}>
+          {createCarouselItem(img)}
+        </CarouselSC.ImgList>
+      )
     }
     if (
       img.id === imgNumber - 1 ||
       (imgNumber === 1 && index === datas.length - 1)
     ) {
-      return <>{createCarouselItem(img, 'left-view')}</>
+      return (
+        <CarouselSC.ImgList className='left-view' key={img.id} {...mediaStyled}>
+          {createCarouselItem(img)}
+        </CarouselSC.ImgList>
+      )
     }
     if (
       img.id === imgNumber + 1 ||
       (imgNumber === datas.length && index === 0)
     ) {
-      return <>{createCarouselItem(img, 'right-view')}</>
+      return (
+        <CarouselSC.ImgList
+          className='right-view'
+          key={img.id}
+          {...mediaStyled}
+        >
+          {createCarouselItem(img)}
+        </CarouselSC.ImgList>
+      )
     }
     if (
       img.id === imgNumber - 2 ||
       (imgNumber === 1 && index === datas.length - 2) ||
       (imgNumber === 2 && index === datas.length - 1)
     ) {
-      return <>{createCarouselItem(img, 'left-hide')}</>
+      return (
+        <CarouselSC.ImgList className='left-hide' key={img.id} {...mediaStyled}>
+          {createCarouselItem(img)}
+        </CarouselSC.ImgList>
+      )
     }
     if (
       img.id === imgNumber + 2 ||
       (imgNumber === datas.length && index === 1) ||
       (imgNumber === datas.length - 1 && index === 0)
     ) {
-      return <>{createCarouselItem(img, 'right-hide')}</>
+      return (
+        <CarouselSC.ImgList
+          className='right-hide'
+          key={img.id}
+          {...mediaStyled}
+        >
+          {createCarouselItem(img)}
+        </CarouselSC.ImgList>
+      )
     }
-    return <>{createCarouselItem(img, 'hide')}</>
+    return (
+      <CarouselSC.ImgList className='hide' key={img.id} {...mediaStyled}>
+        {createCarouselItem(img)}
+      </CarouselSC.ImgList>
+    )
   })
 
   return (

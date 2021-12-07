@@ -33,11 +33,15 @@ const QuickMenuIcon = styled.img`
 
 const NewBooksSection = styled.section`
   width: 100%;
-  background: url('https://static.ridicdn.net/_next/static/images/rec…ound@desktop-cf4f6e0299ba7bd46fca9c85a9b757de.png')
-    center center no-repeat #17202e;
+  background-image: url('https://static.ridicdn.net/_next/static/images/recommended_book_background@desktop-cf4f6e0299ba7bd46fca9c85a9b757de.png');
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: contain;
+  background-color: #17202e;
   padding-top: 31px;
   padding-bottom: 36px;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
 `
 
 export const BasicSC = {
