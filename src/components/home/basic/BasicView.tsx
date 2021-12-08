@@ -318,7 +318,7 @@ const BasicView: React.FC = () => {
             mediaATransform: '520px',
             mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
-            mediaBTransform: '805px',
+            mediaBTransform: '810px',
           }}
         />
       </BasicSC.NewBooksSection>

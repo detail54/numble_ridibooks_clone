@@ -4,12 +4,13 @@ import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
 import { IMediaStyled } from '../interface/interface'
 // image
-import behind from '../../asset/images/icons/behind.png'
-import next from '../../asset/images/icons/next.png'
+import behindWhite from '../../asset/images/icons/behind_white.png'
+import nextWhite from '../../asset/images/icons/next_white.png'
 
 const BookCarouselWrap = styled.div`
   max-width: 1000px;
   flex-direction: column;
+  position: relative;
 `
 
 const Header = styled.h1`
@@ -39,7 +40,7 @@ const Books = styled.div`
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
     overflow: hidden;
-    width: 1000px;
+    width: 990px;
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
@@ -54,22 +55,28 @@ const BookList = styled.ul`
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
   margin: 0;
+  padding: 0;
   transition: 0.2s;
   position: absolute;
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     transform: ${(props: IMediaStyled) =>
-      `translateX(${props.mediaATransform})`};
+      `translateX(${props.mediaBTransform})`};
   }
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
     transform: ${(props: IMediaStyled) =>
       `translateX(${props.mediaBTransform})`};
   }
+
+  li:nth-child(1) {
+    margin: 0;
+  }
 `
 
 const BookItem = styled.li`
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     cursor: pointer;
+    margin-left: 12px;
     width: ${(props: IMediaStyled) => props.mediaAWidth};
     height: ${(props: IMediaStyled) =>
       `${
@@ -78,7 +85,6 @@ const BookItem = styled.li`
           10,
         ) * 2.04
       }px`};
-    margin-right: 12px;
 
     img {
       height: ${(props: IMediaStyled) =>
@@ -93,6 +99,7 @@ const BookItem = styled.li`
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
     cursor: pointer;
+    margin-left: 22px;
     width: ${(props: IMediaStyled) => props.mediaBWidth};
     height: ${(props: IMediaStyled) =>
       `${
@@ -101,7 +108,6 @@ const BookItem = styled.li`
           10,
         ) * 2.04
       }px`};
-    margin-right: 22px;
 
     img {
       height: ${(props: IMediaStyled) =>
@@ -116,12 +122,37 @@ const BookItem = styled.li`
   list-style: none;
 `
 
+const ControlContainer = styled.div`
+  position: absolute;
+  ${setStyles.setAlignX('center')}
+  width: 1100px;
+  height: 100%;
+  top: -10px;
+  left: -55px;
+`
+
+const Center = styled.div`
+  position: relative;
+  max-width: 1000px;
+  width: 1000px;
+`
+
+const Left = styled.div`
+  width: 40px;
+  margin: 0px 20px;
+`
+
+const Right = styled.div`
+  width: 40px;
+  margin: 0px 20px;
+`
+
 const BehindButton = styled.button`
-  background-image: url(${behind});
-  background-size: 15px 15px;
+  background-image: url(${behindWhite});
+  background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: white;
+  background-color: #384252;
   border-radius: 30px;
   border: none;
   opacity: 0.5;
@@ -132,6 +163,8 @@ const BehindButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  opacity: 0.95;
+  box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
 
   &:hover {
     opacity: 0.7;
@@ -139,11 +172,11 @@ const BehindButton = styled.button`
 `
 
 const NextButton = styled.button`
-  background-image: url(${next});
-  background-size: 15px 15px;
+  background-image: url(${nextWhite});
+  background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: white;
+  background-color: #384252;
   border-radius: 30px;
   border: none;
   opacity: 0.5;
@@ -154,6 +187,8 @@ const NextButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  opacity: 0.95;
+  box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
 
   &:hover {
     opacity: 0.7;
@@ -166,6 +201,10 @@ export const BookCarouselSC = {
   Books,
   BookList,
   BookItem,
+  ControlContainer,
+  Center,
+  Left,
+  Right,
   BehindButton,
   NextButton,
 }
