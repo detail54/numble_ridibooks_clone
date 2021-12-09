@@ -8,9 +8,15 @@ import behindWhite from '../../asset/images/icons/behind_white.png'
 import nextWhite from '../../asset/images/icons/next_white.png'
 
 const BookCarouselWrap = styled.div`
-  max-width: 1000px;
   flex-direction: column;
   position: relative;
+  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+    width: 100%;
+  }
+
+  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+    max-width: 1000px;
+  }
 `
 
 const Header = styled.h1`
@@ -58,6 +64,8 @@ const BookList = styled.ul`
   padding: 0;
   transition: 0.2s;
   position: absolute;
+  left: 0;
+  top: 0;
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     transform: ${(props: IMediaStyled) =>
       `translateX(${props.mediaBTransform})`};

@@ -16,94 +16,78 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const totalBooksPage = Math.ceil(booksData.length / 6)
   const remainderBookCount = booksData.length % 6
 
-  const mediaAWidth =
-    booksMoveStyle.mediaAWidth &&
-    parseInt(
-      booksMoveStyle.mediaAWidth.substr(
-        0,
-        booksMoveStyle.mediaAWidth.indexOf('px'),
-      ),
-      10,
-    )
+  const pixelChangeNumber = (data: string) => {
+    return parseInt(data.substr(0, data.indexOf('px')), 10)
+  }
 
-  const mediaATransform =
+  const numMediaAWidth = pixelChangeNumber(booksMoveStyle.mediaAWidth)
+
+  const numMediaATransform =
     booksMoveStyle.mediaATransform &&
-    parseInt(
-      booksMoveStyle.mediaATransform.substr(
-        0,
-        booksMoveStyle.mediaATransform.indexOf('px'),
-      ),
-      10,
-    )
+    pixelChangeNumber(booksMoveStyle.mediaATransform)
 
-  const mediaBWidth =
-    booksMoveStyle.mediaBWidth &&
-    parseInt(
-      booksMoveStyle.mediaBWidth.substr(
-        0,
-        booksMoveStyle.mediaBWidth.indexOf('px'),
-      ),
-      10,
-    )
+  const numMediaBWidth = pixelChangeNumber(booksMoveStyle.mediaBWidth)
 
-  const mediaBTransform =
+  const numMediaBTransform =
     booksMoveStyle.mediaBTransform &&
-    parseInt(
-      booksMoveStyle.mediaBTransform.substr(
-        0,
-        booksMoveStyle.mediaBTransform.indexOf('px'),
-      ),
-      10,
-    )
+    pixelChangeNumber(booksMoveStyle.mediaBTransform)
 
-  console.log(booksPage)
+  console.log('numMediaAWidth::', numMediaAWidth)
+  console.log('numMediaATransform::', numMediaATransform)
+  console.log('numMediaBWidth::', numMediaBWidth)
+  console.log('numMediaBTransform::', numMediaBTransform)
+
+  const setBooksMove = (
+    booksPageNumber: number,
+    mediaATransform: string,
+    mediaBTransform: string,
+  ) => {
+    setBooksPage(booksPageNumber)
+    setBooksMoveStyle({
+      ...booksMoveStyle,
+      mediaATransform,
+      mediaBTransform,
+    })
+  }
 
   const nextBooks = () => {
     if (booksPage === totalBooksPage) {
-      setBooksPage(1)
-      setBooksMoveStyle({
-        ...booksMoveStyle,
-        mediaATransform: mediaStyled.mediaATransform,
-        mediaBTransform: mediaStyled.mediaBTransform,
-      })
+      setBooksMove(
+        1,
+        `${mediaStyled.mediaATransform}`,
+        `${mediaStyled.mediaBTransform}`,
+      )
     } else if (booksPage < totalBooksPage) {
       if (booksPage + 1 === totalBooksPage) {
         if (remainderBookCount > 0) {
-          setBooksPage(booksPage + 1)
-          setBooksMoveStyle({
-            ...booksMoveStyle,
-            mediaATransform: `${
-              Number(mediaATransform) -
-              (Number(mediaAWidth) + 12) * remainderBookCount
+          setBooksMove(
+            booksPage + 1,
+            `${
+              Number(numMediaATransform) -
+              (Number(numMediaAWidth) + 12) * remainderBookCount
             }px`,
-            mediaBTransform: `${
-              Number(mediaBTransform) -
-              (Number(mediaBWidth) + 22) * remainderBookCount
+            `${
+              Number(numMediaBTransform) -
+              (Number(numMediaBWidth) + 22) * remainderBookCount
             }px`,
-          })
+          )
         } else if (remainderBookCount === 0) {
-          setBooksPage(booksPage + 1)
-          setBooksMoveStyle({
-            ...booksMoveStyle,
-            mediaATransform: `${
-              Number(mediaATransform) - (Number(mediaAWidth) + 12) * 6
+          setBooksMove(
+            booksPage + 1,
+            `${
+              Number(numMediaATransform) - (Number(numMediaAWidth) + 12) * 6
             }px`,
-            mediaBTransform: `${
-              Number(mediaBTransform) - (Number(mediaBWidth) + 22) * 6
+            `${
+              Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6
             }px`,
-          })
+          )
         }
       } else {
-        setBooksPage(booksPage + 1)
-        setBooksMoveStyle({
-          ...booksMoveStyle,
-          mediaATransform: `${
-            Number(mediaATransform) - (Number(mediaAWidth) + 12) * 6
-          }px`,
-          mediaBTransform: `${
-            Number(mediaBTransform) - (Number(mediaBWidth) + 22) * 6
-          }px`,
-        })
+        setBooksMove(
+          booksPage + 1,
+          `${Number(numMediaATransform) - (Number(numMediaAWidth) + 12) * 6}px`,
+          `${Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6}px`,
+        )
       }
     }
   }
@@ -111,79 +95,42 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const behindBooks = () => {
     if (booksPage === 2) {
       if (remainderBookCount > 0) {
-        setBooksPage(1)
-        setBooksMoveStyle({
-          ...booksMoveStyle,
-          mediaATransform: `${
-            Number(mediaATransform) +
-            (Number(mediaAWidth) + 12) * remainderBookCount
-          }px`,
-          mediaBTransform: `${
-            Number(mediaBTransform) +
-            (Number(mediaBWidth) + 22) * remainderBookCount
-          }px`,
-        })
+        setBooksMove(
+          1,
+          `${mediaStyled.mediaATransform}`,
+          `${mediaStyled.mediaBTransform}`,
+        )
       } else if (remainderBookCount === 0) {
-        setBooksPage(booksPage - 1)
-        setBooksMoveStyle({
-          ...booksMoveStyle,
-          mediaATransform: `${
-            Number(mediaATransform) + (Number(mediaAWidth) + 12) * 6
-          }px`,
-          mediaBTransform: `${
-            Number(mediaBTransform) + (Number(mediaBWidth) + 22) * 6
-          }px`,
-        })
+        setBooksMove(
+          booksPage + 1,
+          `${Number(numMediaATransform) + (Number(numMediaAWidth) + 12) * 6}px`,
+          `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
+        )
       }
-    } else if (booksPage === 1) {
-      const booksCount =
-        remainderBookCount > 0
-          ? (totalBooksPage - 1) * 6 + remainderBookCount
-          : totalBooksPage * 6
-      setBooksPage(1)
-      setBooksMoveStyle({
-        ...booksMoveStyle,
-        mediaATransform: `${
-          mediaStyled.mediaATransform &&
-          parseInt(
-            mediaStyled.mediaATransform.substr(
-              0,
-              mediaStyled.mediaATransform?.indexOf('px'),
-            ),
-            10,
-          ) * booksCount
+    } else if (
+      booksMoveStyle.mediaATransform === mediaStyled.mediaATransform ||
+      booksMoveStyle.mediaBTransform === mediaStyled.mediaBTransform
+    ) {
+      setBooksMove(
+        totalBooksPage,
+        `-${
+          Number(numMediaATransform) +
+          (Number(numMediaAWidth) + 12) * (booksData.length - 6) -
+          24
         }px`,
-        mediaBTransform: `${
-          mediaStyled.mediaBTransform &&
-          parseInt(
-            mediaStyled.mediaBTransform.substr(
-              0,
-              mediaStyled.mediaBTransform?.indexOf('px'),
-            ),
-            10,
-          ) * booksCount
+        `-${
+          Number(numMediaBTransform) +
+          (Number(numMediaBWidth) + 22) * (booksData.length - 6) -
+          44
         }px`,
-      })
-      // setBooksMoveStyle({
-      //   ...booksMoveStyle,
-      //   mediaATransform: `${
-      //     Number(mediaATransform) + (Number(mediaAWidth) + 12) * booksCount
-      //   }px`,
-      //   mediaBTransform: `${
-      //     Number(mediaBTransform) + (Number(mediaBWidth) + 22) * booksCount
-      //   }px`,
-      // })
+      )
     } else {
-      setBooksPage(booksPage - 1)
-      setBooksMoveStyle({
-        ...booksMoveStyle,
-        mediaATransform: `${
-          Number(mediaATransform) + (Number(mediaAWidth) + 12) * 6
-        }px`,
-        mediaBTransform: `${
-          Number(mediaBTransform) + (Number(mediaBWidth) + 22) * 6
-        }px`,
-      })
+      console.log('하이하이')
+      setBooksMove(
+        booksPage - 1,
+        `${Number(numMediaATransform) + (Number(numMediaAWidth) + 12) * 6}px`,
+        `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
+      )
     }
   }
 
@@ -197,20 +144,24 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
     </BookCarouselSC.BookList>
   )
 
+  const leftButton = totalBooksPage > 1 && (
+    <BookCarouselSC.BehindButton onClick={behindBooks} />
+  )
+
+  const rightButton = totalBooksPage > 1 && (
+    <BookCarouselSC.NextButton onClick={nextBooks} />
+  )
+
   return (
-    <BookCarouselSC.BookCarouselWrap>
+    <BookCarouselSC.BookCarouselWrap {...booksMoveStyle}>
       <BookCarouselSC.Header>{header}</BookCarouselSC.Header>
       <BookCarouselSC.Books {...booksMoveStyle}>
         {bookList}
       </BookCarouselSC.Books>
       <BookCarouselSC.ControlContainer>
-        <BookCarouselSC.Left>
-          <BookCarouselSC.BehindButton onClick={behindBooks} />
-        </BookCarouselSC.Left>
+        <BookCarouselSC.Left>{leftButton}</BookCarouselSC.Left>
         <BookCarouselSC.Center />
-        <BookCarouselSC.Right>
-          <BookCarouselSC.NextButton onClick={nextBooks} />
-        </BookCarouselSC.Right>
+        <BookCarouselSC.Right>{rightButton}</BookCarouselSC.Right>
       </BookCarouselSC.ControlContainer>
     </BookCarouselSC.BookCarouselWrap>
   )

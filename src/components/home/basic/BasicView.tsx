@@ -284,7 +284,7 @@ const BasicView: React.FC = () => {
     },
   ]
 
-  const newBooks = books.slice(0, 16)
+  const newBooks = books.slice(0, 33)
 
   return (
     <>
@@ -315,10 +315,10 @@ const BasicView: React.FC = () => {
           mediaStyled={{
             mediaAMinWidth: '375px',
             mediaAWidth: '100px',
-            mediaATransform: '520px',
+            mediaATransform: '12px',
             mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
-            mediaBTransform: '810px',
+            mediaBTransform: '22px',
           }}
         />
       </BasicSC.NewBooksSection>
