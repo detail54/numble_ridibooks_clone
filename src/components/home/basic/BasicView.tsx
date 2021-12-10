@@ -284,7 +284,7 @@ const BasicView: React.FC = () => {
     },
   ]
 
-  const newBooks = books.slice(0, 33)
+  const newBooks = books.slice(0, 36)
 
   return (
     <>
@@ -312,13 +312,14 @@ const BasicView: React.FC = () => {
         <BookCarousel
           header='집 앞 서점에 방금 나온 신간!'
           booksData={newBooks}
+          buttonColor='white'
           mediaStyled={{
             mediaAMinWidth: '375px',
             mediaAWidth: '100px',
             mediaATransform: '12px',
             mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
-            mediaBTransform: '22px',
+            mediaBTransform: '8px',
           }}
         />
       </BasicSC.NewBooksSection>

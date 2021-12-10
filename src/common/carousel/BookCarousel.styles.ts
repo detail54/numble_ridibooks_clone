@@ -2,10 +2,12 @@ import styled from 'styled-components'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
-import { IMediaStyled } from '../interface/interface'
+import { IButtonStyle, IMediaStyled } from '../interface/interface'
 // image
 import behindWhite from '../../asset/images/icons/behind_white.png'
 import nextWhite from '../../asset/images/icons/next_white.png'
+import behind from '../../asset/images/icons/behind.png'
+import next from '../../asset/images/icons/next.png'
 
 const BookCarouselWrap = styled.div`
   flex-direction: column;
@@ -28,6 +30,10 @@ const Header = styled.h1`
   margin: 0 auto 16px;
 `
 
+const BooksWrap = styled.div`
+  ${setStyles.setAlignX('center')}
+`
+
 const Books = styled.div`
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
@@ -46,7 +52,7 @@ const Books = styled.div`
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
     overflow: hidden;
-    width: 990px;
+    width: 970px;
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
@@ -62,13 +68,13 @@ const BookList = styled.ul`
   ${setStyles.setAlignY('center')}
   margin: 0;
   padding: 0;
-  transition: 0.2s;
+  transition: 0.4s;
   position: absolute;
-  left: 0;
+  left: 3px;
   top: 0;
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     transform: ${(props: IMediaStyled) =>
-      `translateX(${props.mediaBTransform})`};
+      `translateX(${props.mediaATransform})`};
   }
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
@@ -133,46 +139,49 @@ const BookItem = styled.li`
 const ControlContainer = styled.div`
   position: absolute;
   ${setStyles.setAlignX('center')}
-  width: 1100px;
+  width: 100%;
   height: 100%;
   top: -10px;
-  left: -55px;
-`
-
-const Center = styled.div`
-  position: relative;
-  max-width: 1000px;
-  width: 1000px;
 `
 
 const Left = styled.div`
-  width: 40px;
-  margin: 0px 20px;
+  flex: 1;
 `
 
 const Right = styled.div`
-  width: 40px;
-  margin: 0px 20px;
+  flex: 1;
 `
 
 const BehindButton = styled.button`
-  background-image: url(${behindWhite});
+  background-image: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? `url(${behindWhite})` : `url(${behind})`};
   background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #384252;
   border-radius: 30px;
   border: none;
-  opacity: 0.5;
   width: 40px;
   height: 40px;
   z-index: 2;
-  position: relative;
+  position: absolute;
+  left: 0;
   top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
   opacity: 0.95;
   box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
+
+  @media (min-width: ${(props: IButtonStyle) =>
+      props.mediaStyled.mediaAMinWidth}) {
+    transform: translate(20%, -40%);
+    display: ${(props: IButtonStyle) => props.hide && 'none'};
+  }
+
+  @media (min-width: ${(props: IButtonStyle) =>
+      props.mediaStyled.mediaBMinWidth}) {
+    transform: translate(-80%, -50%);
+    display: inherit;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -180,23 +189,36 @@ const BehindButton = styled.button`
 `
 
 const NextButton = styled.button`
-  background-image: url(${nextWhite});
+  background-image: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? `url(${nextWhite})` : `url(${next})`};
   background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #384252;
   border-radius: 30px;
   border: none;
-  opacity: 0.5;
   width: 40px;
   height: 40px;
   z-index: 2;
-  position: relative;
+  position: absolute;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   opacity: 0.95;
   box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
+
+  @media (min-width: ${(props: IButtonStyle) =>
+      props.mediaStyled.mediaAMinWidth}) {
+    transform: translate(-20%, -40%);
+    display: ${(props: IButtonStyle) => props.hide && 'none'};
+  }
+
+  @media (min-width: ${(props: IButtonStyle) =>
+      props.mediaStyled.mediaBMinWidth}) {
+    transform: translate(80%, -50%);
+    display: inherit;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -206,11 +228,11 @@ const NextButton = styled.button`
 export const BookCarouselSC = {
   BookCarouselWrap,
   Header,
+  BooksWrap,
   Books,
   BookList,
   BookItem,
   ControlContainer,
-  Center,
   Left,
   Right,
   BehindButton,

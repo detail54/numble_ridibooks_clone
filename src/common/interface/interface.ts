@@ -140,8 +140,17 @@ export interface ICarouselWrap {
 }
 
 // BookCarousel interface
+type TButtonColor = 'white' | 'black'
+
+export interface IButtonStyle {
+  buttonColor: TButtonColor
+  mediaStyled: IMediaStyled
+  hide: boolean
+}
+
 export interface IBookCarousel {
   header: string
   booksData: IBook[]
+  buttonColor: TButtonColor
   mediaStyled: IMediaStyled
 }
