@@ -170,3 +170,9 @@ export interface IBookLabelStyle {
 export interface IBookLabel {
   book: IBook
 }
+
+// BookRanking interface
+export interface IBookRanking {
+  bookData: IBook[]
+  header: string
+}

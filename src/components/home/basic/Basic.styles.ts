@@ -1,5 +1,7 @@
 import styled from 'styled-components'
+// global style
 import { setStyles } from '../../../asset/css/GlobalStyle'
+// interface
 import { IQuickMenuStyle } from './interface'
 
 const CarouselSection = styled.section`
@@ -45,9 +47,16 @@ const NewBooksSection = styled.section`
   ${setStyles.setAlignY('center')}
 `
 
+const NowMoreReadingRank = styled.section`
+  width: 100%;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+`
+
 export const BasicSC = {
   CarouselSection,
   QuickMenuSection,
   QuickMenuIcon,
   NewBooksSection,
+  NowMoreReadingRank,
 }

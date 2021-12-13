@@ -3,6 +3,7 @@ import React from 'react'
 import Carousel from '../../../common/carousel/Carousel'
 import TabsWrap from '../../../common/Tabs/TabsWrap'
 import BookCarousel from '../../../common/carousel/BookCarousel'
+import BookRanking from '../../../common/bookRanking/BookRanking'
 // interface
 import { ICarousel, ITab } from '../../../common/interface/interface'
 import { books } from '../../../config/data/books'
@@ -285,6 +286,7 @@ const BasicView: React.FC = () => {
   ]
 
   const newBooks = books.slice(0, 36)
+  const nowMoreReadingBooks = books.slice(36, 44)
 
   return (
     <>
@@ -323,6 +325,12 @@ const BasicView: React.FC = () => {
           }}
         />
       </BasicSC.NewBooksSection>
+      <BasicSC.NowMoreReadingRank>
+        <BookRanking
+          bookData={nowMoreReadingBooks}
+          header='사람들이 지금 많이 읽고 있는 책'
+        />
+      </BasicSC.NowMoreReadingRank>
     </>
   )
 }
