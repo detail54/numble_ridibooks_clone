@@ -1,18 +1,26 @@
 import React from 'react'
-import { IBook } from '../../config/data/books'
+// interface
+import { IBookComp } from '../interface/interface'
+// style
 import { BookSC } from './Book.styles'
+// common
+import BookLabel from '../bookLabel/BookLabel'
 
-const Book: React.FC<IBook> = (props) => {
-  const { thumbnail, title, author } = props
+const Book: React.FC<IBookComp> = (props) => {
+  const { book } = props
 
   return (
     <BookSC.BookWrap>
+      <BookLabel book={book} />
       <BookSC.BookLink to='/'>
-        <BookSC.BookThumbnail src={thumbnail} alt={`${title} thumbnail`} />
+        <BookSC.BookThumbnail
+          src={book.thumbnail}
+          alt={`${book.title} thumbnail`}
+        />
       </BookSC.BookLink>
       <BookSC.BookInfo>
-        <BookSC.BookTitle to='/'>{title}</BookSC.BookTitle>
-        <BookSC.BookAuthor to='/'>{author.name}</BookSC.BookAuthor>
+        <BookSC.BookTitle to='/'>{book.title}</BookSC.BookTitle>
+        <BookSC.BookAuthor to='/'>{book.author.name}</BookSC.BookAuthor>
       </BookSC.BookInfo>
     </BookSC.BookWrap>
   )

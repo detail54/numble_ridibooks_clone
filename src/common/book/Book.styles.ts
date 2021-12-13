@@ -4,6 +4,8 @@ import { setStyles } from '../../asset/css/GlobalStyle'
 
 const BookWrap = styled.div`
   width: 100%;
+  position: relative;
+  margin-top: 8px;
 `
 
 const BookLink = styled(Link)`

@@ -2,6 +2,7 @@
 
 // global style type
 import { TFontSize, TFontWeight, TAlign } from '../../asset/css/GlobalStyle'
+// book interface
 import { IBook } from '../../config/data/books'
 
 // Media style interface
@@ -139,6 +140,11 @@ export interface ICarouselWrap {
   mediaStyled: IMediaStyled
 }
 
+// Book interface
+export interface IBookComp {
+  book: IBook
+}
+
 // BookCarousel interface
 type TButtonColor = 'white' | 'black'
 
@@ -153,4 +159,14 @@ export interface IBookCarousel {
   booksData: IBook[]
   buttonColor: TButtonColor
   mediaStyled: IMediaStyled
+}
+
+// BookLabel interface
+export interface IBookLabelStyle {
+  rent?: boolean
+  sale?: boolean
+}
+
+export interface IBookLabel {
+  book: IBook
 }

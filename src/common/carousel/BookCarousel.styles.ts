@@ -46,7 +46,7 @@ const Books = styled.div`
         parseInt(
           props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
           10,
-        ) * 2.04
+        ) * 2.06
       }px`};
   }
 
@@ -58,7 +58,7 @@ const Books = styled.div`
         parseInt(
           props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
           10,
-        ) * 2.04
+        ) * 2.06
       }px`};
   }
 `
@@ -72,6 +72,7 @@ const BookList = styled.ul`
   position: absolute;
   top: 0;
   left: 6px;
+  z-index: 4;
 
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     transform: ${(props: IMediaStyled) =>

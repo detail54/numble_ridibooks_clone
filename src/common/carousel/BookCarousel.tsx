@@ -187,7 +187,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
     <BookCarouselSC.BookList {...booksMoveStyle}>
       {booksData.map((book) => (
         <BookCarouselSC.BookItem key={book.id} {...booksMoveStyle}>
-          <Book {...book} />
+          <Book book={book} />
         </BookCarouselSC.BookItem>
       ))}
     </BookCarouselSC.BookList>
