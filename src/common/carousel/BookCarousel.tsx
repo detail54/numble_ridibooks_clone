@@ -6,43 +6,43 @@ import { IBookCarousel, IMediaStyled } from '../interface/interface'
 // style
 import { BookCarouselSC } from './BookCarousel.styles'
 
+const pixelChangeNumber = (data: string) => {
+  return parseInt(data.substr(0, data.indexOf('px')), 10)
+}
+
 const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const { header, booksData, buttonColor, mediaStyled } = props
-  const [booksMoveStyle, setBooksMoveStyle] = useState<IMediaStyled>({
-    ...mediaStyled,
-  })
+
   const [booksPage, setBooksPage] = useState<number>(1)
   const [hideNextButton, setHideNextButton] = useState<boolean>(false)
   const [hideBehindButton, setHideBehindButton] = useState<boolean>(true)
-  const [bookListWidth, setBookListWidht] = useState<number>()
-  const bookListRef = useRef<HTMLUListElement>(null)
 
-  useEffect(() => {
-    setBookListWidht(bookListRef.current?.offsetWidth)
-  }, [])
+  // 처음 랜더링시 브라우저 너비저장 후,
+  // 브라우저 너비 변경시 changeBrowserWidth를 통해 실행할 작업들 진행 후 변경된 너비 값으로 저장
+  // ** 브라우저 크기 변경 이전 너비 확인 용도 **
+  const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
+  // 브라우저 너비 변경될때마다 저장.
+  const [changeBrowserWidth, setChangeBrowserWidth] = useState<number>(
+    window.innerWidth,
+  )
+
+  const [booksMoveStyle, setBooksMoveStyle] = useState<IMediaStyled>({
+    ...mediaStyled,
+  })
+
+  const bookListWidth =
+    booksData.length * (pixelChangeNumber(mediaStyled.mediaAWidth) + 12)
 
   const totalBooksPage = Math.ceil(booksData.length / 6)
   const remainderBookCount = booksData.length % 6
 
-  const pixelChangeNumber = (data: string) => {
-    return parseInt(data.substr(0, data.indexOf('px')), 10)
-  }
-
-  const numMediaAWidth = pixelChangeNumber(booksMoveStyle.mediaAWidth)
-
-  const numMediaATransform =
-    booksMoveStyle.mediaATransform &&
-    pixelChangeNumber(booksMoveStyle.mediaATransform)
-
+  const numMediaATransform = pixelChangeNumber(booksMoveStyle.mediaATransform)
   const numMediaBWidth = pixelChangeNumber(booksMoveStyle.mediaBWidth)
-
-  const numMediaBTransform =
-    booksMoveStyle.mediaBTransform &&
-    pixelChangeNumber(booksMoveStyle.mediaBTransform)
+  const numMediaBTransform = pixelChangeNumber(booksMoveStyle.mediaBTransform)
 
   const maxMediaBTransform =
     pixelChangeNumber(mediaStyled.mediaBTransform || '') -
-    (Number(numMediaBWidth) + 22) * (booksData.length - 6)
+    (numMediaBWidth + 22) * (booksData.length - 6)
 
   const setBooksMoveA = (mediaATransform: string) => {
     setBooksMoveStyle({
@@ -59,33 +59,62 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
     })
   }
 
+  useEffect(() => {
+    // 브라우저 너비 1000 미만일때만 브라우저 너비 변경 감지.
+    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+      window.addEventListener('resize', () =>
+        setChangeBrowserWidth(window.innerWidth),
+      )
+    }
+  }, [])
+
+  useEffect(() => {
+    // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
+    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+      if (
+        numMediaATransform - browserWidth >
+        parseInt(
+          `-${bookListWidth + pixelChangeNumber(mediaStyled.mediaATransform)}`,
+          10,
+        )
+      ) {
+        setHideNextButton(false)
+      } else if (browserWidth < changeBrowserWidth) {
+        setBooksMoveA(
+          `${numMediaATransform - (browserWidth - changeBrowserWidth)}px`,
+        )
+      }
+      setBrowserWidth(changeBrowserWidth)
+    }
+  }, [changeBrowserWidth])
+
   const nextBooks = () => {
     // MediaA 조건
-    console.log('ggggg')
-    console.log('window.innerWidth:::', window.innerWidth)
-    console.log('numMediaATransform:::', numMediaATransform)
-    console.log(
-      'Number(bookListWidth) - window.innerWidth:::',
-      Number(bookListWidth) - window.innerWidth,
-    )
-    if (window.innerWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
       if (
-        Number(numMediaATransform) - window.innerWidth <
-        Number(bookListWidth) - window.innerWidth
+        numMediaATransform - changeBrowserWidth <
+        bookListWidth - changeBrowserWidth
       ) {
-        setBooksMoveA(`3085px`)
+        setBooksMoveA(`${numMediaATransform - changeBrowserWidth}px`)
+        setHideBehindButton(false)
       }
       if (
-        `-${numMediaATransform}` ===
-        `${Number(bookListWidth) - window.innerWidth}`
+        numMediaATransform - changeBrowserWidth <=
+        parseInt(`-${bookListWidth - changeBrowserWidth}`, 10)
       ) {
+        setBooksMoveA(
+          `-${
+            bookListWidth -
+            changeBrowserWidth +
+            pixelChangeNumber(mediaStyled.mediaATransform)
+          }px`,
+        )
         setHideNextButton(true)
       }
-      setBooksMoveA(`${Number(numMediaATransform) - window.innerWidth}px`)
 
       // MediaB 조건
     } else if (
-      window.innerWidth >= pixelChangeNumber(mediaStyled.mediaBMinWidth)
+      changeBrowserWidth >= pixelChangeNumber(mediaStyled.mediaBMinWidth)
     ) {
       if (booksPage === totalBooksPage) {
         setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
@@ -95,24 +124,19 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
             setBooksMoveB(
               booksPage + 1,
               `${
-                Number(numMediaBTransform) -
-                (Number(numMediaBWidth) + 22) * remainderBookCount
+                numMediaBTransform - (numMediaBWidth + 22) * remainderBookCount
               }px`,
             )
           } else if (remainderBookCount === 0) {
             setBooksMoveB(
               booksPage + 1,
-              `${
-                Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6
-              }px`,
+              `${numMediaBTransform - (numMediaBWidth + 22) * 6}px`,
             )
           }
         } else {
           setBooksMoveB(
             booksPage + 1,
-            `${
-              Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6
-            }px`,
+            `${numMediaBTransform - (numMediaBWidth + 22) * 6}px`,
           )
         }
       }
@@ -120,137 +144,47 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   }
 
   const behindBooks = () => {
-    if (booksPage === 2) {
-      if (remainderBookCount > 0) {
-        setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
-      } else if (remainderBookCount === 0) {
+    // MediaA 조건
+    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+      if (
+        numMediaATransform + changeBrowserWidth >=
+        pixelChangeNumber(mediaStyled.mediaATransform)
+      ) {
+        setBooksMoveA(mediaStyled.mediaATransform)
+        setHideBehindButton(true)
+      } else {
+        setBooksMoveA(`${numMediaATransform + changeBrowserWidth}px`)
+        setHideNextButton(false)
+      }
+
+      // MediaB 조건
+    } else if (
+      changeBrowserWidth >= pixelChangeNumber(mediaStyled.mediaBMinWidth)
+    ) {
+      if (booksPage === 2) {
+        if (remainderBookCount > 0) {
+          setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
+        } else if (remainderBookCount === 0) {
+          setBooksMoveB(
+            booksPage + 1,
+            `${numMediaBTransform + (numMediaBWidth + 22) * 6}px`,
+          )
+        }
+      } else if (
+        booksMoveStyle.mediaBTransform === mediaStyled.mediaBTransform
+      ) {
+        setBooksMoveB(totalBooksPage, `${maxMediaBTransform}px`)
+      } else {
         setBooksMoveB(
-          booksPage + 1,
-          `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
+          booksPage - 1,
+          `${numMediaBTransform + (numMediaBWidth + 22) * 6}px`,
         )
       }
-    } else if (booksMoveStyle.mediaBTransform === mediaStyled.mediaBTransform) {
-      setBooksMoveB(totalBooksPage, `${maxMediaBTransform}px`)
-    } else {
-      setBooksMoveB(
-        booksPage - 1,
-        `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
-      )
     }
   }
 
-  // const setBooksMove = (
-  //   booksPageNumber: number,
-  //   mediaATransform: string,
-  //   mediaBTransform: string,
-  // ) => {
-  //   setBooksPage(booksPageNumber)
-  //   setBooksMoveStyle({
-  //     ...booksMoveStyle,
-  //     mediaATransform,
-  //     mediaBTransform,
-  //   })
-  // }
-
-  // const nextBooks = () => {
-  //   if (booksPage === totalBooksPage) {
-  //     setHideBehindButton(true)
-  //     setBooksMove(
-  //       1,
-  //       `${mediaStyled.mediaATransform}`,
-  //       `${mediaStyled.mediaBTransform}`,
-  //     )
-  //   } else if (booksPage < totalBooksPage) {
-  //     if (booksPage + 1 === totalBooksPage) {
-  //       setHideNextButton(true)
-  //       setHideBehindButton(false)
-  //       if (remainderBookCount > 0) {
-  //         setBooksMove(
-  //           booksPage + 1,
-  //           `${
-  //             Number(numMediaATransform) -
-  //             (Number(numMediaAWidth) + 12) * remainderBookCount
-  //           }px`,
-  //           `${
-  //             Number(numMediaBTransform) -
-  //             (Number(numMediaBWidth) + 22) * remainderBookCount
-  //           }px`,
-  //         )
-  //       } else if (remainderBookCount === 0) {
-  //         setBooksMove(
-  //           booksPage + 1,
-  //           `${
-  //             Number(numMediaATransform) - (Number(numMediaAWidth) + 12) * 6
-  //           }px`,
-  //           `${
-  //             Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6
-  //           }px`,
-  //         )
-  //       }
-  //     } else {
-  //       setHideNextButton(false)
-  //       setHideBehindButton(false)
-  //       setBooksMove(
-  //         booksPage + 1,
-  //         `${Number(numMediaATransform) - (Number(numMediaAWidth) + 12) * 6}px`,
-  //         `${Number(numMediaBTransform) - (Number(numMediaBWidth) + 22) * 6}px`,
-  //       )
-  //     }
-  //   }
-  // }
-
-  // console.log(booksMoveStyle.mediaBTransform)
-  // console.log(mediaStyled.mediaBTransform)
-
-  // const behindBooks = () => {
-  //   if (booksPage === 2) {
-  //     setHideNextButton(false)
-  //     setHideBehindButton(true)
-  //     if (remainderBookCount > 0) {
-  //       setBooksMove(
-  //         1,
-  //         `${mediaStyled.mediaATransform}`,
-  //         `${mediaStyled.mediaBTransform}`,
-  //       )
-  //     } else if (remainderBookCount === 0) {
-  //       setBooksMove(
-  //         booksPage + 1,
-  //         `${Number(numMediaATransform) + (Number(numMediaAWidth) + 12) * 6}px`,
-  //         `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
-  //       )
-  //     }
-  //   } else if (
-  //     booksMoveStyle.mediaATransform === mediaStyled.mediaATransform ||
-  //     booksMoveStyle.mediaBTransform === mediaStyled.mediaBTransform
-  //   ) {
-  //     setHideBehindButton(false)
-  //     setHideNextButton(true)
-  //     setBooksMove(
-  //       totalBooksPage,
-  //       `-${
-  //         Number(numMediaATransform) +
-  //         (Number(numMediaAWidth) + 12) * (booksData.length - 6) -
-  //         24
-  //       }px`,
-  //       `-${
-  //         Number(numMediaBTransform) +
-  //         (Number(numMediaBWidth) + 22) * (booksData.length - 6) -
-  //         16
-  //       }px`,
-  //     )
-  //   } else {
-  //     setHideBehindButton(false)
-  //     setHideNextButton(false)
-  //     setBooksMove(
-  //       booksPage - 1,
-  //       `${Number(numMediaATransform) + (Number(numMediaAWidth) + 12) * 6}px`,
-  //       `${Number(numMediaBTransform) + (Number(numMediaBWidth) + 22) * 6}px`,
-  //     )
-  //   }
-  // }
-
   const bookList = (
-    <BookCarouselSC.BookList ref={bookListRef} {...booksMoveStyle}>
+    <BookCarouselSC.BookList {...booksMoveStyle}>
       {booksData.map((book) => (
         <BookCarouselSC.BookItem key={book.id} {...booksMoveStyle}>
           <Book {...book} />

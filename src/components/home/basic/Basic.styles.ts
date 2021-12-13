@@ -40,6 +40,7 @@ const NewBooksSection = styled.section`
   background-color: #17202e;
   padding-top: 31px;
   padding-bottom: 36px;
+  overflow: hidden;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
 `

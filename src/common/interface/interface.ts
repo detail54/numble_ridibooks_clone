@@ -9,11 +9,11 @@ export interface IMediaStyled {
   mediaAMinWidth: string
   mediaAWidth: string
   mediaAHeight?: string
-  mediaATransform?: string
+  mediaATransform: string
   mediaBMinWidth: string
   mediaBWidth: string
   mediaBHeight?: string
-  mediaBTransform?: string
+  mediaBTransform: string
 }
 
 // Tab interface

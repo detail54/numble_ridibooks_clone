@@ -37,8 +37,7 @@ const setSideMediaStyle = (
     position: absolute;
     top: ${imgListMargin};
     left: 0;
-    transform: ${data.mediaATransform &&
-    `translateX(${
+    transform: ${`translateX(${
       // eslint-disable-next-line no-nested-ternary
       classType === 'view'
         ? cal === '-'
@@ -134,8 +133,7 @@ const setSideMediaStyle = (
     position: absolute;
     top: ${imgListMargin};
     left: 0;
-    transform: ${data.mediaBTransform &&
-    `translateX(${
+    transform: ${`translateX(${
       // eslint-disable-next-line no-nested-ternary
       classType === 'view'
         ? cal === '-'

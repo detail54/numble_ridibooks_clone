@@ -70,8 +70,9 @@ const BookList = styled.ul`
   padding: 0;
   transition: 0.4s;
   position: absolute;
-  left: 3px;
   top: 0;
+  left: 6px;
+
   @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
     transform: ${(props: IMediaStyled) =>
       `translateX(${props.mediaATransform})`};
