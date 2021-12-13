@@ -89,11 +89,10 @@ const BasicView: React.FC = () => {
       id: '신간',
       tabType: 'link',
       toLink: '/',
-      text: '신간',
+      text: '  신간  ',
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '66px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -115,7 +114,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -137,7 +135,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -159,7 +156,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -181,7 +177,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -203,7 +198,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -225,7 +219,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -247,7 +240,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -269,7 +261,6 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
-        width: '76px',
         height: '62px',
         alignx: 'center',
         aligny: 'center',
@@ -307,8 +298,10 @@ const BasicView: React.FC = () => {
           home/basic
         </Carousel>
       </BasicSC.CarouselSection>
-      <BasicSC.QuickMenuSection>
-        <TabsWrap datas={quickMenuData} />
+      <BasicSC.QuickMenuSection
+        mediaStyled={{ mediaAMinWidth: '375px', mediaBMinWidth: '700px' }}
+      >
+        <TabsWrap datas={quickMenuData} wrapStyle={{ flex: 1 }} />
       </BasicSC.QuickMenuSection>
       <BasicSC.NewBooksSection>
         <BookCarousel

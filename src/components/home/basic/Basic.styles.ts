@@ -20,14 +20,21 @@ const QuickMenuSection = styled.section`
 
   li {
     ${setStyles.setWidthAndHeight('86px', '67px')}
-    padding: 0px 0px 0px 10px;
-    margin: 0px 9px 0px 0px;
+
+    @media (min-width: ${(props: IQuickMenuStyle) =>
+      props.mediaStyled && props.mediaStyled.mediaAMinWidth}) {
+      padding: 0px;
+    }
+    @media (min-width: ${(props: IQuickMenuStyle) =>
+        props.mediaStyled && props.mediaStyled.mediaBMinWidth}) {
+      padding: 0 20px;
+    }
   }
 `
 
 const QuickMenuIcon = styled.img`
   ${setStyles.setWidthAndHeight('44px', '44px')}
-  background-color: ${(props: IQuickMenuStyle) => props.backgroundColor};
+  background-color: ${(props: IQuickMenuStyle) => props.backgroundColor || ''};
   font-weight: 300px;
   border-radius: 15px;
   margin-bottom: 8px;

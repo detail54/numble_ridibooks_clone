@@ -5,6 +5,7 @@ import { ITabsWrapStyles } from '../interface/interface'
 import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Ul = styled.ul`
+  width: 100%;
   ${(props: ITabsWrapStyles) =>
     props.listAlignX
       ? setStyles.setAlignX(props.listAlignX)
@@ -17,6 +18,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   transition: 0.2s;
+  flex: ${(props: ITabsWrapStyles) => props.flex};
 
   ${(props: ITabsWrapStyles) =>
     props.itemAlignX

@@ -165,7 +165,7 @@ const BehindButton = styled.button`
   border: none;
   width: 40px;
   height: 40px;
-  z-index: 2;
+  z-index: 4;
   position: absolute;
   left: 0;
   top: 50%;
@@ -175,16 +175,15 @@ const BehindButton = styled.button`
 
   @media (min-width: ${(props: IButtonStyle) =>
       props.mediaStyled.mediaAMinWidth}) {
-    transform: translate(20%, -40%);
+    transform: translate(20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
   }
 
   @media (min-width: ${(props: IButtonStyle) =>
       props.mediaStyled.mediaBMinWidth}) {
-    transform: translate(-80%, -50%);
+    transform: translate(-80%, -30%);
     display: inherit;
   }
-
   &:hover {
     opacity: 0.7;
   }
@@ -201,7 +200,7 @@ const NextButton = styled.button`
   border: none;
   width: 40px;
   height: 40px;
-  z-index: 2;
+  z-index: 4;
   position: absolute;
   right: 0;
   top: 50%;
@@ -212,7 +211,7 @@ const NextButton = styled.button`
 
   @media (min-width: ${(props: IButtonStyle) =>
       props.mediaStyled.mediaAMinWidth}) {
-    transform: translate(-20%, -40%);
+    transform: translate(-20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
   }
 

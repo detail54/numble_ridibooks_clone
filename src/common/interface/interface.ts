@@ -28,6 +28,7 @@ export interface ITabStyles {
   alignx?: TAlign
   aligny?: TAlign
   width?: string
+  flex?: number
   height?: string
   border?: string
   margin?: string
@@ -68,6 +69,7 @@ export interface ITabsWrapStyles {
   itemHoveropacity?: string
   itemUnderLine?: boolean
   itemEnabled?: boolean
+  flex?: number
 }
 
 export interface ITabWrap {

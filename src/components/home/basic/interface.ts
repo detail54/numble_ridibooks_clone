@@ -1,3 +1,9 @@
+interface IMediaStyled {
+  mediaAMinWidth: string
+  mediaBMinWidth: string
+}
+
 export interface IQuickMenuStyle {
-  backgroundColor: string
+  backgroundColor?: string
+  mediaStyled?: IMediaStyled
 }
