@@ -12,6 +12,7 @@ const BookRankingWrap = styled.div`
 const Header = styled.h1`
   max-width: 990px;
   margin: 0 auto 16px;
+  padding: 6px 20px 0;
   display: flex;
   font-size: 19px;
   flex-direction: column;
