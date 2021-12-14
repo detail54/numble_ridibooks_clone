@@ -7,12 +7,6 @@ import { ITabStyles } from '../interface/interface'
 import { colors, setStyles } from '../../asset/css/GlobalStyle'
 
 const LinkTab = styled(Link)`
-  ${(props: ITabStyles) =>
-    props.fontSize && setStyles.setFontSize(props.fontSize)}
-
-  ${(props: ITabStyles) =>
-    props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
-
   ${(props: ITabStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
 
   ${(props: ITabStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
@@ -74,9 +68,9 @@ const LinkTab = styled(Link)`
       `)}
 
   text-decoration: none;
+  color: ${(props: ITabStyles) => props.color || 'black'};
   border: ${(props: ITabStyles) => props.border || 'none'};
   border-radius: ${(props: ITabStyles) => props.borderradius || 'none'};
-  color: ${(props: ITabStyles) => props.color || 'black'};
   margin: ${(props: ITabStyles) => props.margin || '0px'};
   padding: ${(props: ITabStyles) => props.padding || '0px'};
   opacity: ${(props: ITabStyles) => props.opacity || ''};
@@ -84,12 +78,6 @@ const LinkTab = styled(Link)`
 `
 
 const BasicTab = styled.div`
-  ${(props: ITabStyles) =>
-    props.fontSize && setStyles.setFontSize(props.fontSize)}
-
-  ${(props: ITabStyles) =>
-    props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
-
   ${(props: ITabStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
 
   ${(props: ITabStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
@@ -168,6 +156,16 @@ const BasicTab = styled.div`
       : css``}
 `
 
+const Text = styled.div`
+  ${(props: ITabStyles) =>
+    props.fontSize && setStyles.setFontSize(props.fontSize)}
+
+  ${(props: ITabStyles) =>
+    props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
+
+  color: ${(props: ITabStyles) => props.color || 'black'};
+`
+
 const UnderLine = styled.span`
   display: block;
   height: 3px;
@@ -180,5 +178,6 @@ const UnderLine = styled.span`
 export const TabSC = {
   LinkTab,
   BasicTab,
+  Text,
   UnderLine,
 }

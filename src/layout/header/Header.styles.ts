@@ -17,13 +17,12 @@ const Divider = css`
 
 const Header = styled.header`
   background-color: #1f8ce6;
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
 `
 
 const Content = styled.div`
-  width: 100%;
   max-width: 1000px;
   display: flex;
   align-items: center;
@@ -68,6 +67,8 @@ const Nav = styled.nav`
 const Span = styled.span`
   ${(props: IHeaderStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
+  ${(props: IHeaderStyles) =>
+    props.fontSize && setStyles.setFontSize(props.fontSize)}
   margin-left: 3px;
 `
 
@@ -84,11 +85,11 @@ const Menu = styled.div`
   }
 `
 
-const MenuIcon = styled.svg`
+const MenuIcon = styled.img`
   margin-right: 15px;
-  fill: white;
   width: 20px;
   height: 20px;
+  filter: invert();
 `
 
 export const HeaderSC = {

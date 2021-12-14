@@ -46,7 +46,7 @@ const Books = styled.div`
         parseInt(
           props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
           10,
-        ) * 2.06
+        ) * 2.4
       }px`};
   }
 

@@ -29,18 +29,18 @@ const Tab: React.FC<ITab> = (props) => {
             {...styles}
           >
             {children}
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {line}
           </TabSC.LinkTab>
         ) : (
           <TabSC.LinkTab id={id} to={toLink} {...styles}>
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {children}
             {line}
           </TabSC.LinkTab>
         )) || (
           <TabSC.LinkTab id={id} to={toLink} {...styles}>
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {line}
           </TabSC.LinkTab>
         )
@@ -51,7 +51,7 @@ const Tab: React.FC<ITab> = (props) => {
             {...styles}
           >
             {children}
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {line}
           </TabSC.BasicTab>
         ) : (
@@ -60,7 +60,7 @@ const Tab: React.FC<ITab> = (props) => {
             {...styles}
             onClick={() => onClick && onClick(id)}
           >
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {children}
             {line}
           </TabSC.BasicTab>
@@ -70,7 +70,7 @@ const Tab: React.FC<ITab> = (props) => {
             {...styles}
             onClick={() => onClick && onClick(id)}
           >
-            {text}
+            <TabSC.Text {...styles}>{text}</TabSC.Text>
             {line}
           </TabSC.BasicTab>
         )

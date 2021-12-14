@@ -11,7 +11,7 @@ const CarouselSection = styled.section`
 const QuickMenuSection = styled.section`
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
-
+  
   ul {
     margin: 0;
     padding: 24px 13px;

@@ -89,7 +89,7 @@ const BasicView: React.FC = () => {
       id: '신간',
       tabType: 'link',
       toLink: '/',
-      text: '  신간  ',
+      text: 'ㅤ신간ㅤ',
       styles: {
         fontSize: '13px',
         fontWeight: 'light',
