@@ -174,7 +174,20 @@ export interface IBookLabel {
 }
 
 // BookRanking interface
+export interface IBookRankingItemStyle {
+  width?: string
+  height?: string
+}
+
 export interface IBookRanking {
   bookData: IBook[]
   header: string
+  timer: boolean
+  bookStyle?: IBookRankingItemStyle
+}
+
+export interface IBookRankingItem {
+  bookNumber: number
+  book: IBook
+  bookStyle?: IBookRankingItemStyle
 }

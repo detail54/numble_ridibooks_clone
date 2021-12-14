@@ -277,7 +277,7 @@ const BasicView: React.FC = () => {
   ]
 
   const newBooks = books.slice(0, 36)
-  const nowMoreReadingBooks = books.slice(36, 44)
+  const nowMoreReadingBooks = books.slice(36, 45)
 
   return (
     <>
@@ -322,6 +322,8 @@ const BasicView: React.FC = () => {
         <BookRanking
           bookData={nowMoreReadingBooks}
           header='사람들이 지금 많이 읽고 있는 책'
+          bookStyle={{ width: '50px', height: '70px' }}
+          timer
         />
       </BasicSC.NowMoreReadingRank>
     </>

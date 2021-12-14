@@ -17,6 +17,7 @@ const Book: React.FC<IBookComp> = (props) => {
           src={book.thumbnail}
           alt={`${book.title} thumbnail`}
         />
+        <BookSC.BookBorder />
       </BookSC.BookLink>
       <BookSC.BookInfo>
         <BookSC.BookTitle to='/'>{book.title}</BookSC.BookTitle>

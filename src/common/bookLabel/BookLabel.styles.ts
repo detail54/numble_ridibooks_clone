@@ -13,6 +13,7 @@ const Label = styled.div`
   position: absolute;
   top: -7px;
   left: -7px;
+  z-index: 2;
   ${setStyles.setAlignX('center')}
   ${setStyles.setWidthAndHeight('34px', '34px')}
 `

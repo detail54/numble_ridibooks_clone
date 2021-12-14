@@ -11,7 +11,8 @@ const BookRankingWrap = styled.div`
 
 const Header = styled.h1`
   max-width: 990px;
-  margin: 0 auto 16px;
+  margin: 0;
+  margin-bottom: 16px;
   padding: 6px 20px 0;
   display: flex;
   font-size: 19px;
@@ -20,7 +21,22 @@ const Header = styled.h1`
   color: black;
 `
 
+const ItemWrap = styled.ul`
+  display: grid;
+  grid: repeat(3, 94px);
+  grid-template-rows: repeat(3, 94px);
+  grid-template-columns: initial;
+  grid-template-areas: initial;
+  grid-auto-flow: column;
+  grid-auto-rows: initial;
+  grid-auto-columns: 308px;
+  grid-column-gap: 13px;
+  padding: 0 24px;
+  list-style-type: disc;
+`
+
 export const BookRankingSC = {
   BookRankingWrap,
   Header,
+  ItemWrap,
 }

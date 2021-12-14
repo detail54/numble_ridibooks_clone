@@ -34,8 +34,8 @@ const QuickMenuSection = styled.section`
 
 const QuickMenuIcon = styled.img`
   ${setStyles.setWidthAndHeight('44px', '44px')}
+  ${setStyles.setFontWeight('medium')}
   background-color: ${(props: IQuickMenuStyle) => props.backgroundColor || ''};
-  font-weight: 300px;
   border-radius: 15px;
   margin-bottom: 8px;
 `
