@@ -1,6 +1,10 @@
 import styled from 'styled-components'
+// lib
 import { Link } from 'react-router-dom'
+// style
 import { setStyles } from '../../asset/css/GlobalStyle'
+// interface
+import { IBookStyle } from '../interface/interface'
 
 const BookWrap = styled.div`
   width: 100%;
@@ -25,7 +29,7 @@ const BookBorder = styled.div`
   top: 0;
   left: 0;
   width: calc(100% - 2px);
-  height: 100%;
+  height: calc(100% - 4px);
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.2) 0,
@@ -45,7 +49,7 @@ const BookTitle = styled(Link)`
   ${setStyles.setWidthAndHeight('100%', '100%')}
   ${setStyles.setFontWeight('bold')}
   display: block;
-  color: white;
+  color: ${(props: IBookStyle) => props.textColor || 'black'};
   text-decoration: none;
 `
 

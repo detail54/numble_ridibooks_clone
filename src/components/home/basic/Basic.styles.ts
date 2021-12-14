@@ -61,10 +61,18 @@ const NowMoreReadingRank = styled.section`
   ${setStyles.setAlignY('center')}
 `
 
+const TodayDiscovery = styled.section`
+  width: 100%;
+  padding: 24px 0;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+`
+
 export const BasicSC = {
   CarouselSection,
   QuickMenuSection,
   QuickMenuIcon,
   NewBooksSection,
   NowMoreReadingRank,
+  TodayDiscovery,
 }

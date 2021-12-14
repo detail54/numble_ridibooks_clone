@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
-import { IButtonStyle, IMediaStyled } from '../interface/interface'
+import { IBookStyle, IButtonStyle, IMediaStyled } from '../interface/interface'
 // image
 import behindWhite from '../../asset/images/icons/behind_white.png'
 import nextWhite from '../../asset/images/icons/next_white.png'
@@ -25,7 +25,7 @@ const Header = styled.h1`
   padding: 6px 25px 0px;
   font-size: 19px;
   font-weight: normal;
-  color: white;
+  color: ${(props: IBookStyle) => props.textColor || 'black'};
   max-width: 1000px;
   margin: 0 auto 16px;
 `
@@ -156,11 +156,12 @@ const Right = styled.div`
 
 const BehindButton = styled.button`
   background-image: ${(props: IButtonStyle) =>
-    props.buttonColor === 'white' ? `url(${behindWhite})` : `url(${behind})`};
+    props.buttonColor === 'white' ? `url(${behind})` : `url(${behindWhite})`};
   background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #384252;
+  background-color: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? 'white' : '#384252'};
   border-radius: 30px;
   border: none;
   width: 40px;
@@ -191,11 +192,12 @@ const BehindButton = styled.button`
 
 const NextButton = styled.button`
   background-image: ${(props: IButtonStyle) =>
-    props.buttonColor === 'white' ? `url(${nextWhite})` : `url(${next})`};
+    props.buttonColor === 'white' ? `url(${next})` : `url(${nextWhite})`};
   background-size: 9px 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #384252;
+  background-color: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? 'white' : '#384252'};
   border-radius: 30px;
   border: none;
   width: 40px;

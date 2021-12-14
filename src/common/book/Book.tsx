@@ -7,7 +7,7 @@ import { BookSC } from './Book.styles'
 import BookLabel from '../bookLabel/BookLabel'
 
 const Book: React.FC<IBookComp> = (props) => {
-  const { book } = props
+  const { book, bookStyle } = props
 
   return (
     <BookSC.BookWrap>
@@ -20,7 +20,9 @@ const Book: React.FC<IBookComp> = (props) => {
         <BookSC.BookBorder />
       </BookSC.BookLink>
       <BookSC.BookInfo>
-        <BookSC.BookTitle to='/'>{book.title}</BookSC.BookTitle>
+        <BookSC.BookTitle to='/' {...bookStyle}>
+          {book.title}
+        </BookSC.BookTitle>
         <BookSC.BookAuthor to='/'>{book.author.name}</BookSC.BookAuthor>
       </BookSC.BookInfo>
     </BookSC.BookWrap>

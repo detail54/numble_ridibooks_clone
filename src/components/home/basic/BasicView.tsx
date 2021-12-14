@@ -278,6 +278,7 @@ const BasicView: React.FC = () => {
 
   const newBooks = books.slice(0, 36)
   const nowMoreReadingBooks = books.slice(36, 45)
+  const discoveryBook = books.slice(45, 62)
 
   return (
     <>
@@ -307,7 +308,7 @@ const BasicView: React.FC = () => {
         <BookCarousel
           header='집 앞 서점에 방금 나온 신간!'
           booksData={newBooks}
-          buttonColor='white'
+          buttonColor='black'
           mediaStyled={{
             mediaAMinWidth: '375px',
             mediaAWidth: '100px',
@@ -315,6 +316,9 @@ const BasicView: React.FC = () => {
             mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
             mediaBTransform: '4px',
+          }}
+          bookStyle={{
+            textColor: 'white',
           }}
         />
       </BasicSC.NewBooksSection>
@@ -326,6 +330,24 @@ const BasicView: React.FC = () => {
           timer
         />
       </BasicSC.NowMoreReadingRank>
+      <BasicSC.TodayDiscovery>
+        <BookCarousel
+          header='오늘, 리디의 발견'
+          booksData={discoveryBook}
+          buttonColor='white'
+          mediaStyled={{
+            mediaAMinWidth: '375px',
+            mediaAWidth: '100px',
+            mediaATransform: '12px',
+            mediaBMinWidth: '1000px',
+            mediaBWidth: '140px',
+            mediaBTransform: '4px',
+          }}
+          bookStyle={{
+            textColor: 'black',
+          }}
+        />
+      </BasicSC.TodayDiscovery>
     </>
   )
 }
