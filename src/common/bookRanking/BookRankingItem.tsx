@@ -5,15 +5,15 @@ import { IBookRankingItem } from '../interface/interface'
 import { BookRankingItemSC } from './BookRankingItem.styles'
 
 const BookRankingItem: React.FC<IBookRankingItem> = (props) => {
-  const { bookNumber, book, bookStyle } = props
+  const { bookNumber, book, bookSize, underLine } = props
 
   return (
     <BookRankingItemSC.ItemWrap>
-      <BookRankingItemSC.BookThunbnail {...bookStyle}>
+      <BookRankingItemSC.BookThunbnail bookSize={bookSize}>
         <BookRankingItemSC.BookImg src={book.thumbnail} alt={book.title} />
         <BookRankingItemSC.BookBorder />
       </BookRankingItemSC.BookThunbnail>
-      <BookRankingItemSC.BookInfoWrap>
+      <BookRankingItemSC.BookInfoWrap underLine={underLine}>
         <BookRankingItemSC.BookNumber>
           {bookNumber}
         </BookRankingItemSC.BookNumber>

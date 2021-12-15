@@ -21,6 +21,10 @@ const BookLink = styled(Link)`
 
 const BookThumbnail = styled.img`
   ${setStyles.setWidthAndHeight('100%', '100%')}
+
+  .img-error {
+    height: 219px;
+  }
 `
 
 const BookBorder = styled.div`

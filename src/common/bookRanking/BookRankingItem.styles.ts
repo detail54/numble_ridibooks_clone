@@ -16,8 +16,10 @@ const BookThunbnail = styled.div`
   height: 100%;
   margin-right: 18px;
   position: relative;
-  height: ${(props: IBookRankingItemStyle) => props.height || '117px'};
-  width: ${(props: IBookRankingItemStyle) => props.width || '80px'};
+  height: ${(props: IBookRankingItemStyle) =>
+    props.bookSize === 'large' ? '117px' : '70px'};
+  width: ${(props: IBookRankingItemStyle) =>
+    props.bookSize === 'large' ? '80px' : '50px'};
 `
 
 const BookImg = styled.img`
@@ -46,7 +48,8 @@ const BookInfoWrap = styled.div`
   ${setStyles.setAlignY('center')}
   height: 100%;
   flex: 1 1 auto;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: ${(props: IBookRankingItemStyle) =>
+    props.underLine && '1px solid #eeeeee'};
 `
 
 const BookNumber = styled.h3`

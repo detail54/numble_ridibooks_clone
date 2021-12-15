@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
+// interface
+import { IBookRankingItemStyle } from '../interface/interface'
 
 const BookRankingWrap = styled.div`
   flex-direction: column;
@@ -23,8 +25,10 @@ const Header = styled.h1`
 
 const ItemWrap = styled.ul`
   display: grid;
-  grid: repeat(3, 94px);
-  grid-template-rows: repeat(3, 94px);
+  grid: ${(props: IBookRankingItemStyle) =>
+    props.bookSize === 'large' ? 'repeat(3, 138px)' : 'repeat(3, 94px)'};
+  grid-template-rows: ${(props: IBookRankingItemStyle) =>
+    props.bookSize === 'large' ? 'repeat(3, 138px)' : 'repeat(3, 94px)'};
   grid-template-columns: initial;
   grid-template-areas: initial;
   grid-auto-flow: column;

@@ -180,20 +180,23 @@ export interface IBookLabel {
 }
 
 // BookRanking interface
+type TBookSize = 'large' | 'small'
+
 export interface IBookRankingItemStyle {
-  width?: string
-  height?: string
+  underLine?: boolean
+  bookSize?: TBookSize
 }
 
 export interface IBookRanking {
   bookData: IBook[]
   header: string
   timer: boolean
-  bookStyle?: IBookRankingItemStyle
+  bookSize?: TBookSize
 }
 
 export interface IBookRankingItem {
   bookNumber: number
   book: IBook
-  bookStyle?: IBookRankingItemStyle
+  bookSize?: TBookSize
+  underLine?: boolean
 }

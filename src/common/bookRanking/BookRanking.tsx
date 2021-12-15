@@ -8,7 +8,7 @@ import Time from '../time/Time'
 import BookRankingItem from './BookRankingItem'
 
 const BookRanking: React.FC<IBookRanking> = (props) => {
-  const { bookData, header, bookStyle, timer } = props
+  const { bookData, header, bookSize, timer } = props
 
   const timeComp = timer && <Time />
 
@@ -17,7 +17,8 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
       key={book.id}
       bookNumber={index + 1}
       book={book}
-      bookStyle={bookStyle}
+      bookSize={bookSize}
+      underLine={(index + 1) % 3 !== 0 && true}
     />
   ))
 
@@ -27,7 +28,9 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
         {timeComp}
         {header}
       </BookRankingSC.Header>
-      <BookRankingSC.ItemWrap>{books}</BookRankingSC.ItemWrap>
+      <BookRankingSC.ItemWrap bookSize={bookSize}>
+        {books}
+      </BookRankingSC.ItemWrap>
     </BookRankingSC.BookRankingWrap>
   )
 }
