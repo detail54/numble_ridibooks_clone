@@ -40,7 +40,7 @@ const QuickMenuIcon = styled.img`
   margin-bottom: 8px;
 `
 
-const NewBooksSection = styled.section`
+const LibraryNewBooksSection = styled.section`
   width: 100%;
   background-image: url('https://static.ridicdn.net/_next/static/images/recommended_book_background@desktop-cf4f6e0299ba7bd46fca9c85a9b757de.png');
   background-repeat: no-repeat;
@@ -70,7 +70,21 @@ const TodayDiscovery = styled.section`
 
 const BestSeller = styled.section`
   width: 100%;
-  padding: 25px 0;
+  padding: 24px 0;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+`
+
+const WeeklyNewBookSection = styled.section`
+  width: 100%;
+  padding: 24px 0;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
+`
+
+const InstaRecommendedBookSection = styled.section`
+  width: 100%;
+  padding: 24px 0;
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
 `
@@ -79,8 +93,10 @@ export const BasicSC = {
   CarouselSection,
   QuickMenuSection,
   QuickMenuIcon,
-  NewBooksSection,
+  LibraryNewBooksSection,
   NowMoreReadingRank,
   TodayDiscovery,
   BestSeller,
+  WeeklyNewBookSection,
+  InstaRecommendedBookSection,
 }

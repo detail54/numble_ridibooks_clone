@@ -6,11 +6,22 @@ import { BookRankingSC } from './BookRanking.styles'
 // common
 import Time from '../time/Time'
 import BookRankingItem from './BookRankingItem'
+// image
+import next from '../../asset/images/icons/next.png'
 
 const BookRanking: React.FC<IBookRanking> = (props) => {
-  const { bookData, header, bookSize, timer } = props
+  const { bookData, header, bookSize, timer, LinkHeader } = props
 
   const timeComp = timer && <Time />
+
+  const headerComp = LinkHeader ? (
+    <BookRankingSC.LinkHeader to='/'>
+      {header}
+      <BookRankingSC.LinkHeaderImg src={next} />
+    </BookRankingSC.LinkHeader>
+  ) : (
+    <BookRankingSC.TextHeader>{header}</BookRankingSC.TextHeader>
+  )
 
   const books = bookData.map((book, index) => (
     <BookRankingItem
@@ -26,7 +37,7 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
     <BookRankingSC.BookRankingWrap>
       <BookRankingSC.Header>
         {timeComp}
-        {header}
+        {headerComp}
       </BookRankingSC.Header>
       <BookRankingSC.ItemWrap bookSize={bookSize}>
         {books}

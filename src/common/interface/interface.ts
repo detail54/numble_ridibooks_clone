@@ -190,8 +190,9 @@ export interface IBookRankingItemStyle {
 export interface IBookRanking {
   bookData: IBook[]
   header: string
-  timer: boolean
+  timer?: boolean
   bookSize?: TBookSize
+  LinkHeader?: boolean
 }
 
 export interface IBookRankingItem {

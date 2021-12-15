@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+// lib
+import { Link } from 'react-router-dom'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 // interface
@@ -17,10 +19,27 @@ const Header = styled.h1`
   margin-bottom: 16px;
   padding: 6px 20px 0;
   display: flex;
-  font-size: 19px;
   flex-direction: column;
   font-weight: normal;
   color: black;
+`
+
+const TextHeader = styled.span`
+  font-size: 19px;
+  ${setStyles.setFontWeight('regular')}
+`
+
+const LinkHeader = styled(Link)`
+  ${setStyles.setFontWeight('regular')}
+  font-size: 19px;
+  text-decoration: none;
+  color: black;
+`
+
+const LinkHeaderImg = styled.img`
+  width: 15px;
+  height: 14px;
+  margin-left: 9px;
 `
 
 const ItemWrap = styled.ul`
@@ -42,5 +61,8 @@ const ItemWrap = styled.ul`
 export const BookRankingSC = {
   BookRankingWrap,
   Header,
+  TextHeader,
+  LinkHeader,
+  LinkHeaderImg,
   ItemWrap,
 }

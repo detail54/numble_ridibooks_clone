@@ -276,10 +276,12 @@ const BasicView: React.FC = () => {
     },
   ]
 
-  const newBooks = books.slice(0, 36)
+  const libraryNewBooks = books.slice(0, 36)
   const nowMoreReadingBooks = books.slice(36, 45)
   const discoveryBook = books.slice(45, 62)
   const bestSeller = books.slice(62, 71)
+  const weeklyNewBook = books.slice(71, 85)
+  const instaRecommendedBook = books.slice(85, 100)
 
   return (
     <>
@@ -305,10 +307,10 @@ const BasicView: React.FC = () => {
       >
         <TabsWrap datas={quickMenuData} wrapStyle={{ flex: 1 }} />
       </BasicSC.QuickMenuSection>
-      <BasicSC.NewBooksSection>
+      <BasicSC.LibraryNewBooksSection>
         <BookCarousel
           header='집 앞 서점에 방금 나온 신간!'
-          booksData={newBooks}
+          booksData={libraryNewBooks}
           buttonColor='black'
           mediaStyled={{
             mediaAMinWidth: '375px',
@@ -322,7 +324,7 @@ const BasicView: React.FC = () => {
             textColor: 'white',
           }}
         />
-      </BasicSC.NewBooksSection>
+      </BasicSC.LibraryNewBooksSection>
       <BasicSC.NowMoreReadingRank>
         <BookRanking
           bookData={nowMoreReadingBooks}
@@ -354,9 +356,45 @@ const BasicView: React.FC = () => {
           bookData={bestSeller}
           header='베스트셀러'
           bookSize='large'
-          timer
+          LinkHeader
         />
       </BasicSC.BestSeller>
+      <BasicSC.WeeklyNewBookSection>
+        <BookCarousel
+          header='금주의 신간'
+          booksData={weeklyNewBook}
+          buttonColor='white'
+          mediaStyled={{
+            mediaAMinWidth: '375px',
+            mediaAWidth: '100px',
+            mediaATransform: '12px',
+            mediaBMinWidth: '1000px',
+            mediaBWidth: '140px',
+            mediaBTransform: '4px',
+          }}
+          bookStyle={{
+            textColor: 'black',
+          }}
+        />
+      </BasicSC.WeeklyNewBookSection>
+      <BasicSC.InstaRecommendedBookSection>
+        <BookCarousel
+          header='리디북스토어 인스타그램 추천도서'
+          booksData={instaRecommendedBook}
+          buttonColor='white'
+          mediaStyled={{
+            mediaAMinWidth: '375px',
+            mediaAWidth: '100px',
+            mediaATransform: '12px',
+            mediaBMinWidth: '1000px',
+            mediaBWidth: '140px',
+            mediaBTransform: '4px',
+          }}
+          bookStyle={{
+            textColor: 'black',
+          }}
+        />
+      </BasicSC.InstaRecommendedBookSection>
     </>
   )
 }
