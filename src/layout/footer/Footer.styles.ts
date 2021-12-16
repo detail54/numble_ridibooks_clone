@@ -17,15 +17,30 @@ const FooterWrap = styled.div`
   max-width: 1000px;
   width: 100%;
   padding: 24px 16px;
-  margin-left: 40px;
   max-height: 700px;
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    margin-left: 0px;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    margin-left: 40px;
+  }
 `
 
 const FooterMenus = styled.div`
-  ${setStyles.setAlignX('unset')}
-  ${setStyles.setAlignY('start')}
-  width: 100%;
-  height: 170px;
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    ${setStyles.setAlignX('unset')}
+    ${setStyles.setAlignY('start')}
+    flex-direction: column;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    ${setStyles.setAlignX('unset')}
+    ${setStyles.setAlignY('start')}
+    width: 100%;
+    flex-direction: row;
+  }
 `
 
 const LinkTag = styled(Link)`
@@ -43,12 +58,20 @@ const LinkTag = styled(Link)`
 `
 
 const NoticeList = styled.ul`
-  ${setStyles.setAlignY('center')}
   min-width: 192px;
   margin: 0;
   margin-right: 42px;
   padding: 0;
   list-style: none;
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    ${setStyles.setAlignY('center')}
+    margin-bottom: 28px;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    ${setStyles.setAlignY('center')}
+  }
 
   li:not(:nth-last-child(1))::after {
     position: relative;
@@ -73,7 +96,6 @@ const UlTagList = styled.ul`
   padding: 0;
   padding-top: 6px;
   margin: 0;
-  margin-bottom: 48px;
   list-style-type: none;
 
   & > li:nth-child(n + 3) {
@@ -82,6 +104,15 @@ const UlTagList = styled.ul`
 
   & > li:nth-child(3) {
     margin-left: 36px;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    margin-bottom: 10px;
+    max-height: 230px;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    margin-bottom: 28px;
   }
 `
 
@@ -131,6 +162,17 @@ const LinkListItem = styled.li`
           padding: 0;
           margin-bottom: 16px;
         `}
+`
+
+const MoreCompanyInfo = styled.div`
+  ${setStyles.setAlignY('center')}
+  ${setStyles.setFontWeight('light')}
+  color: white;
+  font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const BusinessInfoWrap = styled.div`
@@ -255,6 +297,7 @@ export const FooterSC = {
   UlTagListItem,
   LinkList,
   LinkListItem,
+  MoreCompanyInfo,
   BusinessInfoWrap,
   BusinessInfoTitle,
   BusinessInfos,

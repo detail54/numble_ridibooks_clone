@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // style
 import { FooterSC } from './Footer.styles'
 // interface
@@ -23,6 +23,20 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
 
   const [showBusinessInfo, setShowBusinessInfo] = useState<boolean>(false)
   const [arrowImg, setArrowImg] = useState(down)
+  const [browserSize, setBrowserSize] = useState<string>(
+    window.innerWidth >= 1000 ? 'wide' : 'narrow',
+  )
+  const [showMoreInfo, setShowMoreinfo] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1000) {
+        setBrowserSize('wide')
+      } else {
+        setBrowserSize('narrow')
+      }
+    })
+  }, [])
 
   const createlinkList = (items: string[], display?: string) => (
     <FooterSC.LinkList display={display}>
@@ -45,6 +59,17 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
       setArrowImg(up)
     }
   }
+
+  const onMoreCompanyInfo = () => {
+    setShowMoreinfo(true)
+  }
+
+  const moreCompanyInfo = (
+    <FooterSC.MoreCompanyInfo onClick={onMoreCompanyInfo}>
+      더보기
+      <FooterSC.ArrowImg src={down} alt='down' />
+    </FooterSC.MoreCompanyInfo>
+  )
 
   const noticeListItem = noticeList.map((item) => (
     <FooterSC.NoticeListItem key={item}>
@@ -76,7 +101,29 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
   const snsListItem = createlinkList(snsList)
   const companyInfoListItem = createlinkList(companyInfoList)
 
-  const buisnessInfos = (
+  const footerContents =
+    browserSize === 'wide' ? (
+      <FooterSC.UlTagList>
+        <FooterSC.UlTagListItem>{ridiContentsListItem}</FooterSC.UlTagListItem>
+        <FooterSC.UlTagListItem>{questionListItem}</FooterSC.UlTagListItem>
+        <FooterSC.UlTagListItem>{snsListItem}</FooterSC.UlTagListItem>
+        <FooterSC.UlTagListItem>{companyInfoListItem}</FooterSC.UlTagListItem>
+      </FooterSC.UlTagList>
+    ) : (
+      <FooterSC.UlTagList>
+        <FooterSC.UlTagListItem>
+          {ridiContentsListItem}
+          {showMoreInfo && snsListItem}
+        </FooterSC.UlTagListItem>
+        <FooterSC.UlTagListItem>
+          {companyInfoListItem}
+          {showMoreInfo || moreCompanyInfo}
+          {showMoreInfo && questionListItem}
+        </FooterSC.UlTagListItem>
+      </FooterSC.UlTagList>
+    )
+
+  const buisnessInfoContents = (
     <>
       <FooterSC.BusinessInfos>
         <FooterSC.ContentWrap>
@@ -113,9 +160,9 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
     <>
       <FooterSC.BusinessInfoTitle onClick={onBusinessInfo}>
         리디(주) 사업자 정보
-        <FooterSC.ArrowImg src={arrowImg} />
+        <FooterSC.ArrowImg src={arrowImg} alt={`${arrowImg}`} />
       </FooterSC.BusinessInfoTitle>
-      {showBusinessInfo && buisnessInfos}
+      {showBusinessInfo && buisnessInfoContents}
     </>
   )
 
@@ -126,16 +173,7 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
       <FooterSC.FooterWrap>
         <FooterSC.FooterMenus>
           <FooterSC.NoticeList>{noticeListItem}</FooterSC.NoticeList>
-          <FooterSC.UlTagList>
-            <FooterSC.UlTagListItem>
-              {ridiContentsListItem}
-            </FooterSC.UlTagListItem>
-            <FooterSC.UlTagListItem>{questionListItem}</FooterSC.UlTagListItem>
-            <FooterSC.UlTagListItem>{snsListItem}</FooterSC.UlTagListItem>
-            <FooterSC.UlTagListItem>
-              {companyInfoListItem}
-            </FooterSC.UlTagListItem>
-          </FooterSC.UlTagList>
+          {footerContents}
         </FooterSC.FooterMenus>
         <FooterSC.BusinessInfoWrap>{buisnessInfo}</FooterSC.BusinessInfoWrap>
         <FooterSC.CompanyTermsWrap>
