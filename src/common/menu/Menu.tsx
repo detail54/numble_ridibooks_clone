@@ -1,13 +1,13 @@
 import React from 'react'
 // interface
-import { ITab } from '../interface/interface'
+import { IMenu } from '../interface/interface'
 // style
-import { TabSC } from './Tab.styles'
+import { MenuSC } from './Menu.styles'
 
-const Tab: React.FC<ITab> = (props) => {
+const Menu: React.FC<IMenu> = (props) => {
   const {
     id,
-    tabType,
+    menuType,
     toLink = '',
     text,
     children,
@@ -17,65 +17,65 @@ const Tab: React.FC<ITab> = (props) => {
     underLine,
   } = props
 
-  const line = underLine && <TabSC.UnderLine />
+  const line = underLine && <MenuSC.UnderLine />
 
   const content =
-    tabType === 'link'
+    menuType === 'link'
       ? (children && childrenFirst ? (
-          <TabSC.LinkTab
+          <MenuSC.LinkMenu
             id={id}
             to={toLink}
             onClick={() => onClick && onClick(id)}
             {...styles}
           >
             {children}
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {line}
-          </TabSC.LinkTab>
+          </MenuSC.LinkMenu>
         ) : (
-          <TabSC.LinkTab id={id} to={toLink} {...styles}>
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+          <MenuSC.LinkMenu id={id} to={toLink} {...styles}>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {children}
             {line}
-          </TabSC.LinkTab>
+          </MenuSC.LinkMenu>
         )) || (
-          <TabSC.LinkTab id={id} to={toLink} {...styles}>
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+          <MenuSC.LinkMenu id={id} to={toLink} {...styles}>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {line}
-          </TabSC.LinkTab>
+          </MenuSC.LinkMenu>
         )
       : (children && childrenFirst ? (
-          <TabSC.BasicTab
+          <MenuSC.BasicMenu
             id={id}
             onClick={() => onClick && onClick(id)}
             {...styles}
           >
             {children}
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {line}
-          </TabSC.BasicTab>
+          </MenuSC.BasicMenu>
         ) : (
-          <TabSC.BasicTab
+          <MenuSC.BasicMenu
             id={id}
             {...styles}
             onClick={() => onClick && onClick(id)}
           >
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {children}
             {line}
-          </TabSC.BasicTab>
+          </MenuSC.BasicMenu>
         )) || (
-          <TabSC.BasicTab
+          <MenuSC.BasicMenu
             id={id}
             {...styles}
             onClick={() => onClick && onClick(id)}
           >
-            <TabSC.Text {...styles}>{text}</TabSC.Text>
+            <MenuSC.Text {...styles}>{text}</MenuSC.Text>
             {line}
-          </TabSC.BasicTab>
+          </MenuSC.BasicMenu>
         )
 
   return <>{content}</>
 }
 
-export default Tab
+export default Menu

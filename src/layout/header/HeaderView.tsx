@@ -1,12 +1,12 @@
 import React from 'react'
 // common component
 import SearchBox from '../../common/input/SearchBox'
-import TabsWrap from '../../common/Tabs/TabsWrap'
+import MenuWrap from '../../common/menu/MenuWrap'
 // style
 import { HeaderSC } from './Header.styles'
 // interface
 import { IHeader } from './interface'
-import { ITab } from '../../common/interface/interface'
+import { IMenu } from '../../common/interface/interface'
 // global style
 import { colors } from '../../asset/css/GlobalStyle'
 // imges
@@ -34,10 +34,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
     MyMenuEnabled,
   } = props
 
-  const mainLinks: ITab[] = [
+  const mainLinks: IMenu[] = [
     {
       id: '홈',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: 'RIDIBOOKS',
       styles: {
@@ -51,7 +51,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '홈',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: 'RIDI',
       styles: {
@@ -72,10 +72,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
   ]
 
-  const signLinks: ITab[] = [
+  const signLinks: IMenu[] = [
     {
       id: '홈',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '회원가입',
       styles: {
@@ -93,7 +93,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '홈',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '로그인',
       styles: {
@@ -110,10 +110,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
   ]
 
-  const menuLinks: ITab[] = [
+  const menuLinks: IMenu[] = [
     {
       id: '홈',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '홈',
       styles: {
@@ -137,7 +137,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '알림',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/notice',
       text: '알림',
       styles: {
@@ -161,7 +161,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '카트',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/cart',
       text: '카트',
       styles: {
@@ -185,7 +185,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     },
     {
       id: '마이리디',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/mypage',
       text: '마이리디',
       styles: {
@@ -213,7 +213,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     <HeaderSC.Header>
       <HeaderSC.Content>
         <HeaderSC.Nav>
-          <TabsWrap datas={mainLinks} wrapStyle={{ listAlignX: 'left' }} />
+          <MenuWrap datas={mainLinks} wrapStyle={{ listAlignX: 'left' }} />
           <SearchBox
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
@@ -230,10 +230,10 @@ const HeaderView: React.FC<IHeader> = (props) => {
               maxWidth: '340px',
             }}
           />
-          <TabsWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
+          <MenuWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
         <HeaderSC.Menu>
-          <TabsWrap
+          <MenuWrap
             datas={menuLinks}
             wrapStyle={{ itemHoveropacity: '0.8', listAlignX: 'left' }}
           />

@@ -17,8 +17,8 @@ export interface IMediaStyled {
   mediaBTransform: string
 }
 
-// Tab interface
-export interface ITabStyles {
+// Menu interface
+export interface IMenuStyles {
   color?: string
   opacity?: string
   disabled?: boolean
@@ -46,22 +46,22 @@ export interface ITabStyles {
   choice?: boolean
 }
 
-type TabType = 'basic' | 'link'
+type TMenu = 'basic' | 'link'
 
-export interface ITab {
+export interface IMenu {
   id: string
-  tabType: TabType
+  menuType: TMenu
   toLink?: string
   children?: JSX.Element
   childrenFirst?: boolean
   text: string
-  styles?: ITabStyles
+  styles?: IMenuStyles
   onClick?: (data: string) => void
   underLine?: boolean
   underLineEnabled?: boolean
 }
 
-export interface ITabsWrapStyles {
+export interface IMenuWrapStyles {
   listAlignX?: string
   listAlignY?: string
   itemAlignX?: string
@@ -72,9 +72,9 @@ export interface ITabsWrapStyles {
   flex?: number
 }
 
-export interface ITabWrap {
-  datas: ITab[]
-  wrapStyle?: ITabsWrapStyles
+export interface IMenuWrap {
+  datas: IMenu[]
+  wrapStyle?: IMenuWrapStyles
   listItemEnabled?: boolean
 }
 

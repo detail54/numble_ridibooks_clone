@@ -1,11 +1,11 @@
 import React from 'react'
 // common
 import Carousel from '../../../common/carousel/Carousel'
-import TabsWrap from '../../../common/Tabs/TabsWrap'
+import MenuWrap from '../../../common/menu/MenuWrap'
 import BookCarousel from '../../../common/carousel/BookCarousel'
 import BookRanking from '../../../common/bookRanking/BookRanking'
 // interface
-import { ICarousel, ITab } from '../../../common/interface/interface'
+import { ICarousel, IMenu } from '../../../common/interface/interface'
 import { books } from '../../../config/data/books'
 // style
 import { BasicSC } from './Basic.styles'
@@ -84,10 +84,10 @@ const BasicView: React.FC = () => {
     },
   ]
 
-  const quickMenuData: ITab[] = [
+  const quickMenuData: IMenu[] = [
     {
       id: '신간',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: 'ㅤ신간ㅤ',
       styles: {
@@ -108,7 +108,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '이벤트',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '이벤트',
       styles: {
@@ -129,7 +129,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '베스트셀러 ',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '베스트셀러',
       styles: {
@@ -150,7 +150,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '대여전',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '대여전',
       styles: {
@@ -171,7 +171,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '지금 인기세트',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '지금 인기세트',
       styles: {
@@ -192,7 +192,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '신간 캘린더',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '신간 캘린더',
       styles: {
@@ -213,7 +213,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '일반 혜택지도',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '일반 혜택지도',
       styles: {
@@ -234,7 +234,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '위클리 쿠폰',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '위클리 쿠폰',
       styles: {
@@ -255,7 +255,7 @@ const BasicView: React.FC = () => {
     },
     {
       id: '리디페이퍼',
-      tabType: 'link',
+      menuType: 'link',
       toLink: '/',
       text: '리디페이퍼',
       styles: {
@@ -305,7 +305,7 @@ const BasicView: React.FC = () => {
       <BasicSC.QuickMenuSection
         mediaStyled={{ mediaAMinWidth: '375px', mediaBMinWidth: '700px' }}
       >
-        <TabsWrap datas={quickMenuData} wrapStyle={{ flex: 1 }} />
+        <MenuWrap datas={quickMenuData} wrapStyle={{ flex: 1 }} />
       </BasicSC.QuickMenuSection>
       <BasicSC.LibraryNewBooksSection>
         <BookCarousel

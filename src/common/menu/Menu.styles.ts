@@ -2,20 +2,20 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 // interface
-import { ITabStyles } from '../interface/interface'
+import { IMenuStyles } from '../interface/interface'
 // global style
 import { colors, setStyles } from '../../asset/css/GlobalStyle'
 
-const LinkTab = styled(Link)`
-  ${(props: ITabStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
+const LinkMenu = styled(Link)`
+  ${(props: IMenuStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
 
-  ${(props: ITabStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
+  ${(props: IMenuStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.width || props.height) &&
     setStyles.setWidthAndHeight(props.width, props.height)};
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.hoverColor ||
       props.hoverBgColor ||
       props.hoveropacity ||
@@ -35,7 +35,7 @@ const LinkTab = styled(Link)`
       props.hoverBorderRight,
     )}
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.bgcolor === 'dodgerBlue' &&
       css`
         color: white;
@@ -68,25 +68,25 @@ const LinkTab = styled(Link)`
       `)}
 
   text-decoration: none;
-  color: ${(props: ITabStyles) => props.color || 'black'};
-  border: ${(props: ITabStyles) => props.border || 'none'};
-  border-radius: ${(props: ITabStyles) => props.borderradius || 'none'};
-  margin: ${(props: ITabStyles) => props.margin || '0px'};
-  padding: ${(props: ITabStyles) => props.padding || '0px'};
-  opacity: ${(props: ITabStyles) => props.opacity || ''};
-  flex-flow: ${(props: ITabStyles) => props.flexflow || ''};
+  color: ${(props: IMenuStyles) => props.color || 'black'};
+  border: ${(props: IMenuStyles) => props.border || 'none'};
+  border-radius: ${(props: IMenuStyles) => props.borderradius || 'none'};
+  margin: ${(props: IMenuStyles) => props.margin || '0px'};
+  padding: ${(props: IMenuStyles) => props.padding || '0px'};
+  opacity: ${(props: IMenuStyles) => props.opacity || ''};
+  flex-flow: ${(props: IMenuStyles) => props.flexflow || ''};
 `
 
-const BasicTab = styled.div`
-  ${(props: ITabStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
+const BasicMenu = styled.div`
+  ${(props: IMenuStyles) => props.alignx && setStyles.setAlignX(props.alignx)}
 
-  ${(props: ITabStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
+  ${(props: IMenuStyles) => props.aligny && setStyles.setAlignY(props.aligny)}
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.width || props.height) &&
     setStyles.setWidthAndHeight(props.width, props.height)};
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.hoverColor ||
       props.hoverBgColor ||
       props.hoveropacity ||
@@ -106,7 +106,7 @@ const BasicTab = styled.div`
       props.hoverBorderRight,
     )}
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     (props.bgcolor === 'dodgerBlue' &&
       css`
         color: white;
@@ -139,15 +139,15 @@ const BasicTab = styled.div`
       `)}
 
   text-decoration: none;
-  border: ${(props: ITabStyles) => props.border || 'none'};
-  border-radius: ${(props: ITabStyles) => props.borderradius || 'none'};
-  color: ${(props: ITabStyles) => props.color || 'black'};
-  margin: ${(props: ITabStyles) => props.margin || '0px'};
-  padding: ${(props: ITabStyles) => props.padding || '0px'};
-  opacity: ${(props: ITabStyles) => props.opacity || ''};
-  flex-flow: ${(props: ITabStyles) => props.flexflow || ''};
+  border: ${(props: IMenuStyles) => props.border || 'none'};
+  border-radius: ${(props: IMenuStyles) => props.borderradius || 'none'};
+  color: ${(props: IMenuStyles) => props.color || 'black'};
+  margin: ${(props: IMenuStyles) => props.margin || '0px'};
+  padding: ${(props: IMenuStyles) => props.padding || '0px'};
+  opacity: ${(props: IMenuStyles) => props.opacity || ''};
+  flex-flow: ${(props: IMenuStyles) => props.flexflow || ''};
   cursor: pointer;
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     props.choice
       ? css`
           color: ${colors.dodgerblue_60};
@@ -157,13 +157,13 @@ const BasicTab = styled.div`
 `
 
 const Text = styled.div`
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     props.fontSize && setStyles.setFontSize(props.fontSize)}
 
-  ${(props: ITabStyles) =>
+  ${(props: IMenuStyles) =>
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 
-  color: ${(props: ITabStyles) => props.color || 'black'};
+  color: ${(props: IMenuStyles) => props.color || 'black'};
 `
 
 const UnderLine = styled.span`
@@ -175,9 +175,9 @@ const UnderLine = styled.span`
   bottom: -8px;
 `
 
-export const TabSC = {
-  LinkTab,
-  BasicTab,
+export const MenuSC = {
+  LinkMenu,
+  BasicMenu,
   Text,
   UnderLine,
 }

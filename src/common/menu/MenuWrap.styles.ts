@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components'
 // interface
-import { ITabsWrapStyles } from '../interface/interface'
+import { IMenuWrapStyles } from '../interface/interface'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Ul = styled.ul`
   width: 100%;
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     props.listAlignX
       ? setStyles.setAlignX(props.listAlignX)
       : setStyles.setAlignX('center')}
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     props.listAlignY
       ? setStyles.setAlignY(props.listAlignY)
       : setStyles.setAlignY('center')}
@@ -18,18 +18,18 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   transition: 0.2s;
-  flex: ${(props: ITabsWrapStyles) => props.flex};
+  flex: ${(props: IMenuWrapStyles) => props.flex};
 
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     props.itemAlignX
       ? setStyles.setAlignX(props.itemAlignX)
       : setStyles.setAlignX('center')}
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     props.itemAlignY
       ? setStyles.setAlignY(props.itemAlignY)
       : setStyles.setAlignY('center')}
 
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     props.itemUnderLine && !props.itemEnabled
       ? css`
           span {
@@ -42,7 +42,7 @@ const Li = styled.li`
           }
         `};
 
-  ${(props: ITabsWrapStyles) =>
+  ${(props: IMenuWrapStyles) =>
     !props.itemEnabled &&
     props.itemHoveropacity &&
     css`
@@ -55,7 +55,7 @@ const Li = styled.li`
     `}
 `
 
-export const TabsWrapSC = {
+export const MenuWrapSC = {
   Ul,
   Li,
 }

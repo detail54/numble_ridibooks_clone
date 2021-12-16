@@ -1,9 +1,9 @@
 import React from 'react'
 // interface
 import { IHome } from './interface'
-import { ITab } from '../../common/interface/interface'
+import { IMenu } from '../../common/interface/interface'
 // common component
-import LinkWrap from '../../common/Tabs/TabsWrap'
+import LinkWrap from '../../common/menu/MenuWrap'
 // style
 import { HomeSC } from './Home.styles'
 
@@ -18,10 +18,10 @@ const HomeView: React.FC<IHome> = (props) => {
     blEnabled,
   } = props
 
-  const categoryLinks: ITab[] = [
+  const categoryLinks: IMenu[] = [
     {
       id: 'basic',
-      tabType: 'basic',
+      menuType: 'basic',
       text: '이미지',
       styles: {
         fontSize: '16px',
@@ -36,7 +36,7 @@ const HomeView: React.FC<IHome> = (props) => {
     },
     {
       id: 'basic',
-      tabType: 'basic',
+      menuType: 'basic',
       text: '일반',
       styles: {
         fontSize: '16px',
@@ -52,7 +52,7 @@ const HomeView: React.FC<IHome> = (props) => {
     },
     {
       id: 'romance',
-      tabType: 'basic',
+      menuType: 'basic',
       text: '로맨스',
       styles: {
         fontSize: '16px',
@@ -68,7 +68,7 @@ const HomeView: React.FC<IHome> = (props) => {
     },
     {
       id: 'fantasy',
-      tabType: 'basic',
+      menuType: 'basic',
       text: '판타지',
       styles: {
         fontSize: '16px',
@@ -84,7 +84,7 @@ const HomeView: React.FC<IHome> = (props) => {
     },
     {
       id: 'webtoon',
-      tabType: 'basic',
+      menuType: 'basic',
       text: '만화',
       styles: {
         fontSize: '16px',
@@ -100,7 +100,7 @@ const HomeView: React.FC<IHome> = (props) => {
     },
     {
       id: 'bl',
-      tabType: 'basic',
+      menuType: 'basic',
       text: 'BL',
       styles: {
         fontSize: '16px',

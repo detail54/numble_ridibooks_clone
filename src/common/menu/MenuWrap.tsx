@@ -1,30 +1,30 @@
 import React from 'react'
 // interface
-import { ITabWrap } from '../interface/interface'
+import { IMenuWrap } from '../interface/interface'
 // component
-import Tab from './Tab'
+import Menu from './Menu'
 // style
-import { TabsWrapSC } from './TabsWrap.styles'
+import { MenuWrapSC } from './MenuWrap.styles'
 
-const TabsWrap: React.FC<ITabWrap> = (props) => {
+const MenuWrap: React.FC<IMenuWrap> = (props) => {
   const { datas, wrapStyle } = props
 
-  const tabs = (
-    <TabsWrapSC.Ul
+  const menu = (
+    <MenuWrapSC.Ul
       listAlignX={wrapStyle && wrapStyle.listAlignX}
       listAlignY={wrapStyle && wrapStyle.listAlignY}
     >
       {datas.map((data) => (
-        <TabsWrapSC.Li
+        <MenuWrapSC.Li
           key={`${data.text} link`}
           itemUnderLine={data.underLine}
           itemEnabled={data.underLineEnabled}
           {...wrapStyle}
         >
           {data.children ? (
-            <Tab
+            <Menu
               id={data.id}
-              tabType={data.tabType}
+              menuType={data.menuType}
               toLink={data.toLink}
               text={data.text}
               childrenFirst={data.childrenFirst}
@@ -34,11 +34,11 @@ const TabsWrap: React.FC<ITabWrap> = (props) => {
               underLineEnabled={data.underLineEnabled}
             >
               {data.children}
-            </Tab>
+            </Menu>
           ) : (
-            <Tab
+            <Menu
               id={data.id}
-              tabType={data.tabType}
+              menuType={data.menuType}
               toLink={data.toLink}
               text={data.text}
               styles={data.styles}
@@ -47,12 +47,12 @@ const TabsWrap: React.FC<ITabWrap> = (props) => {
               underLineEnabled={data.underLineEnabled}
             />
           )}
-        </TabsWrapSC.Li>
+        </MenuWrapSC.Li>
       ))}
-    </TabsWrapSC.Ul>
+    </MenuWrapSC.Ul>
   )
 
-  return <>{tabs}</>
+  return <>{menu}</>
 }
 
-export default TabsWrap
+export default MenuWrap
