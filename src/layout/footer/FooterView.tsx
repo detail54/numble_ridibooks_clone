@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // style
 import { FooterSC } from './Footer.styles'
 // interface
@@ -16,20 +16,35 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
     companyInfoList,
     businessInfoList1,
     businessInfoList2,
+    businessInfoList3,
+    businessInfoList4,
     termsLinkList,
   } = props
 
-  const createlinkList = (items: string[]) => (
-    <FooterSC.LinkList>
+  const [showBusinessInfo, setShowBusinessInfo] = useState<boolean>(false)
+  const [arrowImg, setArrowImg] = useState(down)
+
+  const createlinkList = (items: string[], display?: string) => (
+    <FooterSC.LinkList display={display}>
       {items.map((item) => (
-        <FooterSC.LinkListItem key={item}>
-          <FooterSC.LinkTag to='/' color='white'>
+        <FooterSC.LinkListItem key={item} display={display}>
+          <FooterSC.LinkTag to='/' display={display}>
             {item}
           </FooterSC.LinkTag>
         </FooterSC.LinkListItem>
       ))}
     </FooterSC.LinkList>
   )
+
+  const onBusinessInfo = () => {
+    if (showBusinessInfo) {
+      setShowBusinessInfo(false)
+      setArrowImg(down)
+    } else {
+      setShowBusinessInfo(true)
+      setArrowImg(up)
+    }
+  }
 
   const noticeListItem = noticeList.map((item) => (
     <FooterSC.NoticeListItem key={item}>
@@ -61,18 +76,72 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
   const snsListItem = createlinkList(snsList)
   const companyInfoListItem = createlinkList(companyInfoList)
 
+  const buisnessInfos = (
+    <>
+      <FooterSC.BusinessInfos>
+        <FooterSC.ContentWrap>
+          {businessInfoList1.map((info) => (
+            <FooterSC.Contents key={info} bar>
+              {info}
+            </FooterSC.Contents>
+          ))}
+        </FooterSC.ContentWrap>
+        <FooterSC.ContentWrap>
+          {businessInfoList2.map((info) => (
+            <FooterSC.Contents key={info}>{info}</FooterSC.Contents>
+          ))}
+        </FooterSC.ContentWrap>
+      </FooterSC.BusinessInfos>
+      <FooterSC.BusinessInfos>
+        <FooterSC.ContentWrap>
+          {businessInfoList3.map((info) => (
+            <FooterSC.Contents key={info} bar>
+              {info}
+            </FooterSC.Contents>
+          ))}
+        </FooterSC.ContentWrap>
+        <FooterSC.ContentWrap>
+          {businessInfoList4.map((info) => (
+            <FooterSC.Contents key={info}>{info}</FooterSC.Contents>
+          ))}
+        </FooterSC.ContentWrap>
+      </FooterSC.BusinessInfos>
+    </>
+  )
+
+  const buisnessInfo = (
+    <>
+      <FooterSC.BusinessInfoTitle onClick={onBusinessInfo}>
+        리디(주) 사업자 정보
+        <FooterSC.ArrowImg src={arrowImg} />
+      </FooterSC.BusinessInfoTitle>
+      {showBusinessInfo && buisnessInfos}
+    </>
+  )
+
+  const companyTerms = createlinkList(termsLinkList, 'flex')
+
   return (
     <FooterSC.Footer>
       <FooterSC.FooterWrap>
-        <FooterSC.NoticeList>{noticeListItem}</FooterSC.NoticeList>
-        <FooterSC.UlTagList>
-          <FooterSC.UlTagListItem>
-            {ridiContentsListItem}
-          </FooterSC.UlTagListItem>
-          <FooterSC.UlTagListItem>{questionListItem}</FooterSC.UlTagListItem>
-          <FooterSC.UlTagListItem>{snsListItem}</FooterSC.UlTagListItem>
-          <FooterSC.UlTagListItem>{companyInfoListItem}</FooterSC.UlTagListItem>
-        </FooterSC.UlTagList>
+        <FooterSC.FooterMenus>
+          <FooterSC.NoticeList>{noticeListItem}</FooterSC.NoticeList>
+          <FooterSC.UlTagList>
+            <FooterSC.UlTagListItem>
+              {ridiContentsListItem}
+            </FooterSC.UlTagListItem>
+            <FooterSC.UlTagListItem>{questionListItem}</FooterSC.UlTagListItem>
+            <FooterSC.UlTagListItem>{snsListItem}</FooterSC.UlTagListItem>
+            <FooterSC.UlTagListItem>
+              {companyInfoListItem}
+            </FooterSC.UlTagListItem>
+          </FooterSC.UlTagList>
+        </FooterSC.FooterMenus>
+        <FooterSC.BusinessInfoWrap>{buisnessInfo}</FooterSC.BusinessInfoWrap>
+        <FooterSC.CompanyTermsWrap>
+          <FooterSC.Company>&copy; RIDI Corp.</FooterSC.Company>
+          {companyTerms}
+        </FooterSC.CompanyTermsWrap>
       </FooterSC.FooterWrap>
     </FooterSC.Footer>
   )

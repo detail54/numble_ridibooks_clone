@@ -2,6 +2,11 @@
 
 import { createGlobalStyle, css } from 'styled-components'
 
+const mediaWidth = {
+  mediaA: '375px',
+  mediaB: '1000px',
+}
+
 export type TFontWeight =
   | 'thin'
   | 'light'
@@ -77,6 +82,7 @@ const setHoverEffect = (
 `
 
 export const setStyles = {
+  mediaWidth,
   setFontSize,
   setFontWeight,
   setWidthAndHeight,

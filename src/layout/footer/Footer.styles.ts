@@ -14,12 +14,18 @@ const Footer = styled.footer`
 `
 
 const FooterWrap = styled.div`
+  max-width: 1000px;
+  width: 100%;
+  padding: 24px 16px;
+  margin-left: 40px;
+  max-height: 700px;
+`
+
+const FooterMenus = styled.div`
   ${setStyles.setAlignX('unset')}
   ${setStyles.setAlignY('start')}
   width: 100%;
-  max-width: 1000px;
-  padding: 24px 16px;
-  max-height: 700px;
+  height: 170px;
 `
 
 const LinkTag = styled(Link)`
@@ -31,16 +37,16 @@ const LinkTag = styled(Link)`
       : css`
           ${setStyles.setFontWeight('thin')}
         `}
-  color: ${(props: IFooterStyle) => props.color || 'white'};
+  color: ${(props: IFooterStyle) =>
+    props.display === 'flex' ? '#7e8992' : 'white'};
   text-decoration: none;
 `
 
 const NoticeList = styled.ul`
-  ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
   min-width: 192px;
   margin: 0;
-  margin-right: 62px;
+  margin-right: 42px;
   padding: 0;
   list-style: none;
 
@@ -86,24 +92,162 @@ const UlTagListItem = styled.li`
 `
 
 const LinkList = styled.ul`
-  list-style-type: none;
-  margin-right: 16px;
-  position: relative;
   margin: 0;
   padding: 0;
+
+  ${(props: IFooterStyle) =>
+    props.display === 'flex'
+      ? css`
+          display: flex;
+          list-style-type: none;
+
+          li:not(:nth-last-child(1))::after {
+            position: relative;
+            font-size: 10px;
+            content: '|';
+            top: -0.3px;
+            margin: 0px 5.5px;
+          }
+        `
+      : css`
+          list-style-type: none;
+          margin-right: 16px;
+          position: relative;
+        `}
 `
 
 const LinkListItem = styled.li`
-  width: 140px;
-  line-height: initial;
+  ${(props: IFooterStyle) =>
+    props.display === 'flex'
+      ? css`
+          ${setStyles.setAlignY('center')}
+          height: 20px;
+          font-size: 11px;
+        `
+      : css`
+          width: 140px;
+          line-height: initial;
+          margin: 0;
+          padding: 0;
+          margin-bottom: 16px;
+        `}
+`
+
+const BusinessInfoWrap = styled.div`
   margin: 0;
   padding: 0;
   margin-bottom: 16px;
 `
 
+const BusinessInfoTitle = styled.div`
+  ${setStyles.setAlignX('left')}
+  ${setStyles.setAlignY('center')}
+  ${setStyles.setFontWeight('medium')}
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  font-size: 12px;
+  line-height: 1.82;
+  color: #7e8992;
+  transition: opacity 0.3s ease-in-out;
+  margin-bottom: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const ArrowImg = styled.img`
+  margin: 0;
+  padding: 0;
+  margin-left: 4px;
+  width: 8px;
+  height: 9px;
+  filter: invert(60%);
+  line-height: 20px;
+`
+
+const BusinessInfos = styled.div`
+  ${setStyles.setFontWeight('thin')}
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    display: block;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    display: flex;
+  }
+`
+
+const ContentWrap = styled.div`
+  ${setStyles.setAlignY('center')}
+  display: flex;
+  height: 19px;
+`
+
+const Contents = styled.span`
+  ${setStyles.setFontWeight('light')}
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  font-size: 10px;
+  line-height: 1.82;
+  color: #7e8992;
+
+  ${(props: IFooterStyle) =>
+    props.bar &&
+    css`
+      &::after {
+        position: relative;
+        font-size: 10px;
+        content: '|';
+        top: -0.3px;
+        margin: 0px 5.5px;
+      }
+    `}
+`
+
+const CompanyTermsWrap = styled.div`
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    display: block;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    ${setStyles.setAlignY('center')}
+  }
+
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  color: #7e8992;
+`
+
+const Company = styled.p`
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    margin-bottom: 0px;
+  }
+
+  ${setStyles.setFontWeight('light')}
+  width: 83px;
+  height: 17px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  margin-right: 24px;
+`
+
 export const FooterSC = {
   Footer,
   FooterWrap,
+  FooterMenus,
   LinkTag,
   NoticeList,
   NoticeListItem,
@@ -111,4 +255,12 @@ export const FooterSC = {
   UlTagListItem,
   LinkList,
   LinkListItem,
+  BusinessInfoWrap,
+  BusinessInfoTitle,
+  BusinessInfos,
+  ArrowImg,
+  ContentWrap,
+  Contents,
+  CompanyTermsWrap,
+  Company,
 }

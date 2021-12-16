@@ -6,10 +6,14 @@ export interface FooterViewProps {
   companyInfoList: string[]
   businessInfoList1: string[]
   businessInfoList2: string[]
+  businessInfoList3: string[]
+  businessInfoList4: string[]
   termsLinkList: string[]
 }
 
 export interface IFooterStyle {
   color?: string
   boldFont?: boolean
+  bar?: boolean
+  display?: string
 }
