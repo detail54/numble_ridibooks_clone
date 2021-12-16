@@ -35,7 +35,7 @@ const LinkTag = styled(Link)`
           ${setStyles.setFontWeight('bold')}
         `
       : css`
-          ${setStyles.setFontWeight('thin')}
+          ${setStyles.setFontWeight('light')}
         `}
   color: ${(props: IFooterStyle) =>
     props.display === 'flex' ? '#7e8992' : 'white'};
