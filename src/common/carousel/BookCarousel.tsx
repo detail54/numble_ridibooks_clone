@@ -16,7 +16,6 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const [booksPage, setBooksPage] = useState<number>(1)
   const [hideNextButton, setHideNextButton] = useState<boolean>(false)
   const [hideBehindButton, setHideBehindButton] = useState<boolean>(true)
-
   // 처음 랜더링시 브라우저 너비저장 후,
   // 브라우저 너비 변경시 changeBrowserWidth를 통해 실행할 작업들 진행 후 변경된 너비 값으로 저장
   // ** 브라우저 크기 변경 이전 너비 확인 용도 **
@@ -60,12 +59,9 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   }
 
   useEffect(() => {
-    // 브라우저 너비 1000 미만일때만 브라우저 너비 변경 감지.
-    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
-      window.addEventListener('resize', () =>
-        setChangeBrowserWidth(window.innerWidth),
-      )
-    }
+    window.addEventListener('resize', () =>
+      setChangeBrowserWidth(window.innerWidth),
+    )
   }, [])
 
   useEffect(() => {
