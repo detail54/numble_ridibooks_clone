@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/numble_ridibooks_clone/static/js/main.802b3368.chunk.js",
-    "main.js.map": "/numble_ridibooks_clone/static/js/main.802b3368.chunk.js.map",
+    "main.js": "/numble_ridibooks_clone/static/js/main.db63bd2b.chunk.js",
+    "main.js.map": "/numble_ridibooks_clone/static/js/main.db63bd2b.chunk.js.map",
     "runtime-main.js": "/numble_ridibooks_clone/static/js/runtime-main.b8161cf1.js",
     "runtime-main.js.map": "/numble_ridibooks_clone/static/js/runtime-main.b8161cf1.js.map",
     "static/js/2.52ebf79a.chunk.js": "/numble_ridibooks_clone/static/js/2.52ebf79a.chunk.js",
@@ -22,6 +22,6 @@
   "entrypoints": [
     "static/js/runtime-main.b8161cf1.js",
     "static/js/2.52ebf79a.chunk.js",
-    "static/js/main.802b3368.chunk.js"
+    "static/js/main.db63bd2b.chunk.js"
   ]
 }
