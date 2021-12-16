@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
 
-const HomeMenu = styled.div`
+const HomeMenu = styled.nav`
   border-bottom: 1px solid #e3e3e3;
   margin-bottom: 20px;
   ${setStyles.setWidthAndHeight('100%', '48px')}
