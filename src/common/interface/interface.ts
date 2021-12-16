@@ -144,7 +144,7 @@ export interface ICarouselWrap {
 
 // Book interface
 export interface IBookStyle {
-  textColor?: string
+  color?: string
 }
 
 export interface IBookComp {

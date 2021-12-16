@@ -321,7 +321,7 @@ const BasicView: React.FC = () => {
             mediaBTransform: '4px',
           }}
           bookStyle={{
-            textColor: 'white',
+            color: 'white',
           }}
         />
       </BasicSC.LibraryNewBooksSection>
@@ -347,7 +347,7 @@ const BasicView: React.FC = () => {
             mediaBTransform: '4px',
           }}
           bookStyle={{
-            textColor: 'black',
+            color: 'black',
           }}
         />
       </BasicSC.TodayDiscovery>
@@ -373,7 +373,7 @@ const BasicView: React.FC = () => {
             mediaBTransform: '4px',
           }}
           bookStyle={{
-            textColor: 'black',
+            color: 'black',
           }}
         />
       </BasicSC.WeeklyNewBookSection>
@@ -391,7 +391,7 @@ const BasicView: React.FC = () => {
             mediaBTransform: '4px',
           }}
           bookStyle={{
-            textColor: 'black',
+            color: 'black',
           }}
         />
       </BasicSC.InstaRecommendedBookSection>

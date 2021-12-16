@@ -25,7 +25,7 @@ const Header = styled.h1`
   padding: 6px 25px 0px;
   font-size: 19px;
   font-weight: normal;
-  color: ${(props: IBookStyle) => props.textColor || 'black'};
+  color: ${(props: IBookStyle) => props.color || 'black'};
   max-width: 1000px;
   margin: 0 auto 16px;
 `

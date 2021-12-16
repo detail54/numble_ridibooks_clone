@@ -6,8 +6,9 @@ import { TimeSC } from './Time.styles'
 
 const Time: React.FC = () => {
   const [time, setTime] = useState<string>(
-    `${String(new Date().getHours()).padStart(2, '0')}시 
-      ${String(new Date().getMinutes()).padStart(2, '0')}분`,
+    `${String(new Date().getHours()).padStart(2, '0')}시 ${String(
+      new Date().getMinutes(),
+    ).padStart(2, '0')}분`,
   )
 
   const currentTime = () => {
@@ -19,9 +20,9 @@ const Time: React.FC = () => {
   }
 
   useEffect(() => {
-    const timer = setTimeout(currentTime, 1000)
-    return () => clearTimeout(timer)
-  }, [time])
+    const timer = setInterval(currentTime, 1000)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <TimeSC.TimeWrap>

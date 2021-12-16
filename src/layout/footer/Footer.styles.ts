@@ -30,7 +30,7 @@ const FooterMenus = styled.div`
 
 const LinkTag = styled(Link)`
   ${(props: IFooterStyle) =>
-    props.boldFont
+    props.fontWeight === 'bold'
       ? css`
           ${setStyles.setFontWeight('bold')}
         `

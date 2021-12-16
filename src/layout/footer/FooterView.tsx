@@ -48,7 +48,7 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
 
   const noticeListItem = noticeList.map((item) => (
     <FooterSC.NoticeListItem key={item}>
-      <FooterSC.LinkTag to='/' color='white' boldFont>
+      <FooterSC.LinkTag to='/' color='white' fontWeight='bold'>
         {item}
       </FooterSC.LinkTag>
     </FooterSC.NoticeListItem>
@@ -59,7 +59,7 @@ const FooterView: React.FC<FooterViewProps> = (props) => {
       {ridiContentsList.map((item, index) => (
         <FooterSC.LinkListItem key={item}>
           {index === 0 ? (
-            <FooterSC.LinkTag to='/' color='white' boldFont>
+            <FooterSC.LinkTag to='/' color='white' fontWeight='bold'>
               {item}
             </FooterSC.LinkTag>
           ) : (

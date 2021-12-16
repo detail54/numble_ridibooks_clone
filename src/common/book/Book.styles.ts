@@ -17,6 +17,7 @@ const BookLink = styled(Link)`
   ${setStyles.setWidthAndHeight('100%', '100%')}
   position: relative;
   text-decoration: none;
+  overflow: hidden;
 `
 
 const BookThumbnail = styled.img`
@@ -53,7 +54,7 @@ const BookTitle = styled(Link)`
   ${setStyles.setWidthAndHeight('100%', '100%')}
   ${setStyles.setFontWeight('bold')}
   display: block;
-  color: ${(props: IBookStyle) => props.textColor || 'black'};
+  color: ${(props: IBookStyle) => props.color || 'black'};
   text-decoration: none;
 `
 

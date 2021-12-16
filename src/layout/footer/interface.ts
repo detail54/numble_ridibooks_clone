@@ -11,8 +11,10 @@ export interface FooterViewProps {
   termsLinkList: string[]
 }
 
+type TfontWeight = 'bold' | 'light'
+
 export interface IFooterStyle {
-  boldFont?: boolean
+  fontWeight?: TfontWeight
   bar?: boolean
   display?: string
 }
