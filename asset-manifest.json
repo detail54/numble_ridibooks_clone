@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/numble_ridibooks_clone/static/js/main.a0ca0b28.chunk.js",
-    "main.js.map": "/numble_ridibooks_clone/static/js/main.a0ca0b28.chunk.js.map",
+    "main.js": "/numble_ridibooks_clone/static/js/main.802b3368.chunk.js",
+    "main.js.map": "/numble_ridibooks_clone/static/js/main.802b3368.chunk.js.map",
     "runtime-main.js": "/numble_ridibooks_clone/static/js/runtime-main.b8161cf1.js",
     "runtime-main.js.map": "/numble_ridibooks_clone/static/js/runtime-main.b8161cf1.js.map",
-    "static/js/2.4891d12a.chunk.js": "/numble_ridibooks_clone/static/js/2.4891d12a.chunk.js",
-    "static/js/2.4891d12a.chunk.js.map": "/numble_ridibooks_clone/static/js/2.4891d12a.chunk.js.map",
+    "static/js/2.52ebf79a.chunk.js": "/numble_ridibooks_clone/static/js/2.52ebf79a.chunk.js",
+    "static/js/2.52ebf79a.chunk.js.map": "/numble_ridibooks_clone/static/js/2.52ebf79a.chunk.js.map",
     "index.html": "/numble_ridibooks_clone/index.html",
-    "static/js/2.4891d12a.chunk.js.LICENSE.txt": "/numble_ridibooks_clone/static/js/2.4891d12a.chunk.js.LICENSE.txt",
+    "static/js/2.52ebf79a.chunk.js.LICENSE.txt": "/numble_ridibooks_clone/static/js/2.52ebf79a.chunk.js.LICENSE.txt",
     "static/media/behind.f1c60298.png": "/numble_ridibooks_clone/static/media/behind.f1c60298.png",
     "static/media/behind_white.8d411e10.png": "/numble_ridibooks_clone/static/media/behind_white.8d411e10.png",
     "static/media/bell_blank.00e2adfc.png": "/numble_ridibooks_clone/static/media/bell_blank.00e2adfc.png",
@@ -21,7 +21,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b8161cf1.js",
-    "static/js/2.4891d12a.chunk.js",
-    "static/js/main.a0ca0b28.chunk.js"
+    "static/js/2.52ebf79a.chunk.js",
+    "static/js/main.802b3368.chunk.js"
   ]
 }
