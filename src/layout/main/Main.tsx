@@ -14,7 +14,6 @@ const Main: React.FC = () => {
     <MainSC.Main>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='numble_ridibooks_clone/' element={<Home />} />
         <Route path='/notice' element={<Notice />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/mypage' element={<MyPage />} />
