@@ -12,7 +12,6 @@ export interface FooterViewProps {
 }
 
 export interface IFooterStyle {
-  color?: string
   boldFont?: boolean
   bar?: boolean
   display?: string
