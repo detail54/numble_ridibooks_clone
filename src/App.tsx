@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter basename='https://detail54.github.io/numble_ridibooks_clone/'>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Header />
         <Main />
         <Footer />
