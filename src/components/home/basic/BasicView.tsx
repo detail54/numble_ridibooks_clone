@@ -92,11 +92,8 @@ const BasicView: React.FC = () => {
       text: 'ㅤ신간ㅤ',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -113,11 +110,8 @@ const BasicView: React.FC = () => {
       text: '이벤트',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -134,11 +128,8 @@ const BasicView: React.FC = () => {
       text: '베스트셀러',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -155,11 +146,8 @@ const BasicView: React.FC = () => {
       text: '대여전',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -176,11 +164,8 @@ const BasicView: React.FC = () => {
       text: '지금 인기세트',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -197,11 +182,8 @@ const BasicView: React.FC = () => {
       text: '신간 캘린더',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -218,11 +200,8 @@ const BasicView: React.FC = () => {
       text: '일반 혜택지도',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -239,11 +218,8 @@ const BasicView: React.FC = () => {
       text: '위클리 쿠폰',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -260,11 +236,8 @@ const BasicView: React.FC = () => {
       text: '리디페이퍼',
       styles: {
         fontSize: '13px',
-        fontWeight: 'light',
-        height: '62px',
-        alignx: 'center',
-        aligny: 'center',
-        flexflow: 'row wrap',
+        color: '#525A61',
+        flexDirection: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon

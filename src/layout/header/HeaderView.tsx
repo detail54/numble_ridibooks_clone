@@ -42,6 +42,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
       text: 'RIDIBOOKS',
       styles: {
         fontSize: 'medium',
+        mediaAFontSize: '15px',
+        mediaBFontSize: 'medium',
         fontWeight: 'bold',
         hoveropacity: '0.8',
         height: '33px',
@@ -56,6 +58,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
       text: 'RIDI',
       styles: {
         fontSize: 'medium',
+        mediaAFontSize: '15px',
+        mediaBFontSize: 'medium',
         fontWeight: 'bold',
         hoveropacity: '0.8',
         height: '33px',
@@ -63,11 +67,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
         opacity: '0.6',
         color: 'white',
       },
-      children: (
-        <HeaderSC.Span fontSize='medium' fontWeight='light'>
-          Select
-        </HeaderSC.Span>
-      ),
+      children: <HeaderSC.Span fontWeight='light'>Select</HeaderSC.Span>,
       childrenFirst: false,
     },
   ]

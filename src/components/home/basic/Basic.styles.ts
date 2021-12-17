@@ -14,18 +14,28 @@ const QuickMenuSection = styled.section`
   
   ul {
     margin: 0;
-    padding: 24px 13px;
     max-width: 1000px;
+
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+      padding: 16px 3px;
+    }
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      padding: 24px 13px;
+    }
   }
 
   li {
-    ${setStyles.setWidthAndHeight('86px', '67px')}
-
+    text-align: center;
+    ${setStyles.setFontWeight('light')}
     @media (min-width: ${setStyles.mediaWidth.mediaA}) {
       padding: 0px;
+      height: 83px;
+      ${setStyles.setAlignY('start')}
     }
     @media (min-width: ${setStyles.mediaWidth.mediaB}) {
       padding: 0 20px;
+      height: 62px;
+      ${setStyles.setAlignY('center')}
     }
   }
 `

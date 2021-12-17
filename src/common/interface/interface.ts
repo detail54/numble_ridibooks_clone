@@ -21,6 +21,8 @@ export interface IMenuStyles {
   opacity?: string
   disabled?: boolean
   fontSize?: TFontSize
+  mediaAFontSize?: TFontSize | string
+  mediaBFontSize?: TFontSize | string
   fontWeight?: TFontWeight
   bgcolor?: TButtonBgColor
   alignx?: TAlign
@@ -40,6 +42,7 @@ export interface IMenuStyles {
   hoverBorderBottom?: string
   hoverBorderLeft?: string
   hoverBorderRight?: string
+  flexDirection?: string
   flexflow?: string
   choice?: boolean
 }
