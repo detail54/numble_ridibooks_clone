@@ -22,7 +22,7 @@ const setSideMediaStyle = (
   classType: TClassType,
   data: IMediaStyled,
 ) => css`
-  @media (min-width: ${data.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     width: ${`${
       parseInt(data.mediaAWidth.substr(0, data.mediaAWidth.indexOf('px')), 10) -
       10
@@ -118,7 +118,7 @@ const setSideMediaStyle = (
       : css``}
   }
 
-  @media (min-width: ${data.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     width: ${`${
       parseInt(data.mediaBWidth.substr(0, data.mediaBWidth.indexOf('px')), 10) -
       10
@@ -237,15 +237,15 @@ const Imgs = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     height: ${(props: IMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     height: ${(props: IMediaStyled) => props.mediaBHeight};
   }
 
   .view {
-    @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
       cursor: pointer;
       width: ${(props: IMediaStyled) => props.mediaAWidth};
       height: ${(props: IMediaStyled) => props.mediaAHeight};
@@ -255,7 +255,7 @@ const Imgs = styled.ul`
       transform: ${(props: IMediaStyled) =>
         `translateX(${props.mediaATransform})`};
     }
-    @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
       cursor: pointer;
       width: ${(props: IMediaStyled) => props.mediaBWidth};
       height: ${(props: IMediaStyled) => props.mediaBHeight};
@@ -287,13 +287,13 @@ const Imgs = styled.ul`
 
   .hide {
     opacity: 0;
-    @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
       width: ${(props: IMediaStyled) => props.mediaAWidth};
       height: ${(props: IMediaStyled) => props.mediaAHeight};
       position: absolute;
       transform: translateX(300%);
     }
-    @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
       width: ${(props: IMediaStyled) => props.mediaBWidth};
       height: ${(props: IMediaStyled) => props.mediaBHeight};
       position: absolute;
@@ -330,11 +330,11 @@ const ControlContainer = styled.div`
 `
 const Center = styled.div`
   position: relative;
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     width: ${(props: IMediaStyled) => props.mediaAWidth};
     height: ${(props: IMediaStyled) => props.mediaAHeight};
   }
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     width: ${(props: IMediaStyled) => props.mediaBWidth};
     height: ${(props: IMediaStyled) => props.mediaBHeight};
   }

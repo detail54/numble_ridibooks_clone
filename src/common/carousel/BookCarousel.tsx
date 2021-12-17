@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+// global style
+import { setStyles } from '../../asset/css/GlobalStyle'
 // common
 import Book from '../book/Book'
 // interface
@@ -66,7 +68,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
   useEffect(() => {
     // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
-    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaA)) {
       if (
         numMediaATransform - browserWidth >
         parseInt(
@@ -86,7 +88,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
   const nextBooks = () => {
     // MediaA 조건
-    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (
         numMediaATransform - changeBrowserWidth <
         bookListWidth - changeBrowserWidth
@@ -110,7 +112,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
       // MediaB 조건
     } else if (
-      changeBrowserWidth >= pixelChangeNumber(mediaStyled.mediaBMinWidth)
+      changeBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
     ) {
       if (booksPage === totalBooksPage) {
         setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
@@ -141,7 +143,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
   const behindBooks = () => {
     // MediaA 조건
-    if (changeBrowserWidth < pixelChangeNumber(mediaStyled.mediaBMinWidth)) {
+    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (
         numMediaATransform + changeBrowserWidth >=
         pixelChangeNumber(mediaStyled.mediaATransform)
@@ -155,7 +157,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
       // MediaB 조건
     } else if (
-      changeBrowserWidth >= pixelChangeNumber(mediaStyled.mediaBMinWidth)
+      changeBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
     ) {
       if (booksPage === 2) {
         if (remainderBookCount > 0) {

@@ -21,12 +21,10 @@ const QuickMenuSection = styled.section`
   li {
     ${setStyles.setWidthAndHeight('86px', '67px')}
 
-    @media (min-width: ${(props: IQuickMenuStyle) =>
-      props.mediaStyled && props.mediaStyled.mediaAMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
       padding: 0px;
     }
-    @media (min-width: ${(props: IQuickMenuStyle) =>
-        props.mediaStyled && props.mediaStyled.mediaBMinWidth}) {
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
       padding: 0 20px;
     }
   }

@@ -289,11 +289,9 @@ const BasicView: React.FC = () => {
         <Carousel
           datas={imgData}
           mediaStyled={{
-            mediaAMinWidth: '375px',
             mediaAWidth: '355px',
             mediaAHeight: '236px',
             mediaATransform: '-182px',
-            mediaBMinWidth: '1000px',
             mediaBWidth: '430px',
             mediaBHeight: '286px',
             mediaBTransform: '-220px',
@@ -302,9 +300,7 @@ const BasicView: React.FC = () => {
           home/basic
         </Carousel>
       </BasicSC.CarouselSection>
-      <BasicSC.QuickMenuSection
-        mediaStyled={{ mediaAMinWidth: '375px', mediaBMinWidth: '700px' }}
-      >
+      <BasicSC.QuickMenuSection>
         <MenuWrap datas={quickMenuData} wrapStyle={{ flex: 1 }} />
       </BasicSC.QuickMenuSection>
       <BasicSC.LibraryNewBooksSection>
@@ -313,10 +309,8 @@ const BasicView: React.FC = () => {
           booksData={libraryNewBooks}
           buttonColor='black'
           mediaStyled={{
-            mediaAMinWidth: '375px',
             mediaAWidth: '100px',
             mediaATransform: '12px',
-            mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
             mediaBTransform: '4px',
           }}
@@ -339,10 +333,8 @@ const BasicView: React.FC = () => {
           booksData={discoveryBook}
           buttonColor='white'
           mediaStyled={{
-            mediaAMinWidth: '375px',
             mediaAWidth: '100px',
             mediaATransform: '12px',
-            mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
             mediaBTransform: '4px',
           }}
@@ -365,10 +357,8 @@ const BasicView: React.FC = () => {
           booksData={weeklyNewBook}
           buttonColor='white'
           mediaStyled={{
-            mediaAMinWidth: '375px',
             mediaAWidth: '100px',
             mediaATransform: '12px',
-            mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
             mediaBTransform: '4px',
           }}
@@ -383,10 +373,8 @@ const BasicView: React.FC = () => {
           booksData={instaRecommendedBook}
           buttonColor='white'
           mediaStyled={{
-            mediaAMinWidth: '375px',
             mediaAWidth: '100px',
             mediaATransform: '12px',
-            mediaBMinWidth: '1000px',
             mediaBWidth: '140px',
             mediaBTransform: '4px',
           }}

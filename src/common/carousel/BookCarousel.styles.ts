@@ -12,11 +12,11 @@ import next from '../../asset/images/icons/next.png'
 const BookCarouselWrap = styled.div`
   flex-direction: column;
   position: relative;
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     width: 100%;
   }
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     max-width: 1000px;
   }
 `
@@ -39,7 +39,7 @@ const Books = styled.div`
   ${setStyles.setAlignY('center')}
   position: relative;
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     width: 100%;
     height: ${(props: IMediaStyled) =>
       `${
@@ -50,7 +50,7 @@ const Books = styled.div`
       }px`};
   }
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     overflow: hidden;
     width: 970px;
     height: ${(props: IMediaStyled) =>
@@ -74,12 +74,12 @@ const BookList = styled.ul`
   left: 6px;
   z-index: 4;
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     transform: ${(props: IMediaStyled) =>
       `translateX(${props.mediaATransform})`};
   }
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     transform: ${(props: IMediaStyled) =>
       `translateX(${props.mediaBTransform})`};
   }
@@ -90,7 +90,7 @@ const BookList = styled.ul`
 `
 
 const BookItem = styled.li`
-  @media (min-width: ${(props: IMediaStyled) => props.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     cursor: pointer;
     margin-left: 12px;
     width: ${(props: IMediaStyled) => props.mediaAWidth};
@@ -113,7 +113,7 @@ const BookItem = styled.li`
     }
   }
 
-  @media (min-width: ${(props: IMediaStyled) => props.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     cursor: pointer;
     margin-left: 22px;
     width: ${(props: IMediaStyled) => props.mediaBWidth};
@@ -174,14 +174,12 @@ const BehindButton = styled.button`
   opacity: 0.95;
   box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
 
-  @media (min-width: ${(props: IButtonStyle) =>
-      props.mediaStyled.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     transform: translate(20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
   }
 
-  @media (min-width: ${(props: IButtonStyle) =>
-      props.mediaStyled.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     transform: translate(-80%, -30%);
     display: inherit;
   }
@@ -211,14 +209,12 @@ const NextButton = styled.button`
   opacity: 0.95;
   box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
 
-  @media (min-width: ${(props: IButtonStyle) =>
-      props.mediaStyled.mediaAMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     transform: translate(-20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
   }
 
-  @media (min-width: ${(props: IButtonStyle) =>
-      props.mediaStyled.mediaBMinWidth}) {
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     transform: translate(80%, -50%);
     display: inherit;
   }

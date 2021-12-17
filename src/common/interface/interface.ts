@@ -7,11 +7,9 @@ import { IBook } from '../../config/data/books'
 
 // Media style interface
 export interface IMediaStyled {
-  mediaAMinWidth: string
   mediaAWidth: string
   mediaAHeight?: string
   mediaATransform: string
-  mediaBMinWidth: string
   mediaBWidth: string
   mediaBHeight?: string
   mediaBTransform: string
