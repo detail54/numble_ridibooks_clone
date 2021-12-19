@@ -32,6 +32,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
     noticeMenuEnabled,
     cartMenuEnabled,
     MyMenuEnabled,
+    browserWidth,
   } = props
 
   const mainLinks: IMenu[] = [
@@ -235,7 +236,11 @@ const HeaderView: React.FC<IHeader> = (props) => {
         <HeaderSC.Menu>
           <MenuWrap
             datas={menuLinks}
-            wrapStyle={{ itemHoveropacity: '0.8', listAlignX: 'left' }}
+            wrapStyle={
+              browserWidth >= 1000
+                ? { itemHoveropacity: '0.8', listAlignX: 'left' }
+                : { itemHoveropacity: '0.8', listAlignX: 'center' }
+            }
           />
         </HeaderSC.Menu>
       </HeaderSC.Content>

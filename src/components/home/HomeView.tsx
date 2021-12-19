@@ -6,6 +6,8 @@ import { IMenu } from '../../common/interface/interface'
 import LinkWrap from '../../common/menu/MenuWrap'
 // style
 import { HomeSC } from './Home.styles'
+// image
+import menu from '../../asset/images/icons/menu.png'
 
 const HomeView: React.FC<IHome> = (props) => {
   const {
@@ -22,7 +24,7 @@ const HomeView: React.FC<IHome> = (props) => {
     {
       id: 'basic',
       menuType: 'basic',
-      text: '이미지',
+      text: '',
       styles: {
         fontSize: '16px',
         fontWeight: 'medium',
@@ -33,6 +35,7 @@ const HomeView: React.FC<IHome> = (props) => {
         padding: '0px 22px',
       },
       onClick: categoryEnabled,
+      children: <HomeSC.MenuIcon src={menu} alt='menu' />,
     },
     {
       id: 'basic',

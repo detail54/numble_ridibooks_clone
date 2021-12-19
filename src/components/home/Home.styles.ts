@@ -20,7 +20,12 @@ const BookTab = styled.div`
   }
 `
 
+const MenuIcon = styled.img`
+  ${setStyles.setWidthAndHeight('24px', '24px')}
+`
+
 export const HomeSC = {
   HomeMenu,
   BookTab,
+  MenuIcon,
 }

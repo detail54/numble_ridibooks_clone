@@ -31,6 +31,7 @@ const QuickMenuSection = styled.section`
       padding: 0px;
       height: 83px;
       ${setStyles.setAlignY('start')}
+      word-break: keep-all;
     }
     @media (min-width: ${setStyles.mediaWidth.mediaB}) {
       padding: 0 20px;

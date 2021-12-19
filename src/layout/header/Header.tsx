@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const [noticeMenuEnabled, setNoticeMenuEnabled] = useState(false)
   const [cartMenuEnabled, setcartMenuEnabled] = useState(false)
   const [MyMenuEnabled, setMyMenuEnabled] = useState(false)
+  const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     if (searchText.length > 0) {
@@ -17,6 +18,12 @@ const Header: React.FC = () => {
       setSearchCancleButton(false)
     }
   }, [searchText])
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setBrowserWidth(window.innerWidth)
+    })
+  }, [])
 
   const onChangeSearchText = (text: string) => {
     setSearchText(text)
@@ -67,7 +74,7 @@ const Header: React.FC = () => {
         break
     }
   }
-
+  console.log(browserWidth)
   const viewProps = {
     searchText,
     onChangeSearchText,
@@ -80,6 +87,7 @@ const Header: React.FC = () => {
     noticeMenuEnabled,
     cartMenuEnabled,
     MyMenuEnabled,
+    browserWidth,
   }
 
   return <HeaderView {...viewProps} />

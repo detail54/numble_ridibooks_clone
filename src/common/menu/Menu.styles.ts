@@ -149,13 +149,6 @@ const BasicMenu = styled.div`
   flex-flow: ${(props: IMenuStyles) => props.flexflow || ''};
   flex-direction: ${(props: IMenuStyles) => props.flexDirection || ''};
   cursor: pointer;
-  ${(props: IMenuStyles) =>
-    props.choice
-      ? css`
-          color: ${colors.dodgerblue_60};
-          font-weight: bold;
-        `
-      : css``}
 `
 
 const Text = styled.div`
@@ -166,6 +159,13 @@ const Text = styled.div`
     props.fontWeight && setStyles.setFontWeight(props.fontWeight)}
 
   color: ${(props: IMenuStyles) => props.color || 'black'};
+
+  ${(props: IMenuStyles) =>
+    props.choice &&
+    css`
+      color: ${colors.dodgerblue_60};
+      font-weight: bold;
+    `}
 `
 
 const UnderLine = styled.span`
