@@ -20,6 +20,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: hidden;
 `
 
 const Content = styled.div`
