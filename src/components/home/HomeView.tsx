@@ -3,7 +3,7 @@ import React from 'react'
 import { IHome } from './interface'
 import { IMenu } from '../../common/interface/interface'
 // common component
-import LinkWrap from '../../common/menu/MenuWrap'
+import MenuWrap from '../../common/menu/MenuWrap'
 // style
 import { HomeSC } from './Home.styles'
 // image
@@ -32,7 +32,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
       },
       onClick: categoryEnabled,
       children: <HomeSC.MenuIcon src={menu} alt='menu' />,
@@ -48,7 +47,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
         choice: basicEnabled,
       },
       onClick: categoryEnabled,
@@ -64,7 +62,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
         choice: romanceEnabled,
       },
       onClick: categoryEnabled,
@@ -80,7 +77,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
         choice: fantasyEnabled,
       },
       onClick: categoryEnabled,
@@ -96,7 +92,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
         choice: webToonEnabled,
       },
       onClick: categoryEnabled,
@@ -112,7 +107,6 @@ const HomeView: React.FC<IHome> = (props) => {
         alignx: 'center',
         aligny: 'center',
         color: '#40474D',
-        padding: '0px 22px',
         choice: blEnabled,
       },
       onClick: categoryEnabled,
@@ -123,7 +117,7 @@ const HomeView: React.FC<IHome> = (props) => {
     <>
       <HomeSC.HomeMenu>
         <HomeSC.BookTab>
-          <LinkWrap datas={categoryLinks} wrapStyle={{ listAlignX: 'left' }} />
+          <MenuWrap datas={categoryLinks} />
         </HomeSC.BookTab>
       </HomeSC.HomeMenu>
       {bookCategory}

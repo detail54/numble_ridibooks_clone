@@ -11,10 +11,12 @@ const CarouselSection = styled.section`
 const QuickMenuSection = styled.section`
   ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
-  
+  width: 100%;
+
   ul {
     margin: 0;
     max-width: 1000px;
+    width: 100%;
 
     @media (min-width: ${setStyles.mediaWidth.mediaA}) {
       padding: 16px 3px;

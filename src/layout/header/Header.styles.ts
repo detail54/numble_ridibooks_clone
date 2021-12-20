@@ -57,10 +57,10 @@ const Nav = styled.nav`
     margin-right: 16px;
     flex: none;
     @media (min-width: ${setStyles.mediaWidth.mediaA}) {
-      ${setStyles.setFontSize('medium')}
+      ${setStyles.setFontSize('16px')}
     }
     @media (min-width: ${setStyles.mediaWidth.mediaB}) {
-      ${setStyles.setFontSize('16px')}
+      ${setStyles.setFontSize('medium')}
     }
   }
 
@@ -150,9 +150,11 @@ const Menu = styled.div`
     width: 964px;
     ul {
       ${setStyles.setAlignX('left')}
+      width: 100%;
       margin: 0;
       padding: 0;
       li {
+        flex: none;
         margin-right: 50px;
       }
     }
