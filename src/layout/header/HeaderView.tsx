@@ -32,7 +32,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
     noticeMenuEnabled,
     cartMenuEnabled,
     MyMenuEnabled,
-    browserWidth,
   } = props
 
   const mainLinks: IMenu[] = [
@@ -42,9 +41,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
       toLink: '/',
       text: 'RIDIBOOKS',
       styles: {
-        fontSize: 'medium',
-        mediaAFontSize: '15px',
-        mediaBFontSize: 'medium',
         fontWeight: 'bold',
         hoveropacity: '0.8',
         height: '33px',
@@ -58,9 +54,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
       toLink: '/',
       text: 'RIDI',
       styles: {
-        fontSize: 'medium',
-        mediaAFontSize: '15px',
-        mediaBFontSize: 'medium',
         fontWeight: 'bold',
         hoveropacity: '0.8',
         height: '33px',
@@ -82,7 +75,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
-        width: '77px',
         height: '28px',
         alignx: 'center',
         aligny: 'center',
@@ -100,7 +92,6 @@ const HeaderView: React.FC<IHeader> = (props) => {
       styles: {
         fontSize: '13px',
         fontWeight: 'bold',
-        width: '66px',
         height: '28px',
         alignx: 'center',
         aligny: 'center',
@@ -215,6 +206,7 @@ const HeaderView: React.FC<IHeader> = (props) => {
       <HeaderSC.Content>
         <HeaderSC.Nav>
           <MenuWrap datas={mainLinks} wrapStyle={{ listAlignX: 'left' }} />
+          <MenuWrap datas={signLinks} wrapStyle={{ listAlignX: 'flex-end' }} />
           <SearchBox
             searchText={searchText}
             placeholder='제목, 저자, 출판사 검색'
@@ -226,22 +218,12 @@ const HeaderView: React.FC<IHeader> = (props) => {
             styles={{
               fontSize: '16px',
               fontWeight: 'light',
-              width: '306px',
               focusOutLine: false,
-              maxWidth: '340px',
             }}
           />
-          <MenuWrap datas={signLinks} wrapStyle={{ listAlignX: 'right' }} />
         </HeaderSC.Nav>
         <HeaderSC.Menu>
-          <MenuWrap
-            datas={menuLinks}
-            wrapStyle={
-              browserWidth >= 1000
-                ? { itemHoveropacity: '0.8', listAlignX: 'left' }
-                : { itemHoveropacity: '0.8', listAlignX: 'center' }
-            }
-          />
+          <MenuWrap datas={menuLinks} wrapStyle={{ itemHoveropacity: '0.8' }} />
         </HeaderSC.Menu>
       </HeaderSC.Content>
     </HeaderSC.Header>

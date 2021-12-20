@@ -93,7 +93,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -111,7 +111,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -129,7 +129,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -147,7 +147,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -165,7 +165,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -183,7 +183,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -201,7 +201,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -219,7 +219,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon
@@ -237,7 +237,7 @@ const BasicView: React.FC = () => {
       styles: {
         fontSize: '13px',
         color: '#525A61',
-        flexDirection: 'column',
+        flexdirect: 'column',
       },
       children: (
         <BasicSC.QuickMenuIcon

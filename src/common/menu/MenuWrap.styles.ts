@@ -5,7 +5,6 @@ import { IMenuWrapStyles } from '../interface/interface'
 import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Ul = styled.ul`
-  width: 100%;
   ${(props: IMenuWrapStyles) =>
     props.listAlignX
       ? setStyles.setAlignX(props.listAlignX)

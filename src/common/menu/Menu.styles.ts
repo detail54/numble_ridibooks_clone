@@ -75,7 +75,7 @@ const LinkMenu = styled(Link)`
   padding: ${(props: IMenuStyles) => props.padding || '0px'};
   opacity: ${(props: IMenuStyles) => props.opacity || ''};
   flex-flow: ${(props: IMenuStyles) => props.flexflow || ''};
-  flex-direction: ${(props: IMenuStyles) => props.flexDirection || ''};
+  flex-direction: ${(props: IMenuStyles) => props.flexdirect || ''};
 `
 
 const BasicMenu = styled.div`
@@ -147,7 +147,7 @@ const BasicMenu = styled.div`
   padding: ${(props: IMenuStyles) => props.padding || '0px'};
   opacity: ${(props: IMenuStyles) => props.opacity || ''};
   flex-flow: ${(props: IMenuStyles) => props.flexflow || ''};
-  flex-direction: ${(props: IMenuStyles) => props.flexDirection || ''};
+  flex-direction: ${(props: IMenuStyles) => props.flexdirect || ''};
   cursor: pointer;
 `
 

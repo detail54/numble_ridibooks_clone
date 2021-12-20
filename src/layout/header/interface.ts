@@ -15,7 +15,6 @@ export interface IHeader {
   noticeMenuEnabled: boolean
   cartMenuEnabled: boolean
   MyMenuEnabled: boolean
-  browserWidth: number
 }
 
 export interface IHeaderStyles {

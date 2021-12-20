@@ -5,7 +5,7 @@ import { ISearchBoxStyles } from '../interface/interface'
 import { setStyles } from '../../asset/css/GlobalStyle'
 
 const Input = styled.input`
-  width: ${(props: ISearchBoxStyles) => props.width && props.width};
+  width: 100%;
   border: ${(props: ISearchBoxStyles) => props.border || 'none'};
 
   ${(props: ISearchBoxStyles) =>
@@ -29,17 +29,15 @@ const Input = styled.input`
 `
 
 const Form = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${setStyles.setAlignX('center')}
+  ${setStyles.setAlignY('center')}
   max-width: ${(props: ISearchBoxStyles) => props.maxWidth};
 `
 
 const Div = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${setStyles.setAlignX('left')}
+  ${setStyles.setAlignY('center')}
   background: white;
   height: 36px;
   border-radius: 3px;

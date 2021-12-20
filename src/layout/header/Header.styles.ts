@@ -8,10 +8,15 @@ import { IHeaderStyles } from './interface'
 const Divider = css`
   &::before {
     content: '|';
-    margin: 0px 10px;
     font-size: 15px;
     color: white;
     opacity: 0.3;
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+      margin: 0px 4px;
+    }
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      margin: 0px 10px;
+    }
   }
 `
 
@@ -24,7 +29,7 @@ const Header = styled.header`
 `
 
 const Content = styled.div`
-  max-width: 1000px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -32,8 +37,7 @@ const Content = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  width: 964px;
-  padding: 16px 16px 24px 20px;
+  max-width: 1000px;
 
   ${setStyles.setAlignY('center')}
 
@@ -48,20 +52,72 @@ const Nav = styled.nav`
     padding: 0px;
   }
 
+  // RIDIBOOKS | RIDISelect
+  ul:nth-child(1) {
+    margin-right: 16px;
+    flex: none;
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+      ${setStyles.setFontSize('medium')}
+    }
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      ${setStyles.setFontSize('16px')}
+    }
+  }
+
+  // 회원가입 | 로그인 버튼
+  ul:nth-child(2) {
+    flex: 1;
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      order: 2;
+    }
+  }
+
   form {
-    margin-left: 16px;
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+      width: 100%;
+      flex: none;
+      margin-top: 9px;
+    }
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      width: 340px;
+      flex: 1;
+      margin-top: 0px;
+    }
   }
 
   ul:nth-child(1) li:nth-last-child(1) {
     ${Divider}
   }
 
-  ul:nth-last-child(1) {
-    width: 100%;
+  ul:nth-child(2) li:nth-child(1) a {
+    @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+      width: 61px;
+    }
+    @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+      width: 77px;
+    }
   }
 
-  ul:nth-last-child(1) li:nth-last-child(1) {
+  ul:nth-child(2) li:nth-child(2) {
     margin-left: 6px;
+    & a {
+      @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+        width: 50px;
+      }
+      @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+        width: 66px;
+      }
+    }
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    flex-flow: row wrap;
+    width: 95%;
+    padding: 9px 10px;
+  }
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    width: 964px;
+    padding: 16px 16px 24px 20px;
   }
 `
 
@@ -74,14 +130,31 @@ const Span = styled.span`
 `
 
 const Menu = styled.div`
-  width: 964px;
   height: 37px;
-  ${setStyles.setAlignX('left')}
+  ${setStyles.setAlignX('center')}
   ${setStyles.setAlignY('center')}
-  ul {
-    padding: 0px;
-    li {
-      margin-right: 50px;
+
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    width: 100%;
+    ul {
+      ${setStyles.setAlignX('center')}
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      li {
+        flex: 1;
+      }
+    }
+  }
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    width: 964px;
+    ul {
+      ${setStyles.setAlignX('left')}
+      margin: 0;
+      padding: 0;
+      li {
+        margin-right: 50px;
+      }
     }
   }
 `
