@@ -157,7 +157,8 @@ const Right = styled.div`
 const BehindButton = styled.button`
   background-image: ${(props: IButtonStyle) =>
     props.buttonColor === 'white' ? `url(${behind})` : `url(${behindWhite})`};
-  background-size: 9px 15px;
+  background-size: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? '13px 13px' : '9px 15px'};
   background-repeat: no-repeat;
   background-position: center;
   background-color: ${(props: IButtonStyle) =>
@@ -169,7 +170,6 @@ const BehindButton = styled.button`
   z-index: 4;
   position: absolute;
   left: 0;
-  top: 50%;
   cursor: pointer;
   opacity: 0.95;
   box-shadow: 0 0.8px 3px rgb(0 0 0 / 33%);
@@ -177,11 +177,13 @@ const BehindButton = styled.button`
   @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     transform: translate(20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
+    top: 44%;
   }
 
   @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     transform: translate(-80%, -30%);
     display: inherit;
+    top: 50%;
   }
   &:hover {
     opacity: 0.7;
@@ -191,7 +193,8 @@ const BehindButton = styled.button`
 const NextButton = styled.button`
   background-image: ${(props: IButtonStyle) =>
     props.buttonColor === 'white' ? `url(${next})` : `url(${nextWhite})`};
-  background-size: 9px 15px;
+  background-size: ${(props: IButtonStyle) =>
+    props.buttonColor === 'white' ? '13px 13px' : '9px 15px'};
   background-repeat: no-repeat;
   background-position: center;
   background-color: ${(props: IButtonStyle) =>
@@ -203,7 +206,6 @@ const NextButton = styled.button`
   z-index: 4;
   position: absolute;
   right: 0;
-  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   opacity: 0.95;
@@ -212,11 +214,13 @@ const NextButton = styled.button`
   @media (min-width: ${setStyles.mediaWidth.mediaA}) {
     transform: translate(-20%, -10%);
     display: ${(props: IButtonStyle) => props.hide && 'none'};
+    top: 44%;
   }
 
   @media (min-width: ${setStyles.mediaWidth.mediaB}) {
     transform: translate(80%, -50%);
     display: inherit;
+    top: 50%;
   }
 
   &:hover {

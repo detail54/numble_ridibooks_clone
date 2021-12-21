@@ -84,17 +84,19 @@ const BasicView: React.FC = () => {
     },
   ]
 
+  const quickMenuStyle = {
+    fontSize: '13px',
+    color: '#525A61',
+    flexdirect: 'column',
+  }
+
   const quickMenuData: IMenu[] = [
     {
       id: '신간',
       menuType: 'link',
       toLink: '/',
       text: 'ㅤ신간ㅤ',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/+new.png'
@@ -108,11 +110,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '이벤트',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/+gift.png'
@@ -126,11 +124,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '베스트셀러',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/+best.png'
@@ -144,11 +138,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '대여전',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/20200901084102_905649.png'
@@ -162,11 +152,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '지금 인기세트',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='	https://active.ridibooks.com/responsive-quick-menu/20200910213740_235368.png'
@@ -180,11 +166,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '신간 캘린더',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/20191209103845_655757.png'
@@ -198,11 +180,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '일반 혜택지도',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/20191205170708_742550.png'
@@ -216,11 +194,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '위클리 쿠폰',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/20200204135425_493338.png'
@@ -234,11 +208,7 @@ const BasicView: React.FC = () => {
       menuType: 'link',
       toLink: '/',
       text: '리디페이퍼',
-      styles: {
-        fontSize: '13px',
-        color: '#525A61',
-        flexdirect: 'column',
-      },
+      styles: quickMenuStyle,
       children: (
         <BasicSC.QuickMenuIcon
           src='https://active.ridibooks.com/responsive-quick-menu/+paperpro.png'
@@ -255,6 +225,13 @@ const BasicView: React.FC = () => {
   const bestSeller = books.slice(62, 71)
   const weeklyNewBook = books.slice(71, 85)
   const instaRecommendedBook = books.slice(85, 100)
+
+  const bookCarouselMediaStyles = {
+    mediaAWidth: '100px',
+    mediaATransform: '12px',
+    mediaBWidth: '140px',
+    mediaBTransform: '4px',
+  }
 
   return (
     <>
@@ -281,12 +258,7 @@ const BasicView: React.FC = () => {
           header='집 앞 서점에 방금 나온 신간!'
           booksData={libraryNewBooks}
           buttonColor='black'
-          mediaStyled={{
-            mediaAWidth: '100px',
-            mediaATransform: '12px',
-            mediaBWidth: '140px',
-            mediaBTransform: '4px',
-          }}
+          mediaStyled={bookCarouselMediaStyles}
           bookStyle={{
             color: 'white',
           }}
@@ -305,12 +277,7 @@ const BasicView: React.FC = () => {
           header='오늘, 리디의 발견'
           booksData={discoveryBook}
           buttonColor='white'
-          mediaStyled={{
-            mediaAWidth: '100px',
-            mediaATransform: '12px',
-            mediaBWidth: '140px',
-            mediaBTransform: '4px',
-          }}
+          mediaStyled={bookCarouselMediaStyles}
           bookStyle={{
             color: 'black',
           }}
@@ -329,12 +296,7 @@ const BasicView: React.FC = () => {
           header='금주의 신간'
           booksData={weeklyNewBook}
           buttonColor='white'
-          mediaStyled={{
-            mediaAWidth: '100px',
-            mediaATransform: '12px',
-            mediaBWidth: '140px',
-            mediaBTransform: '4px',
-          }}
+          mediaStyled={bookCarouselMediaStyles}
           bookStyle={{
             color: 'black',
           }}
@@ -345,12 +307,7 @@ const BasicView: React.FC = () => {
           header='리디북스토어 인스타그램 추천도서'
           booksData={instaRecommendedBook}
           buttonColor='white'
-          mediaStyled={{
-            mediaAWidth: '100px',
-            mediaATransform: '12px',
-            mediaBWidth: '140px',
-            mediaBTransform: '4px',
-          }}
+          mediaStyled={bookCarouselMediaStyles}
           bookStyle={{
             color: 'black',
           }}

@@ -20,6 +20,17 @@ const HomeView: React.FC<IHome> = (props) => {
     blEnabled,
   } = props
 
+  const categoryStyle = {
+    styles: {
+      fontSize: '16px',
+      fontWeight: 'medium',
+      height: '48px',
+      alignx: 'center',
+      aligny: 'center',
+      color: '#40474D',
+    },
+  }
+
   const categoryLinks: IMenu[] = [
     {
       id: 'basic',
@@ -41,12 +52,7 @@ const HomeView: React.FC<IHome> = (props) => {
       menuType: 'basic',
       text: '일반',
       styles: {
-        fontSize: '16px',
-        fontWeight: 'medium',
-        height: '48px',
-        alignx: 'center',
-        aligny: 'center',
-        color: '#40474D',
+        ...categoryStyle,
         choice: basicEnabled,
       },
       onClick: categoryEnabled,
@@ -56,12 +62,7 @@ const HomeView: React.FC<IHome> = (props) => {
       menuType: 'basic',
       text: '로맨스',
       styles: {
-        fontSize: '16px',
-        fontWeight: 'medium',
-        height: '48px',
-        alignx: 'center',
-        aligny: 'center',
-        color: '#40474D',
+        ...categoryStyle,
         choice: romanceEnabled,
       },
       onClick: categoryEnabled,
@@ -71,12 +72,7 @@ const HomeView: React.FC<IHome> = (props) => {
       menuType: 'basic',
       text: '판타지',
       styles: {
-        fontSize: '16px',
-        fontWeight: 'medium',
-        height: '48px',
-        alignx: 'center',
-        aligny: 'center',
-        color: '#40474D',
+        ...categoryStyle,
         choice: fantasyEnabled,
       },
       onClick: categoryEnabled,
@@ -86,12 +82,7 @@ const HomeView: React.FC<IHome> = (props) => {
       menuType: 'basic',
       text: '만화',
       styles: {
-        fontSize: '16px',
-        fontWeight: 'medium',
-        height: '48px',
-        alignx: 'center',
-        aligny: 'center',
-        color: '#40474D',
+        ...categoryStyle,
         choice: webToonEnabled,
       },
       onClick: categoryEnabled,
@@ -101,12 +92,7 @@ const HomeView: React.FC<IHome> = (props) => {
       menuType: 'basic',
       text: 'BL',
       styles: {
-        fontSize: '16px',
-        fontWeight: 'medium',
-        height: '48px',
-        alignx: 'center',
-        aligny: 'center',
-        color: '#40474D',
+        ...categoryStyle,
         choice: blEnabled,
       },
       onClick: categoryEnabled,

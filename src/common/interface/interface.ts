@@ -184,6 +184,7 @@ type TBookSize = 'large' | 'small'
 export interface IBookRankingItemStyle {
   underLine?: boolean
   bookSize?: TBookSize
+  compTransform?: number
 }
 
 export interface IBookRanking {
