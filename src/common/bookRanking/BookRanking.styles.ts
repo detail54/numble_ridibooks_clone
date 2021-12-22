@@ -11,9 +11,15 @@ import behind from '../../asset/images/icons/behind.png'
 
 const BookRankingWrap = styled.div`
   flex-direction: column;
-  max-width: 1000px;
   width: 100%;
   ${setStyles.setAlignX('left')}
+  @media (min-width: ${setStyles.mediaWidth.mediaA}) {
+    max-width: 100%;
+  }
+
+  @media (min-width: ${setStyles.mediaWidth.mediaB}) {
+    max-width: 1000px;
+  }
 `
 
 const Header = styled.h1`
@@ -64,9 +70,13 @@ const ItemWrap = styled.ul`
   grid-column-gap: 13px;
   padding: 0 24px;
   list-style-type: disc;
-  /* transform: ${(props: IBookRankingItemStyle) =>
-    props.compTransform && `translate(${props.compTransform}%)`}; */
+  transform: ${(props: IBookRankingItemStyle) =>
+    props.compTransform && `translate(${props.compTransform}px)`};
   transition: 0.4s;
+
+  &::before {
+    width: 100%;
+  }
 `
 
 const BehindButton = styled.button`

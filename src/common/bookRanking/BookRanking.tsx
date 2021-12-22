@@ -12,32 +12,40 @@ import next from '../../asset/images/icons/next.png'
 const BookRanking: React.FC<IBookRanking> = (props) => {
   const { bookData, header, bookSize, timer, LinkHeader } = props
 
-  const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
+  const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
+    window.innerWidth,
+  )
+  const [afterBrowserWidth, setAfterBrowserWidth] = useState<number>(
+    window.innerWidth,
+  )
   const [compTransform, setCompTransform] = useState<number>(0)
+
+  const elementWidth = 1048
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      setBrowserWidth(window.innerWidth)
+      setAfterBrowserWidth(window.innerWidth)
     })
   }, [])
 
-  console.log(browserWidth)
-  console.log(compTransform)
-
-  const onMoveComp = () => {
+  const onNext = () => {
     if (compTransform === 0) {
-      setCompTransform(-100)
-    } else {
-      setCompTransform(0)
+      setCompTransform(parseInt(`-${compTransform + afterBrowserWidth}`, 10))
     }
   }
 
-  const nextButton = browserWidth < 900 && compTransform === 0 && (
-    <BookRankingSC.NextButton onClick={onMoveComp} />
+  const onBehind = () => {
+    setCompTransform(compTransform + afterBrowserWidth)
+    // if (compTransform === parseInt(`-${elementWidth - browserWidth}`, 10)) {
+    // }
+  }
+
+  const nextButton = afterBrowserWidth < 900 && compTransform > -1048 && (
+    <BookRankingSC.NextButton onClick={onNext} />
   )
 
-  const behindButton = browserWidth < 900 && compTransform === -100 && (
-    <BookRankingSC.BehindButton onClick={onMoveComp} />
+  const behindButton = afterBrowserWidth < 900 && compTransform < 0 && (
+    <BookRankingSC.BehindButton onClick={onBehind} />
   )
 
   const timeComp = timer && <Time />
