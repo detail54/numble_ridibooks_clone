@@ -29,11 +29,21 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
   }, [])
 
   const onNext = () => {
-    if (compTransform === 0) {
+    if (compTransform + parseInt(`-${afterBrowserWidth}`, 10) < -1048) {
+      console.log('hihihii')
+      setCompTransform(-1048)
+    } else if (compTransform === 0) {
       setCompTransform(parseInt(`-${compTransform + afterBrowserWidth}`, 10))
+    } else {
+      setCompTransform(compTransform + parseInt(`-${afterBrowserWidth}`, 10))
+      console.log('hihihiiojsodfosdfh')
     }
   }
-
+  console.log('compTransform::', compTransform)
+  console.log(
+    'compTransform+++++::',
+    compTransform + parseInt(`-${afterBrowserWidth}`, 10),
+  )
   const onBehind = () => {
     setCompTransform(compTransform + afterBrowserWidth)
     // if (compTransform === parseInt(`-${elementWidth - browserWidth}`, 10)) {
