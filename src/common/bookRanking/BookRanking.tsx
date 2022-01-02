@@ -20,37 +20,47 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
   )
   const [compTransform, setCompTransform] = useState<number>(0)
 
-  const elementWidth = 1048
+  const resizeCompMove = (browserWidth: number) => {
+    console.log(compTransform)
+    if (compTransform !== 0) {
+      const moveWidth = browserWidth - beforeBrowserWidth
+      setAfterBrowserWidth(compTransform + moveWidth)
+    }
+  }
 
   useEffect(() => {
     window.addEventListener('resize', () => {
+      setBeforeBrowserWidth(afterBrowserWidth)
       setAfterBrowserWidth(window.innerWidth)
+      resizeCompMove(window.innerWidth)
     })
+
+    return () => {
+      window.removeEventListener('resize', () => {
+        setBeforeBrowserWidth(afterBrowserWidth)
+        setAfterBrowserWidth(window.innerWidth)
+        resizeCompMove(window.innerWidth)
+      })
+    }
   }, [])
 
   const onNext = () => {
-    if (compTransform + parseInt(`-${afterBrowserWidth}`, 10) < -1048) {
-      console.log('hihihii')
-      setCompTransform(-1048)
-    } else if (compTransform === 0) {
-      setCompTransform(parseInt(`-${compTransform + afterBrowserWidth}`, 10))
+    if (compTransform + afterBrowserWidth * -1 < -1048 + afterBrowserWidth) {
+      setCompTransform((1000 - afterBrowserWidth) * -1)
     } else {
-      setCompTransform(compTransform + parseInt(`-${afterBrowserWidth}`, 10))
-      console.log('hihihiiojsodfosdfh')
+      setCompTransform(compTransform + afterBrowserWidth * -1)
     }
   }
-  console.log('compTransform::', compTransform)
-  console.log(
-    'compTransform+++++::',
-    compTransform + parseInt(`-${afterBrowserWidth}`, 10),
-  )
+
   const onBehind = () => {
-    setCompTransform(compTransform + afterBrowserWidth)
-    // if (compTransform === parseInt(`-${elementWidth - browserWidth}`, 10)) {
-    // }
+    if (compTransform + afterBrowserWidth > 0) {
+      setCompTransform(0)
+    } else {
+      setCompTransform(compTransform + afterBrowserWidth)
+    }
   }
 
-  const nextButton = afterBrowserWidth < 900 && compTransform > -1048 && (
+  const nextButton = afterBrowserWidth < 900 && compTransform === 0 && (
     <BookRankingSC.NextButton onClick={onNext} />
   )
 
