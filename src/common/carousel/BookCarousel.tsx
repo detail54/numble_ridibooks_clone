@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 // global style
 import { setStyles } from '../../asset/css/GlobalStyle'
+// hook
+import useBrowserWidth from '../../hooks/useBrowserWidth'
 // common
 import Book from '../book/Book'
 // interface
@@ -18,14 +20,16 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const [booksPage, setBooksPage] = useState<number>(1)
   const [hideNextButton, setHideNextButton] = useState<boolean>(false)
   const [hideBehindButton, setHideBehindButton] = useState<boolean>(true)
-  // 처음 랜더링시 브라우저 너비저장 후,
-  // 브라우저 너비 변경시 changeBrowserWidth를 통해 실행할 작업들 진행 후 변경된 너비 값으로 저장
-  // ** 브라우저 크기 변경 이전 너비 확인 용도 **
-  const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
-  // 브라우저 너비 변경될때마다 저장.
-  const [changeBrowserWidth, setChangeBrowserWidth] = useState<number>(
-    window.innerWidth,
-  )
+  // // 처음 랜더링시 브라우저 너비저장 후,
+  // // 브라우저 너비 변경시 changeBrowserWidth를 통해 실행할 작업들 진행 후 변경된 너비 값으로 저장
+  // // ** 브라우저 크기 변경 이전 너비 확인 용도 **
+  // const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
+  // // 브라우저 너비 변경될때마다 저장.
+  // const [changeBrowserWidth, setChangeBrowserWidth] = useState<number>(
+  //   window.innerWidth,
+  // )
+
+  const { beforeBrowserWidth, afterBrowserWidth } = useBrowserWidth()
 
   const [booksMoveStyle, setBooksMoveStyle] = useState<IMediaStyled>({
     ...mediaStyled,
@@ -61,49 +65,43 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', () =>
-      setChangeBrowserWidth(window.innerWidth),
-    )
-  }, [])
-
-  useEffect(() => {
     // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
-    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaA)) {
+    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaA)) {
       if (
-        numMediaATransform - browserWidth >
+        numMediaATransform - beforeBrowserWidth >
         parseInt(
           `-${bookListWidth + pixelChangeNumber(mediaStyled.mediaATransform)}`,
           10,
         )
       ) {
         setHideNextButton(false)
-      } else if (browserWidth < changeBrowserWidth) {
+      } else if (beforeBrowserWidth < afterBrowserWidth) {
         setBooksMoveA(
-          `${numMediaATransform - (browserWidth - changeBrowserWidth)}px`,
+          `${numMediaATransform - (beforeBrowserWidth - afterBrowserWidth)}px`,
         )
       }
-      setBrowserWidth(changeBrowserWidth)
+      // setBrowserWidth(afterBrowserWidth)
     }
-  }, [changeBrowserWidth])
+  }, [afterBrowserWidth])
 
   const nextBooks = () => {
     // MediaA 조건
-    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
+    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (
-        numMediaATransform - changeBrowserWidth <
-        bookListWidth - changeBrowserWidth
+        numMediaATransform - afterBrowserWidth <
+        bookListWidth - afterBrowserWidth
       ) {
-        setBooksMoveA(`${numMediaATransform - changeBrowserWidth}px`)
+        setBooksMoveA(`${numMediaATransform - afterBrowserWidth}px`)
         setHideBehindButton(false)
       }
       if (
-        numMediaATransform - changeBrowserWidth <=
-        parseInt(`-${bookListWidth - changeBrowserWidth}`, 10)
+        numMediaATransform - afterBrowserWidth <=
+        parseInt(`-${bookListWidth - afterBrowserWidth}`, 10)
       ) {
         setBooksMoveA(
           `-${
             bookListWidth -
-            changeBrowserWidth +
+            afterBrowserWidth +
             pixelChangeNumber(mediaStyled.mediaATransform)
           }px`,
         )
@@ -112,7 +110,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
       // MediaB 조건
     } else if (
-      changeBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
+      afterBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
     ) {
       if (booksPage === totalBooksPage) {
         setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
@@ -143,21 +141,21 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
   const behindBooks = () => {
     // MediaA 조건
-    if (changeBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
+    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (
-        numMediaATransform + changeBrowserWidth >=
+        numMediaATransform + afterBrowserWidth >=
         pixelChangeNumber(mediaStyled.mediaATransform)
       ) {
         setBooksMoveA(mediaStyled.mediaATransform)
         setHideBehindButton(true)
       } else {
-        setBooksMoveA(`${numMediaATransform + changeBrowserWidth}px`)
+        setBooksMoveA(`${numMediaATransform + afterBrowserWidth}px`)
         setHideNextButton(false)
       }
 
       // MediaB 조건
     } else if (
-      changeBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
+      afterBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
     ) {
       if (booksPage === 2) {
         if (remainderBookCount > 0) {

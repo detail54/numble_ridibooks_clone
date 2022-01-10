@@ -8,39 +8,28 @@ import Time from '../time/Time'
 import BookRankingItem from './BookRankingItem'
 // image
 import next from '../../asset/images/icons/next.png'
+// hook
+import useBrowserWidth from '../../hooks/useBrowserWidth'
 
 const BookRanking: React.FC<IBookRanking> = (props) => {
   const { bookData, header, bookSize, timer, LinkHeader } = props
 
-  const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
-    window.innerWidth,
-  )
-  const [afterBrowserWidth, setAfterBrowserWidth] = useState<number>(
-    window.innerWidth,
-  )
+  const { beforeBrowserWidth, afterBrowserWidth } = useBrowserWidth()
   const [compTransform, setCompTransform] = useState<number>(0)
 
-  const resizeCompMove = (browserWidth: number) => {
-    console.log(compTransform)
-    if (compTransform !== 0) {
-      const moveWidth = browserWidth - beforeBrowserWidth
-      setAfterBrowserWidth(compTransform + moveWidth)
-    }
-  }
-
+  console.log('beforeBrowserWidth:::', beforeBrowserWidth)
+  console.log('afterBrowserWidth:::', afterBrowserWidth)
+  console.log('compTransform:::', compTransform)
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      setBeforeBrowserWidth(afterBrowserWidth)
-      setAfterBrowserWidth(window.innerWidth)
-      resizeCompMove(window.innerWidth)
-    })
+    if (afterBrowserWidth > 900) {
+      setCompTransform(0)
+      return
+    }
 
-    return () => {
-      window.removeEventListener('resize', () => {
-        setBeforeBrowserWidth(afterBrowserWidth)
-        setAfterBrowserWidth(window.innerWidth)
-        resizeCompMove(window.innerWidth)
-      })
+    if (compTransform !== 0) {
+      const moveWidth = afterBrowserWidth - beforeBrowserWidth
+      console.log('moveWidth:::', moveWidth)
+      setCompTransform(compTransform + moveWidth)
     }
   }, [])
 
