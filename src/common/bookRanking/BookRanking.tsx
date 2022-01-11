@@ -8,52 +8,58 @@ import Time from '../time/Time'
 import BookRankingItem from './BookRankingItem'
 // image
 import next from '../../asset/images/icons/next.png'
-// hook
+// hooks
 import useBrowserWidth from '../../hooks/useBrowserWidth'
 
 const BookRanking: React.FC<IBookRanking> = (props) => {
   const { bookData, header, bookSize, timer, LinkHeader } = props
 
-  const { beforeBrowserWidth, afterBrowserWidth } = useBrowserWidth()
+  const { browserWidth } = useBrowserWidth()
+  const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
+    window.innerWidth,
+  )
   const [compTransform, setCompTransform] = useState<number>(0)
 
-  console.log('beforeBrowserWidth:::', beforeBrowserWidth)
-  console.log('afterBrowserWidth:::', afterBrowserWidth)
-  console.log('compTransform:::', compTransform)
+  // 브라우저 크기 변경시 리렌더링 횟수 줄이기 위해 setTimeout사용
+  let setTimer: ReturnType<typeof setTimeout>
   useEffect(() => {
-    if (afterBrowserWidth > 900) {
-      setCompTransform(0)
-      return
-    }
+    clearTimeout(setTimer)
 
-    if (compTransform !== 0) {
-      const moveWidth = afterBrowserWidth - beforeBrowserWidth
-      console.log('moveWidth:::', moveWidth)
-      setCompTransform(compTransform + moveWidth)
-    }
-  }, [])
+    setTimer = setTimeout(() => {
+      if (browserWidth > 900) {
+        setCompTransform(0)
+        return
+      }
+
+      if (compTransform < 0) {
+        const moveWidth = browserWidth - beforeBrowserWidth
+        setCompTransform(compTransform + moveWidth)
+      }
+      setBeforeBrowserWidth(browserWidth)
+    }, 50)
+  }, [browserWidth])
 
   const onNext = () => {
-    if (compTransform + afterBrowserWidth * -1 < -1048 + afterBrowserWidth) {
-      setCompTransform((1000 - afterBrowserWidth) * -1)
+    if (compTransform + browserWidth * -1 < -1048 + browserWidth) {
+      setCompTransform((1000 - browserWidth) * -1)
     } else {
-      setCompTransform(compTransform + afterBrowserWidth * -1)
+      setCompTransform(compTransform + browserWidth * -1)
     }
   }
 
   const onBehind = () => {
-    if (compTransform + afterBrowserWidth > 0) {
+    if (compTransform + browserWidth > 0) {
       setCompTransform(0)
     } else {
-      setCompTransform(compTransform + afterBrowserWidth)
+      setCompTransform(compTransform + browserWidth)
     }
   }
 
-  const nextButton = afterBrowserWidth < 900 && compTransform === 0 && (
+  const nextButton = browserWidth < 900 && compTransform === 0 && (
     <BookRankingSC.NextButton onClick={onNext} />
   )
 
-  const behindButton = afterBrowserWidth < 900 && compTransform < 0 && (
+  const behindButton = browserWidth < 900 && compTransform < 0 && (
     <BookRankingSC.BehindButton onClick={onBehind} />
   )
 

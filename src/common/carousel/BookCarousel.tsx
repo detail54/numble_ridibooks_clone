@@ -11,7 +11,7 @@ import { IBookCarousel, IMediaStyled } from '../interface/interface'
 import { BookCarouselSC } from './BookCarousel.styles'
 
 const pixelChangeNumber = (data: string) => {
-  return parseInt(data.substr(0, data.indexOf('px')), 10)
+  return parseInt(data.substring(0, data.indexOf('px')), 10)
 }
 
 const BookCarousel: React.FC<IBookCarousel> = (props) => {
@@ -20,16 +20,11 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
   const [booksPage, setBooksPage] = useState<number>(1)
   const [hideNextButton, setHideNextButton] = useState<boolean>(false)
   const [hideBehindButton, setHideBehindButton] = useState<boolean>(true)
-  // // 처음 랜더링시 브라우저 너비저장 후,
-  // // 브라우저 너비 변경시 changeBrowserWidth를 통해 실행할 작업들 진행 후 변경된 너비 값으로 저장
-  // // ** 브라우저 크기 변경 이전 너비 확인 용도 **
-  // const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
-  // // 브라우저 너비 변경될때마다 저장.
-  // const [changeBrowserWidth, setChangeBrowserWidth] = useState<number>(
-  //   window.innerWidth,
-  // )
 
-  const { beforeBrowserWidth, afterBrowserWidth } = useBrowserWidth()
+  const { browserWidth } = useBrowserWidth()
+  const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
+    window.innerWidth,
+  )
 
   const [booksMoveStyle, setBooksMoveStyle] = useState<IMediaStyled>({
     ...mediaStyled,
@@ -64,44 +59,56 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
     })
   }
 
+  // 브라우저 크기 변경시 리렌더링 횟수 줄이기 위해 setTimeout사용
+  let setTimer: ReturnType<typeof setTimeout>
   useEffect(() => {
-    // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
-    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaA)) {
-      if (
-        numMediaATransform - beforeBrowserWidth >
-        parseInt(
-          `-${bookListWidth + pixelChangeNumber(mediaStyled.mediaATransform)}`,
-          10,
-        )
-      ) {
-        setHideNextButton(false)
-      } else if (beforeBrowserWidth < afterBrowserWidth) {
-        setBooksMoveA(
-          `${numMediaATransform - (beforeBrowserWidth - afterBrowserWidth)}px`,
-        )
+    clearTimeout(setTimer)
+
+    setTimer = setTimeout(() => {
+      // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
+      if (browserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
+        if (hideNextButton) {
+          setBooksMoveA(
+            `${numMediaATransform - (beforeBrowserWidth - browserWidth)}px`,
+          )
+        }
+        setBeforeBrowserWidth(browserWidth)
       }
-      // setBrowserWidth(afterBrowserWidth)
-    }
-  }, [afterBrowserWidth])
+    }, 50)
+  }, [browserWidth])
+
+  // useEffect(() => {
+  //   // 브라우저 너비 1000 미만일때만 브라우저 너비 변경시 실행.
+  //   if (browserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaA)) {
+  //     if (
+  //       numMediaATransform - beforeBrowserWidth >
+  //       (bookListWidth + pixelChangeNumber(mediaStyled.mediaATransform)) * -1
+  //     ) {
+  //       setHideNextButton(false)
+  //     } else if (beforeBrowserWidth < browserWidth) {
+  //       setBooksMoveA(
+  //         `${numMediaATransform - (beforeBrowserWidth - browserWidth)}px`,
+  //       )
+  //     }
+  //     setBeforeBrowserWidth(browserWidth)
+  //   }
+  // }, [browserWidth])
 
   const nextBooks = () => {
     // MediaA 조건
-    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
-      if (
-        numMediaATransform - afterBrowserWidth <
-        bookListWidth - afterBrowserWidth
-      ) {
-        setBooksMoveA(`${numMediaATransform - afterBrowserWidth}px`)
+    if (browserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
+      if (numMediaATransform - browserWidth < bookListWidth - browserWidth) {
+        setBooksMoveA(`${numMediaATransform - browserWidth}px`)
         setHideBehindButton(false)
       }
       if (
-        numMediaATransform - afterBrowserWidth <=
-        parseInt(`-${bookListWidth - afterBrowserWidth}`, 10)
+        numMediaATransform - browserWidth <=
+        parseInt(`-${bookListWidth - browserWidth}`, 10)
       ) {
         setBooksMoveA(
           `-${
             bookListWidth -
-            afterBrowserWidth +
+            browserWidth +
             pixelChangeNumber(mediaStyled.mediaATransform)
           }px`,
         )
@@ -109,9 +116,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
       }
 
       // MediaB 조건
-    } else if (
-      afterBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
-    ) {
+    } else if (browserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (booksPage === totalBooksPage) {
         setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)
       } else if (booksPage < totalBooksPage) {
@@ -141,22 +146,20 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
 
   const behindBooks = () => {
     // MediaA 조건
-    if (afterBrowserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
+    if (browserWidth < pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (
-        numMediaATransform + afterBrowserWidth >=
+        numMediaATransform + browserWidth >=
         pixelChangeNumber(mediaStyled.mediaATransform)
       ) {
         setBooksMoveA(mediaStyled.mediaATransform)
         setHideBehindButton(true)
       } else {
-        setBooksMoveA(`${numMediaATransform + afterBrowserWidth}px`)
+        setBooksMoveA(`${numMediaATransform + browserWidth}px`)
         setHideNextButton(false)
       }
 
       // MediaB 조건
-    } else if (
-      afterBrowserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)
-    ) {
+    } else if (browserWidth >= pixelChangeNumber(setStyles.mediaWidth.mediaB)) {
       if (booksPage === 2) {
         if (remainderBookCount > 0) {
           setBooksMoveB(1, `${mediaStyled.mediaBTransform}`)

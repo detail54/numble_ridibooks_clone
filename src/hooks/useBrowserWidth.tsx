@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react'
 
 const useBrowserWidth = () => {
-  const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
-    window.innerWidth,
-  )
-  const [afterBrowserWidth, setAfterBrowserWidth] = useState<number>(
-    window.innerWidth,
-  )
+  const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      setBeforeBrowserWidth(afterBrowserWidth)
-      setAfterBrowserWidth(window.innerWidth)
+      setBrowserWidth(window.innerWidth)
     })
   }, [])
 
   return {
-    beforeBrowserWidth,
-    afterBrowserWidth,
+    browserWidth,
   }
 }
 
