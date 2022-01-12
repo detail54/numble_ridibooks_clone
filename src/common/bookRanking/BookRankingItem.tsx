@@ -1,11 +1,15 @@
 import React from 'react'
 // interface
 import { IBookRankingItem } from '../interface/interface'
+// common
+import StarRating from '../starRating/StarRating'
 // style
 import { BookRankingItemSC } from './BookRankingItem.styles'
 
 const BookRankingItem: React.FC<IBookRankingItem> = (props) => {
-  const { bookNumber, book, bookSize, underLine } = props
+  const { bookNumber, book, bookSize, underLine, starRate } = props
+
+  const starRateComp = starRate && <StarRating starRate={book.starRate} />
 
   return (
     <BookRankingItemSC.ItemWrap>
@@ -24,6 +28,7 @@ const BookRankingItem: React.FC<IBookRankingItem> = (props) => {
           <BookRankingItemSC.BookAuth to='/'>
             {book.author.name}
           </BookRankingItemSC.BookAuth>
+          {starRateComp}
         </BookRankingItemSC.BookInfo>
       </BookRankingItemSC.BookInfoWrap>
     </BookRankingItemSC.ItemWrap>

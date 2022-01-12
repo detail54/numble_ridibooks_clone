@@ -288,6 +288,7 @@ const BasicView: React.FC = () => {
           bookData={bestSeller}
           header='베스트셀러'
           bookSize='large'
+          starRate
           LinkHeader
         />
       </BasicSC.BestSeller>
@@ -311,6 +312,7 @@ const BasicView: React.FC = () => {
           bookStyle={{
             color: 'black',
           }}
+          starRate
         />
       </BasicSC.InstaRecommendedBookSection>
     </>

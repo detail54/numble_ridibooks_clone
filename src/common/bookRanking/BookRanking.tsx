@@ -12,7 +12,7 @@ import next from '../../asset/images/icons/next.png'
 import useBrowserWidth from '../../hooks/useBrowserWidth'
 
 const BookRanking: React.FC<IBookRanking> = (props) => {
-  const { bookData, header, bookSize, timer, LinkHeader } = props
+  const { bookData, header, bookSize, timer, LinkHeader, starRate } = props
 
   const { browserWidth } = useBrowserWidth()
   const [beforeBrowserWidth, setBeforeBrowserWidth] = useState<number>(
@@ -81,6 +81,7 @@ const BookRanking: React.FC<IBookRanking> = (props) => {
       book={book}
       bookSize={bookSize}
       underLine={(index + 1) % 3 !== 0 && true}
+      starRate={starRate}
     />
   ))
 

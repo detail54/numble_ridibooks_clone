@@ -149,6 +149,7 @@ export interface IBookStyle {
 export interface IBookComp {
   book: IBook
   bookStyle?: IBookStyle
+  starRate?: boolean
 }
 
 // BookCarousel interface
@@ -166,6 +167,7 @@ export interface IBookCarousel {
   buttonColor: TButtonColor
   mediaStyled: IMediaStyled
   bookStyle: IBookStyle
+  starRate?: boolean
 }
 
 // BookLabel interface
@@ -193,6 +195,7 @@ export interface IBookRanking {
   timer?: boolean
   bookSize?: TBookSize
   LinkHeader?: boolean
+  starRate?: boolean
 }
 
 export interface IBookRankingItem {
@@ -200,4 +203,18 @@ export interface IBookRankingItem {
   book: IBook
   bookSize?: TBookSize
   underLine?: boolean
+  starRate?: boolean
+}
+
+// StarRating interface
+export interface IStarRatingStyle {
+  width: number
+}
+
+export interface IStarRating {
+  starRate: {
+    rate: number
+    rateNum: number
+    rateBuyerNum: number
+  }
 }

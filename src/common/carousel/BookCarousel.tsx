@@ -15,7 +15,8 @@ const pixelChangeNumber = (data: string) => {
 }
 
 const BookCarousel: React.FC<IBookCarousel> = (props) => {
-  const { header, booksData, buttonColor, mediaStyled, bookStyle } = props
+  const { header, booksData, buttonColor, mediaStyled, bookStyle, starRate } =
+    props
 
   const [booksPage, setBooksPage] = useState<number>(1)
   const [hideNextButton, setHideNextButton] = useState<boolean>(false)
@@ -190,7 +191,7 @@ const BookCarousel: React.FC<IBookCarousel> = (props) => {
           {...booksMoveStyle}
           {...buttonColor}
         >
-          <Book book={book} bookStyle={bookStyle} />
+          <Book book={book} bookStyle={bookStyle} starRate={starRate} />
         </BookCarouselSC.BookItem>
       ))}
     </BookCarouselSC.BookList>

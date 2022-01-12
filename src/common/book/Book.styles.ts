@@ -56,6 +56,7 @@ const BookTitle = styled(Link)`
   display: block;
   color: ${(props: IBookStyle) => props.color || 'black'};
   text-decoration: none;
+  -webkit-line-clamp: 2;
 `
 
 const BookAuthor = styled(Link)`
