@@ -44,9 +44,9 @@ const Books = styled.div`
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
-          props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
+          props.mediaAWidth.substring(0, props.mediaAWidth.indexOf('px')),
           10,
-        ) * 2.4
+        ) * 2.6
       }px`};
   }
 
@@ -56,9 +56,9 @@ const Books = styled.div`
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
-          props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
+          props.mediaBWidth.substring(0, props.mediaBWidth.indexOf('px')),
           10,
-        ) * 2.06
+        ) * 2.2
       }px`};
   }
 `
@@ -97,7 +97,7 @@ const BookItem = styled.li`
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
-          props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
+          props.mediaAWidth.substring(0, props.mediaAWidth.indexOf('px')),
           10,
         ) * 2.04
       }px`};
@@ -106,7 +106,7 @@ const BookItem = styled.li`
       height: ${(props: IMediaStyled) =>
         `${
           parseInt(
-            props.mediaAWidth.substr(0, props.mediaAWidth.indexOf('px')),
+            props.mediaAWidth.substring(0, props.mediaAWidth.indexOf('px')),
             10,
           ) * 1.558
         }px`};
@@ -120,7 +120,7 @@ const BookItem = styled.li`
     height: ${(props: IMediaStyled) =>
       `${
         parseInt(
-          props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
+          props.mediaBWidth.substring(0, props.mediaBWidth.indexOf('px')),
           10,
         ) * 2.04
       }px`};
@@ -129,7 +129,7 @@ const BookItem = styled.li`
       height: ${(props: IMediaStyled) =>
         `${
           parseInt(
-            props.mediaBWidth.substr(0, props.mediaBWidth.indexOf('px')),
+            props.mediaBWidth.substring(0, props.mediaBWidth.indexOf('px')),
             10,
           ) * 1.558
         }px`};
