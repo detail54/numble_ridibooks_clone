@@ -1,4 +1,4 @@
-## Prerequisite
+## Stack
 
 - react (CRA)
 - styled-components
